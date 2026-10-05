@@ -231,6 +231,8 @@ const currentTitle = document.querySelector("#catalog-current-title");
 const currentSubtitle = document.querySelector("#catalog-current-subtitle");
 const searchInput = document.querySelector("#equipment-search");
 const selectedItemInput = document.querySelector("#selected-item");
+const selectedKitItemsInput = document.querySelector("#selected-kit-items");
+const selectedKitSummary = document.querySelector("#selected-kit-summary");
 let activeCategory = "led";
 
 function renderCategories() {
@@ -324,6 +326,12 @@ document.addEventListener("click", (event) => {
   const kitLink = event.target.closest("[data-kit]");
   if (kitLink) {
     selectedItemInput.value = kitLink.dataset.kit;
+    const kitItems = kitLink.dataset.kitItems || "";
+    if (selectedKitItemsInput) selectedKitItemsInput.value = kitItems;
+    if (selectedKitSummary) {
+      selectedKitSummary.textContent = `${kitLink.dataset.kit} selecionado. Itens: ${kitItems}. Essa seleção será incluída na mensagem do seu orçamento.`;
+      selectedKitSummary.hidden = false;
+    }
     document.querySelector("#orcamento").scrollIntoView({ behavior: "smooth", block: "start" });
   }
 });
@@ -366,6 +374,7 @@ document.querySelector("#quote-form")?.addEventListener("submit", (event) => {
     values.get("participants") ? `Participantes: ${values.get("participants")}` : "",
     solutions.length ? `Soluções desejadas: ${solutions.join(", ")}` : "",
     values.get("selectedItem") ? `Interesse específico: ${values.get("selectedItem")}` : "",
+    values.get("selectedKitItems") ? `Itens do kit selecionado: ${values.get("selectedKitItems")}` : "",
     values.get("description") ? `Descrição: ${values.get("description")}` : ""
   ].filter(Boolean);
   const feedback = document.querySelector("#form-feedback");

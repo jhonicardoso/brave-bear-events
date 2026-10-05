@@ -329,6 +329,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .form-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
 .form-submit { width: 100%; margin-top: 0; }
 .form-privacy { margin: 11px 0 0; color: #718193; font-size: 8px; }
+.selected-kit-summary { margin: 12px 0 0; padding: 12px 14px; border-left: 2px solid #20d7ef; color: #c8d8e6; background: rgba(32,215,239,.07); font-size: 10px; line-height: 1.65; }
 .form-feedback { margin-top: 12px; color: #9de6f2; font-size: 10px; }
 .form-feedback a { text-decoration: underline; text-underline-offset: 3px; }
 
