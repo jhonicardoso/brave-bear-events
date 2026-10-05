@@ -183,18 +183,6 @@ document.addEventListener("click", (event) => {
   }
 });
 
-const projectFilters = document.querySelector(".project-filters");
-projectFilters.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-project-filter]");
-  if (!button) return;
-  const filter = button.dataset.projectFilter;
-  projectFilters.querySelectorAll("[data-project-filter]").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
-  document.querySelectorAll(".gallery-card[data-project-categories]").forEach((card) => {
-    const tags = card.dataset.projectCategories.split(" ");
-    card.hidden = filter !== "all" && !tags.includes(filter);
-  });
-});
-
 const menuButton = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector("#main-nav");
 function closeMenu() {
@@ -279,7 +267,7 @@ if (clientCarousel && clientTrack && clientList && clientCarouselToggle && !wind
   });
 }
 
-const revealTargets = document.querySelectorAll(".service-card, .kit-card, .equipment-feature, .gallery-card, .process-list li, .client-carousel, .quote-form");
+const revealTargets = document.querySelectorAll(".service-card, .kit-card, .equipment-feature, .process-list li, .client-carousel, .quote-form");
 if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
