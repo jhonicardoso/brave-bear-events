@@ -251,7 +251,7 @@ const clientCarousel = document.querySelector(".client-carousel");
 const clientTrack = clientCarousel?.querySelector(".client-track");
 const clientList = clientTrack?.querySelector(".client-list");
 const clientCarouselToggle = clientCarousel?.querySelector(".client-carousel-toggle");
-if (clientCarousel && clientTrack && clientList && clientCarouselToggle && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+if (clientCarousel && clientTrack && clientList && clientCarouselToggle) {
   const duplicateList = clientList.cloneNode(true);
   duplicateList.setAttribute("aria-hidden", "true");
   duplicateList.querySelectorAll("img").forEach((logo) => logo.setAttribute("alt", ""));

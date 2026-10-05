@@ -445,7 +445,5 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .client-track.is-ready { animation: none !important; transform: none !important; }
-  .client-carousel.has-controls .client-carousel-toggle { display: none; }
-  .client-carousel.has-controls .client-carousel-viewport { overflow-x: auto; mask-image: none; }
+  .client-track.is-ready { animation-duration: 76s !important; animation-iteration-count: infinite !important; }
 }
