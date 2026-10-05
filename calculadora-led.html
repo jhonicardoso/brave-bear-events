@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#060b13">
+  <title>Calculadora de Painel de LED | Brave Bear Events</title>
+  <meta name="description" content="Dimensione seu painel de LED e estime placas, resolução, peso, cases, sinal e energia com a calculadora Brave Bear.">
+  <link rel="canonical" href="https://www.bravebear.com.br/calculadora-led.html">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header" id="topo">
+    <div class="header-inner wrap">
+      <a class="brand brand-lockup" href="index.html#inicio" aria-label="Brave Bear Events, início"><img src="assets/brand-lockup-white.png" alt="Brave Bear — Events · Visual · Experience" width="1394" height="833"></a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span></button>
+      <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
+        <a href="index.html#inicio">Início</a><a href="index.html#solucoes">Soluções</a><a href="index.html#equipamentos">Equipamentos</a><a href="index.html#kits">Kits</a><a href="index.html#sobre">Sobre</a>
+        <a class="button button-small nav-quote" href="index.html#orcamento">Solicitar orçamento <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+  <main id="conteudo">
+    <section class="led-calculator-section led-calculator-page" aria-labelledby="led-calculator-title">
+      <div class="wrap">
+        <a class="calculator-back" href="index.html#solucoes">← Voltar para o site</a>
+        <div class="section-heading heading-split">
+          <div><p class="eyebrow"><span class="eyebrow-line"></span> FERRAMENTA BRAVE BEAR</p><h1 id="led-calculator-title">Calculadora de <span>painel de LED.</span></h1></div>
+          <p class="section-intro">Informe o formato da placa e as medidas do painel para estimar quantidade, resolução, peso, cases e distribuição de sinal e energia.</p>
+        </div>
+        <div class="led-calc-layout">
+          <form class="led-calc-form" id="led-calc-form">
+            <fieldset><legend>Dimensões e módulo</legend>
+              <div class="led-calc-fields">
+                <label>Largura do painel (m)<input name="width" type="number" min="0.1" max="100" step="0.01" value="5" required></label>
+                <label>Altura do painel (m)<input name="height" type="number" min="0.1" max="100" step="0.01" value="3" required></label>
+                <label>Placa / cabinet<select name="modulePreset"><option value="0.5x0.5">50 × 50 cm</option><option value="0.5x1">50 × 100 cm</option><option value="custom">Personalizada</option></select></label>
+                <label>Pitch (mm)<select name="pitch"><option>1.9</option><option>2.6</option><option>2.9</option><option>2.97</option><option>3</option><option selected>3.91</option><option>4.81</option><option value="custom">Personalizado</option></select></label>
+                <label class="custom-pitch-field" hidden>Pitch personalizado (mm)<input name="customPitch" type="number" min="0.5" max="100" step="0.01" value="3.91"></label>
+                <label class="custom-module-field" hidden>Largura da placa (m)<input name="moduleWidth" type="number" min="0.05" max="5" step="0.01" value="0.5"></label>
+                <label class="custom-module-field" hidden>Altura da placa (m)<input name="moduleHeight" type="number" min="0.05" max="5" step="0.01" value="0.5"></label>
+                <label>Peso por placa (kg)<input name="weight" type="number" min="0" max="1000" step="0.1" placeholder="Automático"></label>
+                <label>Placas por case<input name="caseCapacity" type="number" min="1" max="500" step="1" value="8"></label>
+              </div>
+            </fieldset>
+            <fieldset><legend>Parâmetros dos equipamentos</legend>
+              <div class="led-calc-fields">
+                <label>Limite de pixels por porta<input name="pixelsPerPort" type="number" min="10000" step="10000" value="650000"></label>
+                <label>Margem de segurança (%)<input name="signalMargin" type="number" min="0" max="80" step="1" value="25"></label>
+                <label>Máx. placas em cascata de sinal<input name="signalCascade" type="number" min="1" max="500" step="1" value="17"></label>
+                <label>Potência estimada (W/m²)<input name="wattsPerSqm" type="number" min="1" max="5000" step="10" value="700"></label>
+                <label>Tensão (V)<select name="voltage"><option value="127">127 V</option><option value="220" selected>220 V</option></select></label>
+                <label>Corrente por circuito (A)<input name="amps" type="number" min="1" max="1000" step="1" value="20"></label>
+                <label>Uso máximo do circuito (%)<input name="circuitUse" type="number" min="10" max="100" step="1" value="80"></label>
+                <label>Máx. placas em cascata AC<input name="acCascade" type="number" min="1" max="500" step="1" value="8"></label>
+              </div>
+              <p class="calc-hint">Use os limites dos fabricantes do painel, da processadora e da distribuição elétrica do evento.</p>
+            </fieldset>
+          </form>
+          <div class="led-calc-results" aria-live="polite">
+            <div class="led-result-grid">
+              <article><span>Placas necessárias</span><strong data-result="tiles">—</strong></article><article><span>Resolução total</span><strong data-result="resolution">—</strong></article>
+              <article><span>Área montada</span><strong data-result="area">—</strong></article><article><span>Cases estimados</span><strong data-result="cases">—</strong></article>
+              <article><span>Peso total estimado</span><strong data-result="weight">—</strong></article><article><span>Distância de visualização*</span><strong data-result="distance">—</strong></article>
+              <article><span>Placas por porta RJ45</span><strong data-result="perPort">—</strong></article><article><span>Cabos de sinal longos</span><strong data-result="signalCables">—</strong></article>
+              <article><span>Potência / carga estimada</span><strong data-result="power">—</strong></article><article><span>Circuitos AC longos</span><strong data-result="acCircuits">—</strong></article>
+            </div>
+            <div class="led-map-heading"><div><span>MAPA DE PLACAS</span><strong data-result="mapSummary">—</strong></div><button class="button button-small" id="led-map-download" type="button">Baixar mapa <span aria-hidden="true">↓</span></button></div>
+            <div class="led-map-scroll"><div class="led-map" id="led-map" role="img" aria-label="Mapa esquemático de placas de LED"></div></div>
+            <p class="calc-hint">* Distâncias são referências iniciais baseadas no pitch. Quantidades de sinal e AC são estimativas e precisam ser validadas com as especificações dos equipamentos e a equipe técnica.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="calculator-contact" aria-labelledby="calculator-contact-title">
+      <div class="wrap calculator-contact-layout">
+        <div class="calculator-contact-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> CONTE COM A NOSSA EQUIPE</p>
+          <h2 id="calculator-contact-title">Seu projeto merece <span>uma boa conversa.</span></h2>
+          <p>Se quiser revisar os resultados ou avançar no planejamento, nossa equipe está à disposição para conversar sobre a solução ideal para o seu evento.</p>
+          <a class="button calculator-contact-main" href="https://wa.me/5511911728323?text=Ol%C3%A1%2C%20estou%20usando%20a%20calculadora%20de%20painel%20de%20LED%20e%20gostaria%20de%20conversar%20sobre%20meu%20projeto." target="_blank" rel="noopener noreferrer">Conversar com a Brave Bear <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="calculator-tech-contact">
+          <span class="calculator-tech-label">ATENDIMENTO TÉCNICO</span>
+          <h3>Equipe técnica<br>Brave Bear</h3>
+          <a class="calculator-tech-phone" href="tel:+5511926137084">11 9.2613-7084</a>
+          <p>Atendimento por ligação ou WhatsApp</p>
+          <div class="calculator-tech-actions">
+            <a href="tel:+5511926137084">Ligar <span aria-hidden="true">↗</span></a>
+            <a href="https://wa.me/5511926137084?text=Ol%C3%A1%2C%20Equipe%20T%C3%A9cnica%20Brave%20Bear!%20Estou%20usando%20a%20calculadora%20de%20painel%20de%20LED%20e%20preciso%20de%20ajuda." target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-bottom"><span>© <span id="current-year">2026</span> Brave Bear Events</span><span>TECNOLOGIA <i>+</i> ESTRUTURA <i>+</i> EXPERIÊNCIA</span><a href="#topo">Voltar ao topo ↑</a></div></footer>
+  <a class="whatsapp-float" href="https://wa.me/5511911728323" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">◉</span><span>WhatsApp</span></a>
+  <script src="script.js" defer></script>
+</body>
+</html>

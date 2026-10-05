@@ -5,7 +5,7 @@ const categories = [
   { id: "projection", label: "Projeção", short: "Projeção", count: "11 opções", tagline: "Soluções de projeção para impactar o público.", image: "assets/projection.webp", symbol: "▱" },
   { id: "processing", label: "Processamento e controle de LED", short: "Controle de LED", count: "12 opções", tagline: "Processamento e operação de painéis de LED.", image: "assets/processing.webp", symbol: "⌘" },
   { id: "audio", label: "Sonorização", short: "Sonorização", count: "15 opções", tagline: "Som de alta qualidade para diferentes formatos de evento.", image: "assets/audio.webp", symbol: "◖))" },
-  { id: "lighting", label: "Iluminação", short: "Iluminação", count: "35 opções", tagline: "Luz para valorizar cada detalhe do evento.", image: "assets/lighting.webp", symbol: "✳" },
+  { id: "lighting", label: "Iluminação", short: "Iluminação", count: "36 opções", tagline: "Luz para valorizar cada detalhe do evento.", image: "assets/lighting.webp", symbol: "✳" },
   { id: "structure", label: "Estrutura", short: "Estrutura", count: "9 opções", tagline: "Estrutura para dar suporte às ideias do seu evento.", image: "assets/structure.webp", symbol: "⌗" }
 ];
 
@@ -68,7 +68,7 @@ const products = {
     ["LED P5", ""], ["Ribalta RGBW 8W", ""], ["Ribalta RGBW 12W", ""], ["Ribalta Blindada RGBW 30W", ""],
     ["Strobo LED RGBW 1000W", ""], ["Fresnel 1000W", ""], ["Fresnel 2000W", ""],
     ["Fresnel LED 200W", ""], ["Vara de Pimbim LED e Quente", ""], ["Mini Brut LED", ""],
-    ["Elipsoidal ETC 575W / 750W", ""], ["Elipsoidal LED AB 200W", ""], ["Canhão Seguidor 7R", ""],
+    ["Mini Brut Quente", "2L, 4L ou 6L"], ["Elipsoidal ETC 575W / 750W", ""], ["Elipsoidal LED AB 200W", ""], ["Canhão Seguidor 7R", ""],
     ["Moving Wash 320W", ""], ["Moving Beam 14R 295W com borda LED", ""],
     ["Moving Beam 17R 350W", ""], ["Moving Beam 7R 230W", ""], ["Moving Spot LED 150W", ""],
     ["Sky Light 4000W", ""], ["Sky Paper", ""], ["Rack Buffer", ""],
@@ -82,6 +82,147 @@ const products = {
     ["Bases", "Acessório de truss"], ["Passa cabo", "Segurança e organização"]
   ]
 };
+
+const ledCalcForm = document.querySelector("#led-calc-form");
+const ledCalcMap = document.querySelector("#led-map");
+const ledCalcFormat = (value, digits = 0) => new Intl.NumberFormat("pt-BR", { maximumFractionDigits: digits, minimumFractionDigits: digits }).format(value);
+const ledCalcValue = (name) => Number(ledCalcForm.elements[name].value);
+let ledCalcState = null;
+
+function updateLedCalculator() {
+  if (!ledCalcForm || !ledCalcMap) return;
+  const form = ledCalcForm.elements;
+  const preset = form.modulePreset.value;
+  const [moduleWidth, moduleHeight] = preset === "custom"
+    ? [Number(form.moduleWidth.value), Number(form.moduleHeight.value)]
+    : preset.split("x").map(Number);
+  const pitch = form.pitch.value === "custom" ? Number(form.customPitch.value) : Number(form.pitch.value);
+  const panelWidth = ledCalcValue("width");
+  const panelHeight = ledCalcValue("height");
+  if (![moduleWidth, moduleHeight, pitch, panelWidth, panelHeight].every((n) => Number.isFinite(n) && n > 0)) return;
+
+  const columns = Math.ceil(panelWidth / moduleWidth);
+  const rows = Math.ceil(panelHeight / moduleHeight);
+  const tiles = columns * rows;
+  const modulePixelsWide = Math.max(1, Math.round(moduleWidth * 1000 / pitch));
+  const modulePixelsHigh = Math.max(1, Math.round(moduleHeight * 1000 / pitch));
+  const resolutionWidth = columns * modulePixelsWide;
+  const resolutionHeight = rows * modulePixelsHigh;
+  const builtWidth = columns * moduleWidth;
+  const builtHeight = rows * moduleHeight;
+  const area = builtWidth * builtHeight;
+  const weightEach = Number(form.weight.value) > 0 ? Number(form.weight.value) : (preset === "0.5x0.5" ? 7.5 : preset === "0.5x1" ? 14 : 30 * moduleWidth * moduleHeight);
+  const weight = weightEach * tiles;
+  const caseCapacity = Math.max(1, ledCalcValue("caseCapacity"));
+  const pixelsPerPort = Math.max(1, ledCalcValue("pixelsPerPort"));
+  const usablePixels = pixelsPerPort * (1 - ledCalcValue("signalMargin") / 100);
+  const signalCascade = Math.max(1, ledCalcValue("signalCascade"));
+  const perPort = Math.max(1, Math.min(signalCascade, Math.floor(usablePixels / (modulePixelsWide * modulePixelsHigh))));
+  const signalGroups = Math.ceil(tiles / perPort);
+  const wattsPerSqm = Math.max(1, ledCalcValue("wattsPerSqm"));
+  const power = area * wattsPerSqm;
+  const voltage = ledCalcValue("voltage");
+  const amps = Math.max(1, ledCalcValue("amps"));
+  const circuitUse = ledCalcValue("circuitUse") / 100;
+  const acCascade = Math.max(1, ledCalcValue("acCascade"));
+  const wattsPerTile = area > 0 ? power / tiles : 0;
+  const powerPerCircuit = voltage * amps * circuitUse;
+  const tilesPerAcCircuit = Math.max(1, Math.min(acCascade, Math.floor(powerPerCircuit / wattsPerTile)));
+  const acGroups = Math.ceil(tiles / tilesPerAcCircuit);
+  const estimatedKva = power / 1000 / 0.9;
+  const distanceMin = pitch / 1000;
+  const distanceMax = pitch * 3 / 1000;
+
+  ledCalcState = { rows, columns, tiles, modulePixelsWide, modulePixelsHigh, resolutionWidth, resolutionHeight, builtWidth, builtHeight, area, weightEach, weight, caseCapacity, perPort, signalGroups, power, estimatedKva, acGroups, tilesPerAcCircuit, distanceMin, distanceMax };
+  const results = {
+    tiles: `${ledCalcFormat(tiles)} placas`,
+    resolution: `${ledCalcFormat(resolutionWidth)} × ${ledCalcFormat(resolutionHeight)} px`,
+    area: `${ledCalcFormat(area, 2)} m² (${ledCalcFormat(builtWidth, 2)} × ${ledCalcFormat(builtHeight, 2)} m)`,
+    cases: `${ledCalcFormat(Math.ceil(tiles / caseCapacity))} (${ledCalcFormat(caseCapacity)} por case)`,
+    weight: `${ledCalcFormat(weight, 1)} kg (${ledCalcFormat(weightEach, 1)} kg/placa)`,
+    distance: `${ledCalcFormat(distanceMin, 1)}–${ledCalcFormat(distanceMax, 1)} m`,
+    perPort: `${ledCalcFormat(perPort)} (${ledCalcFormat(Math.ceil(modulePixelsWide * modulePixelsHigh))} px/placa)`,
+    signalCables: `${ledCalcFormat(signalGroups)} circuitos / ${ledCalcFormat(tiles - signalGroups)} jumpers`,
+    power: `${ledCalcFormat(power)} W · ${ledCalcFormat(estimatedKva, 2)} kVA*`,
+    acCircuits: `${ledCalcFormat(acGroups)} circuitos / ${ledCalcFormat(tiles - acGroups)} jumpers`
+  };
+  Object.entries(results).forEach(([key, value]) => {
+    const output = document.querySelector(`[data-result="${key}"]`);
+    if (output) output.textContent = value;
+  });
+  const summary = document.querySelector('[data-result="mapSummary"]');
+  if (summary) summary.textContent = `${rows} linhas × ${columns} colunas · ${builtWidth.toFixed(2)} × ${builtHeight.toFixed(2)} m`;
+  drawLedMap();
+}
+
+function drawLedMap() {
+  const state = ledCalcState;
+  if (!state || !ledCalcMap) return;
+  const maxVisibleTiles = 1200;
+  if (state.tiles > maxVisibleTiles) {
+    ledCalcMap.replaceChildren();
+    ledCalcMap.style.gridTemplateColumns = "1fr";
+    const message = document.createElement("p");
+    message.className = "led-map-download-note";
+    message.textContent = `O mapa detalhado tem ${ledCalcFormat(state.tiles)} placas. Reduza as dimensões para visualizar o mapa na página.`;
+    ledCalcMap.append(message);
+    return;
+  }
+  ledCalcMap.style.gridTemplateColumns = `repeat(${state.columns}, 56px)`;
+  const fragment = document.createDocumentFragment();
+  for (let row = 0; row < state.rows; row += 1) {
+    const leftToRight = row % 2 === 0;
+    for (let step = 0; step < state.columns; step += 1) {
+      const column = leftToRight ? step : state.columns - 1 - step;
+      const index = row * state.columns + step;
+      const signalCircuit = Math.floor(index / state.perPort) + 1;
+      const acCircuit = Math.floor(index / state.tilesPerAcCircuit) + 1;
+      const tile = document.createElement("div");
+      tile.className = "led-map-tile";
+      tile.title = `Placa ${index + 1}, linha ${row + 1}, coluna ${column + 1}, sinal S${signalCircuit}, AC${acCircuit}`;
+      const position = document.createElement("span");
+      position.textContent = `${leftToRight ? "→" : "←"} L${row + 1} C${column + 1}`;
+      const label = document.createElement("strong");
+      label.textContent = `P${index + 1}`;
+      const circuits = document.createElement("small");
+      circuits.textContent = `S${signalCircuit} · AC${acCircuit}`;
+      tile.append(position, label, circuits);
+      fragment.append(tile);
+    }
+  }
+  ledCalcMap.replaceChildren(fragment);
+}
+
+if (ledCalcForm) {
+  ledCalcForm.addEventListener("input", updateLedCalculator);
+  ledCalcForm.addEventListener("change", (event) => {
+    const showModule = ledCalcForm.elements.modulePreset.value === "custom";
+    ledCalcForm.querySelectorAll(".custom-module-field").forEach((field) => { field.hidden = !showModule; });
+    ledCalcForm.querySelector(".custom-pitch-field").hidden = ledCalcForm.elements.pitch.value !== "custom";
+    updateLedCalculator();
+  });
+  const mapDownload = document.querySelector("#led-map-download");
+  mapDownload?.addEventListener("click", () => {
+    if (!ledCalcState) return;
+    const state = ledCalcState;
+    const lines = ["Pixel Map — Brave Bear Events", `Dimensões: ${state.builtWidth.toFixed(2)} × ${state.builtHeight.toFixed(2)} m`, `Resolução: ${state.resolutionWidth} × ${state.resolutionHeight} px`, `Placas: ${state.tiles}`, `Peso estimado: ${state.weight.toFixed(1)} kg`, `Circuitos de sinal estimados: ${state.signalGroups}`, `Circuitos AC estimados: ${state.acGroups}`, "", "Placa;Linha;Coluna;Circuito sinal;Circuito AC"];
+    for (let row = 0; row < state.rows; row += 1) {
+      for (let step = 0; step < state.columns; step += 1) {
+        const column = row % 2 === 0 ? step : state.columns - 1 - step;
+        const index = row * state.columns + step;
+        lines.push(`${index + 1};${row + 1};${column + 1};S${Math.floor(index / state.perPort) + 1};AC${Math.floor(index / state.tilesPerAcCircuit) + 1}`);
+      }
+    }
+    const blob = new Blob(["\ufeff", lines.join("\r\n")], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "brave-bear-pixel-map.csv";
+    link.click();
+    URL.revokeObjectURL(url);
+  });
+  updateLedCalculator();
+}
 
 const categoryGrid = document.querySelector("#equipment-categories");
 const categoryTabs = document.querySelector("#category-tabs");
@@ -105,7 +246,7 @@ function renderCategories() {
 function renderProducts() {
   const category = categories.find((item) => item.id === activeCategory);
   const query = searchInput.value.trim().toLocaleLowerCase("pt-BR");
-  const filtered = (products[activeCategory] || []).filter(([name, detail]) => `${name} ${detail}`.toLocaleLowerCase("pt-BR").includes(query));
+  const filtered = (products[activeCategory] || []).map(([name, detail], index) => ({ name, detail, index })).filter(({ name, detail }) => `${name} ${detail}`.toLocaleLowerCase("pt-BR").includes(query));
   currentTitle.textContent = category.label;
   currentSubtitle.textContent = category.tagline;
   categoryTabs.querySelectorAll("[role='tab']").forEach((button) => {
@@ -124,12 +265,16 @@ function renderProducts() {
 
   const expansion = activeCategory === "structure" && !query ? `
     <aside class="future-catalog"><small>ESPAÇO PARA EXPANSÃO DO CATÁLOGO</small><p>Categorias previstas para cadastro futuro:</p><span>Palcos</span><span>Praticáveis</span><span>Escadas</span><span>Guarda-corpo</span><span>Coberturas</span><span>Backdrops</span><span>Pórticos</span><span>Torres</span><span>Ground Support</span><span>Suportes para LED</span><span>Suportes para iluminação</span></aside>` : "";
-  productList.innerHTML = filtered.map(([name, detail]) => `
+  productList.innerHTML = filtered.map(({ name, detail, index }) => {
+    const photoIndex = activeCategory === "interactive" ? [1, 2, 3, 3, 3, 3, 3, 3, 4, 5, 5][index] : index + 1;
+    const image = `assets/catalog-items/${activeCategory}-${String(photoIndex).padStart(2, "0")}.webp`;
+    return `
     <article class="product-card">
-      <span class="product-mark" aria-hidden="true">${category.symbol}</span>
+      <img class="product-image" src="${image}" alt="${name}" loading="lazy" width="640" height="420">
       <span class="product-text"><strong>${name}</strong><small>${detail || category.label}</small></span>
       <button type="button" data-select-item="${name}" aria-label="Solicitar orçamento para ${name}">↗</button>
-    </article>`).join("") + expansion;
+    </article>`;
+  }).join("") + expansion;
 }
 
 function chooseCategory(categoryId) {
@@ -186,22 +331,23 @@ document.addEventListener("click", (event) => {
 const menuButton = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector("#main-nav");
 function closeMenu() {
+  if (!menuButton || !mainNav) return;
   menuButton.setAttribute("aria-expanded", "false");
   menuButton.setAttribute("aria-label", "Abrir menu");
   mainNav.classList.remove("is-open");
   document.body.classList.remove("menu-open");
 }
-menuButton.addEventListener("click", () => {
+menuButton?.addEventListener("click", () => {
   const open = menuButton.getAttribute("aria-expanded") !== "true";
   menuButton.setAttribute("aria-expanded", String(open));
   menuButton.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
-  mainNav.classList.toggle("is-open", open);
+  mainNav?.classList.toggle("is-open", open);
   document.body.classList.toggle("menu-open", open);
 });
-mainNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+mainNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
 document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeMenu(); });
 
-document.querySelector("#quote-form").addEventListener("submit", (event) => {
+document.querySelector("#quote-form")?.addEventListener("submit", (event) => {
   event.preventDefault();
   const form = event.currentTarget;
   const delivery = event.submitter?.value || "whatsapp";
@@ -245,7 +391,8 @@ document.querySelector("#quote-form").addEventListener("submit", (event) => {
   if (typeof window.fbq === "function") window.fbq("track", "Lead");
 });
 
-document.querySelector("#current-year").textContent = String(new Date().getFullYear());
+const currentYear = document.querySelector("#current-year");
+if (currentYear) currentYear.textContent = String(new Date().getFullYear());
 
 const clientCarousel = document.querySelector(".client-carousel");
 const clientTrack = clientCarousel?.querySelector(".client-track");
