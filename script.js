@@ -268,7 +268,11 @@ function renderProducts() {
   const expansion = activeCategory === "structure" && !query ? `
     <aside class="future-catalog"><small>ESPAÇO PARA EXPANSÃO DO CATÁLOGO</small><p>Categorias previstas para cadastro futuro:</p><span>Palcos</span><span>Praticáveis</span><span>Escadas</span><span>Guarda-corpo</span><span>Coberturas</span><span>Backdrops</span><span>Pórticos</span><span>Torres</span><span>Ground Support</span><span>Suportes para LED</span><span>Suportes para iluminação</span></aside>` : "";
   productList.innerHTML = filtered.map(({ name, detail, index }) => {
-    const photoIndex = activeCategory === "interactive" ? [1, 2, 3, 3, 3, 3, 3, 3, 4, 5, 5][index] : index + 1;
+    const photoIndex = activeCategory === "interactive"
+      ? [1, 2, 3, 3, 3, 3, 3, 3, 4, 5, 5][index]
+      : activeCategory === "led"
+        ? [1, 2, 3, 4, 5, 6, 7, 9, 8][index]
+        : index + 1;
     const image = `assets/catalog-items/${activeCategory}-${String(photoIndex).padStart(2, "0")}.webp`;
     return `
     <article class="product-card">
@@ -314,7 +318,55 @@ function setRequestedItem(item) {
   document.querySelector("#orcamento").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+const eventExperienceDetails = [
+  { title: "Eventos corporativos", formType: "Evento corporativo", image: "assets/event-types/01-eventos-corporativos.jpg", copy: "A Brave Bear planeja a estrutura audiovisual para encontros corporativos de diferentes formatos, integrando painéis de LED, TVs, sonorização, iluminação e estruturas conforme o espaço e a proposta do evento." },
+  { title: "Congressos", formType: "Congresso ou convenção", image: "assets/event-types/02-congressos.jpg", copy: "Para congressos, a Brave Bear combina painéis de LED, TVs, sonorização, iluminação e processamento de vídeo para apoiar plenárias, apresentações e debates com comunicação clara para o público." },
+  { title: "Convenções", formType: "Congresso ou convenção", image: "assets/event-types/03-convencoes.jpg", copy: "A Brave Bear reúne painéis de LED, processamento e controle, sonorização, iluminação e estruturas para dar unidade visual e sonora a convenções de diferentes portes." },
+  { title: "Palestras", formType: "Palestra ou treinamento", image: "assets/event-types/04-palestras.jpg", copy: "A Brave Bear oferece sonorização, painéis de LED ou TVs, iluminação e processamento de vídeo para valorizar a apresentação e manter conteúdo e palestrante em evidência." },
+  { title: "Workshops", formType: "Palestra ou treinamento", image: "assets/event-types/05-workshops.jpg", copy: "Em workshops, a Brave Bear integra TVs, painéis de LED e recursos de interatividade a soluções de sonorização e iluminação adequadas ao espaço, apoiando encontros práticos e participativos." },
+  { title: "Treinamentos", formType: "Palestra ou treinamento", image: "assets/event-types/06-treinamentos.jpg", copy: "A Brave Bear dimensiona TVs ou painéis de LED, processamento e controle, além de sonorização, para apoiar apresentações e atividades de capacitação em diferentes ambientes." },
+  { title: "Feiras", formType: "Feira ou exposição", image: "assets/event-types/07-feiras.jpg", copy: "A Brave Bear fornece painéis de LED, TVs, estruturas e iluminação para destacar estandes e apresentar conteúdos com visibilidade em pavilhões de feira." },
+  { title: "Exposições", formType: "Feira ou exposição", image: "assets/event-types/08-exposicoes.jpg", copy: "Para exposições, a Brave Bear combina painéis de LED, televisores, iluminação e recursos de interatividade na criação de ambientes audiovisuais alinhados à proposta de cada espaço." },
+  { title: "Lançamentos", formType: "Lançamento ou premiação", image: "assets/event-types/09-lancamentos.jpg", copy: "A Brave Bear combina painéis de LED, processamento de vídeo, sonorização, iluminação e estruturas para valorizar a apresentação de produtos e novidades." },
+  { title: "Premiações", formType: "Lançamento ou premiação", image: "assets/event-types/10-premiacoes.jpg", copy: "A Brave Bear reúne painéis de LED, sonorização, iluminação e estruturas para apoiar os momentos de palco e dar destaque visual à cerimônia de premiação." },
+  { title: "Eventos sociais", formType: "Evento social", image: "assets/event-types/11-eventos-sociais.jpg", copy: "Em eventos sociais, a Brave Bear oferece sonorização, iluminação, painéis de LED e estruturas para compor uma experiência audiovisual de acordo com o estilo da celebração." },
+  { title: "Ativações de marca", formType: "Ativação de marca", image: "assets/event-types/12-ativacoes-de-marca.jpg", copy: "A Brave Bear apoia ativações de marca com painéis de LED, TVs, interatividade, sonorização e iluminação, integrando recursos audiovisuais à experiência proposta." }
+];
+const eventDialog = document.querySelector("#event-dialog");
+const eventDialogTitle = document.querySelector("#event-dialog-title");
+const eventDialogCopy = document.querySelector("#event-dialog-copy");
+const eventDialogImage = document.querySelector("#event-dialog-image");
+const eventTypeSelect = document.querySelector("#quote-form [name='eventType']");
+document.querySelectorAll("[data-event-detail]").forEach((button) => button.addEventListener("click", () => {
+  const index = Number(button.dataset.eventDetail);
+  const detail = eventExperienceDetails[index];
+  if (!detail || !eventDialog) return;
+  eventDialog.dataset.eventIndex = String(index);
+  eventDialogTitle.textContent = detail.title;
+  eventDialogCopy.textContent = detail.copy;
+  eventDialogImage.src = detail.image;
+  eventDialogImage.alt = `Imagem ilustrativa: ${detail.title}`;
+  eventDialog.showModal();
+}));
+document.querySelector(".event-dialog-close")?.addEventListener("click", () => eventDialog?.close());
+eventDialog?.addEventListener("click", (event) => {
+  if (event.target === eventDialog) eventDialog.close();
+});
+document.querySelector("#event-dialog-quote")?.addEventListener("click", () => {
+  const detail = eventExperienceDetails[Number(eventDialog?.dataset.eventIndex)];
+  if (detail && eventTypeSelect) eventTypeSelect.value = detail.formType;
+  eventDialog?.close();
+});
+
 document.addEventListener("click", (event) => {
+  const kitCard = event.target.closest(".kit-card");
+  if (kitCard) {
+    kitCard.classList.remove("is-clicked");
+    void kitCard.offsetWidth;
+    kitCard.classList.add("is-clicked");
+    window.setTimeout(() => kitCard.classList.remove("is-clicked"), 520);
+  }
+
   const productButton = event.target.closest("[data-select-item]");
   if (productButton) {
     setRequestedItem(productButton.dataset.selectItem);

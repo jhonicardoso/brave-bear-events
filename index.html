@@ -12,7 +12,13 @@
   <meta property="og:title" content="Brave Bear Events | Soluções Audiovisuais para Eventos">
   <meta property="og:description" content="Tecnologia, equipe e estrutura para transformar o seu evento em uma experiência completa.">
   <meta property="og:url" content="https://www.bravebear.com.br/">
-  <meta property="og:image" content="https://www.bravebear.com.br/assets/hero-bear.webp">
+  <meta property="og:image" content="https://www.bravebear.com.br/Card.jpeg">
+  <meta property="og:image:secure_url" content="https://www.bravebear.com.br/Card.jpeg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="720">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.bravebear.com.br/Card.jpeg">
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -177,9 +183,34 @@
     <section class="event-types section section-light" id="eventos" aria-labelledby="events-title">
       <div class="wrap event-types-layout">
         <div class="event-types-title"><p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> EVENTOS E EXPERIÊNCIAS</p><h2 id="events-title">Uma estrutura para <span>cada experiência.</span></h2><p>Do encontro corporativo à ativação de marca, a solução parte do formato e do objetivo de cada evento.</p><a class="text-link text-link-dark" href="#orcamento">Conte sobre o seu evento <span>↗</span></a></div>
-        <div class="event-tags"><span>Eventos corporativos</span><span>Congressos</span><span>Convenções</span><span>Palestras</span><span>Workshops</span><span>Treinamentos</span><span>Feiras</span><span>Exposições</span><span>Lançamentos</span><span>Premiações</span><span>Eventos sociais</span><span>Ativações de marca</span></div>
+        <div class="event-tags" aria-label="Categorias de eventos">
+          <button type="button" class="event-tag" data-event-detail="0">Eventos corporativos</button>
+          <button type="button" class="event-tag" data-event-detail="1">Congressos</button>
+          <button type="button" class="event-tag" data-event-detail="2">Convenções</button>
+          <button type="button" class="event-tag" data-event-detail="3">Palestras</button>
+          <button type="button" class="event-tag" data-event-detail="4">Workshops</button>
+          <button type="button" class="event-tag" data-event-detail="5">Treinamentos</button>
+          <button type="button" class="event-tag" data-event-detail="6">Feiras</button>
+          <button type="button" class="event-tag" data-event-detail="7">Exposições</button>
+          <button type="button" class="event-tag" data-event-detail="8">Lançamentos</button>
+          <button type="button" class="event-tag" data-event-detail="9">Premiações</button>
+          <button type="button" class="event-tag" data-event-detail="10">Eventos sociais</button>
+          <button type="button" class="event-tag" data-event-detail="11">Ativações de marca</button>
+        </div>
       </div>
     </section>
+
+    <dialog class="event-dialog" id="event-dialog" aria-labelledby="event-dialog-title">
+      <div class="event-dialog-layout">
+        <img class="event-dialog-image" id="event-dialog-image" src="" alt="" width="1400" height="788" decoding="async">
+        <div class="event-dialog-content">
+          <div class="event-dialog-top"><p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> BRAVE BEAR EVENTS</p><button class="event-dialog-close" type="button" aria-label="Fechar detalhes">×</button></div>
+          <h2 id="event-dialog-title"></h2>
+          <p id="event-dialog-copy"></p>
+          <a class="button" id="event-dialog-quote" href="#orcamento">Planejar este evento <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </dialog>
 
     <section class="client-section" aria-labelledby="clients-title">
       <div class="wrap client-layout">
