@@ -420,8 +420,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .menu-toggle span { width: 17px; height: 1px; background: #eaf5ff; transition: transform .2s ease; }
   .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
   .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
-  .main-nav { position: fixed; top: 70px; right: 0; left: 0; display: flex; height: calc(100svh - 70px); flex-direction: column; align-items: stretch; gap: 0; padding: 20px 24px 34px; visibility: hidden; pointer-events: none; transform: translateX(100%); background: rgba(5,10,17,.98); transition: transform .3s ease, visibility .3s ease; }
-  .main-nav.is-open, .menu-toggle[aria-expanded="true"] + .main-nav { visibility: visible; pointer-events: auto; transform: translateX(0); }
+  .main-nav { position: fixed; top: 70px; right: 0; left: 0; display: flex; height: calc(100svh - 70px); flex-direction: column; align-items: stretch; gap: 0; padding: 20px 24px 34px; visibility: hidden; pointer-events: none; clip-path: inset(0 0 0 100%); background: rgba(5,10,17,.98); transition: clip-path .3s ease, visibility .3s ease; }
+  .main-nav.is-open, .menu-toggle[aria-expanded="true"] + .main-nav { visibility: visible; pointer-events: auto; clip-path: inset(0); }
   .main-nav > a:not(.button) { padding: 14px 4px; border-bottom: 1px solid rgba(255,255,255,.09); font-family: var(--font-display); font-size: 13px; }
   .main-nav .nav-quote { margin-top: 19px; }
   .hero { min-height: min(730px, calc(100svh - 70px)); min-height: max(630px, min(730px, calc(100svh - 70px))); }
