@@ -11,3 +11,14 @@
 /prepare_client_logos.py
 /assets/projects/
 /assets/_logos_review/
+
+# Keep local credentials, environment files, and signing material out of Git.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+secrets*.json
