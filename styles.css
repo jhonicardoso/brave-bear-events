@@ -102,13 +102,26 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .service-card > a { display: inline-flex; gap: 11px; align-items: center; color: #107aca; font-size: 9px; font-weight: 700; letter-spacing: .04em; }
 .service-card > a span { color: #08a7d8; font-size: 15px; }
 
-.led-planner { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 26px; margin-top: 28px; padding: 30px 34px; border: 1px solid #dce3e9; background: linear-gradient(115deg, #fff 0%, #edf7fc 100%); }
-.led-planner-icon { display: grid; width: 58px; height: 58px; place-items: center; border: 1px solid #b8d7e8; border-radius: 4px; color: #0788e7; font-size: 30px; }
+.led-planner { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 26px; margin-top: 28px; padding: 30px 34px; overflow: hidden; border: 1px solid #dce3e9; background: linear-gradient(115deg, #fff 0%, #edf7fc 100%); box-shadow: 0 10px 28px rgba(9,62,103,.04); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background .25s ease; }
+.led-planner::before { position: absolute; inset: 0 auto 0 0; width: 3px; background: linear-gradient(180deg, #04a5ed, #28d5ec); content: ""; }
+.led-planner-icon { display: grid; width: 58px; height: 58px; place-items: center; border: 1px solid #b8d7e8; border-radius: 4px; color: #0788e7; background: rgba(255,255,255,.82); }
+.led-planner-icon > span { display: grid; width: 29px; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.led-planner-icon i { display: block; aspect-ratio: 1; border: 1px solid #0788e7; background: rgba(8,136,231,.08); }
+.led-planner-icon i:nth-child(5) { background: #0788e7; box-shadow: 0 0 10px rgba(8,136,231,.32); }
+.led-planner:hover .led-planner-icon i, .led-planner:focus-within .led-planner-icon i { animation: led-tile-pulse 1.25s ease-in-out infinite; }
+.led-planner:hover .led-planner-icon i:nth-child(3n), .led-planner:focus-within .led-planner-icon i:nth-child(3n) { animation-delay: .18s; }
+.led-planner:hover .led-planner-icon i:nth-child(3n + 1), .led-planner:focus-within .led-planner-icon i:nth-child(3n + 1) { animation-delay: .36s; }
+@keyframes led-tile-pulse { 50% { background: rgba(8,136,231,.38); box-shadow: 0 0 8px rgba(8,136,231,.24); } }
 .led-planner-copy .eyebrow { margin-bottom: 9px; font-size: 8px; }
 .led-planner-copy h3 { margin: 0 0 7px; font-family: var(--font-display); font-size: clamp(20px, 2.5vw, 27px); font-weight: 800; letter-spacing: -.04em; }
-.led-planner-copy > p:not(.eyebrow) { max-width: 690px; margin: 0; color: var(--paper-muted); font-size: 12px; line-height: 1.7; }
-.led-planner-note { display: inline-block; margin-top: 9px; color: #718195; font-size: 10px; }
+.led-planner-copy > p:not(.eyebrow) { max-width: 690px; margin: 0; color: var(--paper-muted); font-size: 13px; line-height: 1.65; }
+.led-planner-highlights { display: flex; flex-wrap: wrap; gap: 7px; margin: 12px 0 0; padding: 0; list-style: none; }
+.led-planner-highlights li { padding: 5px 9px; border: 1px solid rgba(9,116,175,.13); border-radius: 2px; color: #587086; background: rgba(255,255,255,.56); font-size: 10px; font-weight: 600; }
 .led-planner-button { white-space: nowrap; }
+.led-planner-button:focus-visible { outline: 3px solid rgba(8,136,231,.28); outline-offset: 3px; }
+@media (hover: hover) {
+  .led-planner:hover, .led-planner:focus-within { transform: translateY(-3px); border-color: #b7dcec; background: linear-gradient(115deg, #fff 0%, #e8f6fc 100%); box-shadow: 0 18px 38px rgba(9,62,103,.1); }
+}
 
 .led-calculator-section { padding-block: 105px; color: #f2f7fc; background: radial-gradient(ellipse at 90% 0%, rgba(0,120,235,.15), transparent 38%), #08111c; }
 .led-calculator-section .section-intro { color: #aab9c9; }
