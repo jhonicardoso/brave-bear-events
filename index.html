@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="interactivity.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -129,19 +130,54 @@
     <section class="interactive-section" id="interatividade" aria-labelledby="interactive-title">
       <div class="interactive-image" role="img" aria-label="Totem de LED interativo em ambiente de evento"></div>
       <div class="wrap interactive-wrap">
-        <div class="interactive-copy">
-          <p class="eyebrow"><span class="eyebrow-line"></span> CONEXÃO QUE ENVOLVE</p>
-          <h2 id="interactive-title">Transforme o público em <span>participante.</span></h2>
-          <p>Jogos e ativações digitais que aproximam pessoas, marcas e conteúdo em uma experiência feita para o seu evento.</p>
-          <a class="text-link" href="#orcamento">Criar uma experiência <span>↗</span></a>
-        </div>
-        <div class="interactive-detail">
-          <div class="interactive-offers">
-            <span>Quiz interativo</span><span>Jogo da memória</span><span>Roleta de prêmios</span><span>Desafios de agilidade</span><span>Jornadas interativas</span><span>Experiências personalizadas</span>
+        <div class="interactive-main">
+          <div class="interactive-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> CONEXÃO QUE ENVOLVE</p>
+            <h2 id="interactive-title">Transforme o público em <span>participante.</span></h2>
+            <p>Jogos, quizzes e ativações digitais conectam sua marca ao público em experiências feitas para o seu evento.</p>
+            <a class="button interactive-cta" href="#orcamento" data-select-item="Ativação interativa">Criar uma experiência <span aria-hidden="true">↗</span></a>
           </div>
-          <div class="benefit-row"><div><strong>Mais engajamento</strong><span>Participação ativa do público</span></div><div><strong>Conteúdo personalizado</strong><span>Experiência alinhada ao objetivo</span></div><div><strong>Experiências memoráveis</strong><span>Momentos que ficam</span></div><div><strong>Dados e resultados</strong><span>Informações da ativação</span></div><div><strong>Suporte técnico e operação</strong><span>Acompanhamento da experiência</span></div></div>
+          <div class="activation-demo" role="region" aria-label="Demonstração de ativações digitais">
+            <div class="activation-demo-heading"><span><i></i> EXPLORE UMA DINÂMICA</span><span id="activation-step">01 / 03</span></div>
+            <div class="activation-tabs" role="tablist" aria-label="Tipos de ativação">
+              <button type="button" role="tab" id="activation-tab-quiz" aria-controls="activation-panel-quiz" aria-selected="true" tabindex="0" data-activation="quiz">Quiz</button>
+              <button type="button" role="tab" id="activation-tab-memory" aria-controls="activation-panel-memory" aria-selected="false" tabindex="-1" data-activation="memory">Memória</button>
+              <button type="button" role="tab" id="activation-tab-wheel" aria-controls="activation-panel-wheel" aria-selected="false" tabindex="-1" data-activation="wheel">Roleta</button>
+            </div>
+            <div class="activation-panel" id="activation-panel-quiz" role="tabpanel" aria-labelledby="activation-tab-quiz" data-activation-panel="quiz">
+              <span class="demo-kicker">QUIZ DE MARCA</span>
+              <h3>Qual recurso combina com seu evento?</h3>
+              <p>Toque em uma opção para ver como a participação pode começar.</p>
+              <div class="demo-choices"><button type="button" data-quiz-choice="Painel de LED">Painel de LED <span aria-hidden="true">↗</span></button><button type="button" data-quiz-choice="Interatividade">Interatividade <span aria-hidden="true">↗</span></button><button type="button" data-quiz-choice="Áudio e iluminação">Áudio e iluminação <span aria-hidden="true">↗</span></button></div>
+              <p class="demo-status" id="quiz-feedback" role="status" aria-live="polite">Uma escolha pode conduzir à próxima etapa da experiência.</p>
+            </div>
+            <div class="activation-panel" id="activation-panel-memory" role="tabpanel" aria-labelledby="activation-tab-memory" data-activation-panel="memory" hidden>
+              <span class="demo-kicker">JOGO DA MEMÓRIA</span>
+              <h3>Encontre os pares da marca.</h3>
+              <p>Vire duas cartas por rodada e descubra a dinâmica.</p>
+              <div class="memory-grid" role="group" aria-label="Jogo demonstrativo da memória">
+                <button type="button" class="memory-card" data-memory-card data-pair="led" aria-label="Carta 1, virada para baixo"><span aria-hidden="true">?</span><b aria-hidden="true">LED</b></button>
+                <button type="button" class="memory-card" data-memory-card data-pair="bear" aria-label="Carta 2, virada para baixo"><span aria-hidden="true">?</span><b aria-hidden="true">BB</b></button>
+                <button type="button" class="memory-card" data-memory-card data-pair="led" aria-label="Carta 3, virada para baixo"><span aria-hidden="true">?</span><b aria-hidden="true">LED</b></button>
+                <button type="button" class="memory-card" data-memory-card data-pair="bear" aria-label="Carta 4, virada para baixo"><span aria-hidden="true">?</span><b aria-hidden="true">BB</b></button>
+              </div>
+              <p class="demo-status" id="memory-feedback" role="status" aria-live="polite">Encontre os dois pares para concluir.</p>
+            </div>
+            <div class="activation-panel" id="activation-panel-wheel" role="tabpanel" aria-labelledby="activation-tab-wheel" data-activation-panel="wheel" hidden>
+              <span class="demo-kicker">ROLETA DE PRÊMIOS</span>
+              <h3>Uma pausa que vira participação.</h3>
+              <p>Uma demonstração visual de uma dinâmica que pode ser personalizada.</p>
+              <div class="wheel-demo-layout"><div class="demo-wheel" aria-hidden="true"><span>BB</span></div><button type="button" class="demo-spin" data-demo-spin>Girar demonstração <span aria-hidden="true">↗</span></button></div>
+              <p class="demo-status" id="wheel-feedback" role="status" aria-live="polite">A dinâmica e as recompensas são definidas para cada projeto.</p>
+            </div>
+          </div>
         </div>
-        <p class="interactive-applications"><span>APLICAÇÕES</span> Eventos <i>•</i> feiras <i>•</i> convenções <i>•</i> treinamentos <i>•</i> lançamentos <i>•</i> campanhas <i>•</i> ações promocionais</p>
+        <div class="interactive-benefits" role="group" aria-label="O que a ativação pode oferecer">
+          <article><span>01</span><div><strong>Participação ativa</strong><p>Convide o público a interagir com a marca.</p></div></article>
+          <article><span>02</span><div><strong>Conteúdo personalizado</strong><p>Adapte a dinâmica ao objetivo do evento.</p></div></article>
+          <article><span>03</span><div><strong>Operação integrada</strong><p>Conte com suporte técnico no local.</p></div></article>
+        </div>
+        <p class="interactive-applications"><span>PARA</span> Feiras <i>·</i> lançamentos <i>·</i> eventos corporativos <i>·</i> ações promocionais</p>
       </div>
     </section>
 
@@ -328,5 +364,6 @@
   <a class="whatsapp-float" href="https://wa.me/5511911728323?text=Olá%2C%20Brave%20Bear!%20Quero%20conversar%20sobre%20um%20evento." target="_blank" rel="noopener noreferrer" aria-label="Falar com a Brave Bear pelo WhatsApp"><span aria-hidden="true">◉</span><span>WhatsApp</span></a>
   <a class="mobile-quote" href="#orcamento">Solicitar orçamento <span aria-hidden="true">↗</span></a>
   <script src="script.js" defer></script>
+  <script src="interactivity.js" defer></script>
 </body>
 </html>
