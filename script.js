@@ -388,6 +388,37 @@ document.addEventListener("click", (event) => {
   }
 });
 
+const cubeScenes = {
+  floor: {
+    image: "assets/cubos/cubo-no-piso.jpg",
+    alt: "Cubo de LED instalado no piso com conteúdo de marca",
+    description: "No piso, o cubo vira um ponto de atração e conteúdo para o público."
+  },
+  stacked: {
+    image: "assets/cubos/cubo-empilhado.jpg",
+    alt: "Cubos de LED empilhados em um expositor de marca",
+    description: "Empilhados, os módulos criam uma instalação vertical para destacar produtos e marcas."
+  },
+  suspended: {
+    image: "assets/cubos/cubo-suspenso.jpg",
+    alt: "Instalação Brave Bear com cubo de LED suspenso durante um evento",
+    description: "Suspenso, o cubo ganha destaque no alto e amplia a presença visual da ativação."
+  }
+};
+const cubeImage = document.querySelector("#cube-scene-image");
+const cubeDescription = document.querySelector("#cube-description");
+document.querySelectorAll("[data-cube-scene]").forEach((button) => button.addEventListener("click", () => {
+  const scene = cubeScenes[button.dataset.cubeScene];
+  if (!scene || !cubeImage || !cubeDescription) return;
+  document.querySelectorAll("[data-cube-scene]").forEach((option) => option.setAttribute("aria-pressed", String(option === button)));
+  cubeImage.classList.add("is-switching");
+  cubeImage.addEventListener("load", () => cubeImage.classList.remove("is-switching"), { once: true });
+  cubeImage.src = scene.image;
+  cubeImage.alt = scene.alt;
+  cubeImage.closest(".cube-visual")?.classList.toggle("is-wide", button.dataset.cubeScene === "suspended");
+  cubeDescription.textContent = scene.description;
+}));
+
 const menuButton = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector("#main-nav");
 function closeMenu() {

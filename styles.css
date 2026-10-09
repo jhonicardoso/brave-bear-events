@@ -190,6 +190,27 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .interactive-applications > span { margin-right: 13px; color: #42d4ee; font-size: 8px; font-weight: 700; letter-spacing: .17em; }
 .interactive-applications i { margin-inline: 4px; color: #35c9e8; font-style: normal; }
 
+.cube-showcase { position: relative; overflow: hidden; padding-block: 96px; isolation: isolate; background: radial-gradient(ellipse at 78% 45%, rgba(0,130,255,.16), transparent 35%), #080f18; }
+.cube-showcase::before { position: absolute; z-index: -1; inset: 0; background-image: linear-gradient(90deg, transparent 49.9%, rgba(125,190,235,.045) 50%, transparent 50.1%), linear-gradient(rgba(125,190,235,.035) 1px, transparent 1px); background-size: 100% 100%, 100% 54px; content: ""; mask-image: linear-gradient(90deg, transparent, #000); }
+.cube-layout { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: clamp(38px, 7vw, 92px); }
+.cube-visual { position: relative; min-width: 0; overflow: hidden; aspect-ratio: 4 / 3; border: 1px solid rgba(69,206,239,.45); background: #08111b; box-shadow: 0 26px 72px rgba(0,0,0,.3); }
+.cube-visual.is-wide { aspect-ratio: 16 / 9; }
+.cube-visual::after { position: absolute; inset: 0; border: 1px solid rgba(255,255,255,.08); content: ""; pointer-events: none; }
+.cube-visual img { width: 100%; height: 100%; object-fit: cover; transition: opacity .2s ease, transform .55s cubic-bezier(.2,.7,.1,1); }
+.cube-visual img.is-switching { opacity: .25; transform: scale(1.025); }
+.cube-visual-label { position: absolute; right: 14px; bottom: 14px; display: flex; align-items: center; gap: 8px; padding: 9px 12px; color: #e7f4fc; background: rgba(5,12,20,.82); font-size: 10px; font-weight: 700; letter-spacing: .12em; }
+.cube-visual-label i { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px rgba(32,215,239,.8); }
+.cube-copy h2 { max-width: 520px; margin: 0; font-family: var(--font-display); font-size: clamp(38px, 5vw, 62px); font-weight: 800; letter-spacing: -.055em; line-height: 1.07; }
+.cube-copy h2 span { color: #34c9f1; }
+.cube-description { min-height: 56px; max-width: 430px; margin: 20px 0 24px; color: #b9c6d3; font-size: 15px; line-height: 1.7; }
+.cube-options { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
+.cube-options button { min-height: 42px; padding: 0 15px; border: 1px solid rgba(191,218,239,.25); color: #c1cfdb; background: rgba(255,255,255,.025); font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; transition: color .2s ease, border-color .2s ease, background .2s ease, transform .2s ease; }
+.cube-options button:hover { transform: translateY(-2px); border-color: #37c9ec; }
+.cube-options button[aria-pressed="true"] { color: #fff; border-color: #148fea; background: rgba(12,126,226,.2); box-shadow: inset 0 -2px #2ed3ef; }
+.cube-options button:focus-visible { outline: 2px solid #42d5ee; outline-offset: 3px; }
+.cube-cta { min-height: 49px; }
+.cube-note { margin: 16px 0 0; color: #8191a1; font-size: 12px; line-height: 1.6; }
+
 .kits-section { padding-bottom: 120px; }
 .kits-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .kit-card { position: relative; display: flex; min-height: 468px; flex-direction: column; padding: 25px 23px 24px; border: 1px solid #dbe3e9; background: #fff; transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease; }
@@ -627,6 +648,97 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .service-number { top: 19px; right: 15px; }
   .kit-card ul { gap: 8px 10px; }
   .footer-main { gap: 26px 14px; }
+}
+@media (max-width: 850px) {
+  .cube-showcase { padding-block: 70px; }
+  .cube-layout { grid-template-columns: 1fr; gap: 28px; }
+  .cube-visual { width: min(100%, 680px); }
+  .cube-copy { max-width: 680px; }
+  .cube-description { min-height: 0; }
+}
+@media (max-width: 600px) {
+  .cube-showcase { padding-block: 54px; }
+  .cube-layout { gap: 23px; }
+  .cube-copy h2 { font-size: clamp(34px, 9vw, 44px); }
+  .cube-description { margin-block: 13px 18px; font-size: 14px; }
+  .cube-options { gap: 7px; margin-bottom: 18px; }
+  .cube-options button { min-height: 44px; padding-inline: 12px; font-size: 13px; }
+  .cube-cta { width: 100%; font-size: 12px !important; }
+}
+
+/* Readable typography across desktop, tablet, mobile, and calculator. */
+.main-nav > a:not(.button) { font-size: 12px; }
+.button { font-size: 13px; }
+.button-small { font-size: 12px; }
+.eyebrow { font-size: 10px; }
+.hero-foot a, .capability-list { font-size: 10px; }
+.text-link, .interactive-applications { font-size: 12px; }
+.interactive-applications > span { font-size: 10px; }
+.led-planner-copy .eyebrow { font-size: 9px; }
+.calculator-back { font-size: 12px; }
+.calculator-tech-label, .led-map-heading > div > span { font-size: 9px; }
+.led-map-download-note { font-size: 11px; }
+.kit-index { font-size: 10px; }
+.catalog-overline { font-size: 9px; }
+.future-catalog small, .future-catalog span { font-size: 10px; }
+.solution-checks span { font-size: 11px; }
+.form-privacy, .selected-kit-summary, .form-feedback { font-size: 11px; }
+.contact-details a > small { font-size: 10px; }
+.footer-cta > span { font-size: 9px; }
+.whatsapp-float { font-size: 12px; }
+.hero-copy { font-size: 17px; }
+.section-intro, .interactive-copy > p:not(.eyebrow), .quote-copy > p:not(.eyebrow) { font-size: 15px; }
+.service-card p, .service-card > a { font-size: 13px; }
+.interactive-offers span { font-size: 12px; }
+.benefit-row strong { font-size: 13px; }
+.benefit-row span, .kit-card > p, .kit-card li, .kit-footnote, .process-list p, .about-detail > p:first-child { font-size: 13px; }
+.kit-card .button { font-size: 12px; }
+.equipment-feature small, .equipment-feature em, .catalog-subtitle, .catalog-note, .product-text small, .future-catalog p { font-size: 11px; }
+.product-text strong, .category-tab, .event-tags button, .process-list h3 { font-size: 12px; }
+.event-types-title > p:not(.eyebrow) { font-size: 14px; }
+.quote-form label, .solution-fieldset legend { font-size: 11px; }
+.quote-form input:not([type="checkbox"]), .quote-form select, .quote-form textarea, .catalog-search input { font-size: 13px; }
+.form-heading > span, .footer-nav > span, .footer-social > span { font-size: 9px; }
+.form-heading small, .quote-contact-note, .footer-brand > p, .footer-nav a, .footer-social a, .footer-bottom { font-size: 11px; }
+.footer-cta .button { font-size: 12px; }
+.led-calc-fields label { font-size: 11px; }
+.led-calc-fields input, .led-calc-fields select { font-size: 13px; }
+.led-result-grid article span, .calc-hint { font-size: 11px; }
+
+@media (max-width: 850px) {
+  .section-intro, .hero-copy { font-size: 15px; }
+}
+@media (max-width: 600px) {
+  .main-nav > a:not(.button) { font-size: 14px; }
+  .button { font-size: 12px; }
+  .button-small { font-size: 11px; }
+  .eyebrow { font-size: 9px; }
+  .hero-foot a, .capability-list { font-size: 10px; }
+  .text-link, .interactive-applications { font-size: 12px; }
+  .interactive-applications > span, .led-planner-copy .eyebrow, .calculator-tech-label, .footer-cta > span { font-size: 9px; }
+  .calculator-back { font-size: 13px; }
+  .form-privacy, .selected-kit-summary, .form-feedback, .future-catalog small, .future-catalog span { font-size: 12px; }
+  .solution-checks span { font-size: 12px; }
+  .whatsapp-float { font-size: 12px; }
+  .hero-copy { font-size: 15px; }
+  .section h2, .interactive-section h2, .equipment-section h2, .about-section h2, .quote-copy h2, .contact-strip h2 { font-size: clamp(35px, 9vw, 44px); }
+  .section-intro, .interactive-copy > p:not(.eyebrow), .quote-copy > p:not(.eyebrow), .about-detail > p:first-child { font-size: 14px; }
+  .service-card p, .service-card > a, .interactive-offers span, .benefit-row strong, .benefit-row span, .kit-card > p, .kit-card li { font-size: 13px; }
+  .equipment-feature small, .equipment-feature em, .catalog-subtitle, .catalog-note, .product-text small, .future-catalog p { font-size: 12px; }
+  .product-text strong, .category-tab, .event-tags button, .process-list h3 { font-size: 13px; }
+  .process-list p, .quote-form label, .solution-fieldset legend { font-size: 12px; }
+  .quote-form input:not([type="checkbox"]), .quote-form select, .quote-form textarea, .catalog-search input { font-size: 14px; }
+  .led-calc-fields label, .led-result-grid article span, .calc-hint { font-size: 12px; }
+  .led-calc-fields input, .led-calc-fields select { font-size: 14px; }
+  .footer-brand > p, .footer-nav a, .footer-social a, .footer-bottom { font-size: 12px; }
+  .footer-nav > span, .footer-social > span, .form-heading > span { font-size: 10px; }
+  .footer-cta .button { font-size: 11px; }
+  .mobile-quote { font-size: 14px; }
+}
+@media (max-width: 430px) {
+  .section h2, .interactive-section h2, .equipment-section h2, .about-section h2, .quote-copy h2, .contact-strip h2 { font-size: clamp(34px, 9vw, 41px); }
+  .hero h1 { font-size: clamp(40px, 11.8vw, 54px); }
+  .service-card p { font-size: 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
