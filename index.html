@@ -57,7 +57,6 @@
         <a href="#equipamentos">Equipamentos</a>
         <a href="#kits">Kits</a>
         <a href="#interatividade">Interatividade</a>
-        <a href="#catalog-panel">Cubos de LED</a>
         <a href="#sobre">Sobre</a>
         <a href="#contato">Contato</a>
         <a class="button button-small nav-quote" href="#orcamento">Solicitar orçamento <span aria-hidden="true">↗</span></a>
@@ -137,7 +136,7 @@
             <h2 id="interactive-title">Transforme o público em <span>participante.</span></h2>
             <p>Trabalhamos com jogos, quizzes e ativações digitais personalizados para aproximar sua marca do público e gerar participação no evento.</p>
             <a class="button interactive-cta interactive-cta-desktop" href="#activation-demo">Ver modelos interativos <span aria-hidden="true">↓</span></a>
-            <a class="button interactive-cta interactive-cta-mobile" href="#orcamento" data-select-item="Ativação interativa">Fale sobre ativações <span aria-hidden="true">↗</span></a>
+            <a class="button interactive-cta interactive-cta-mobile" href="#orcamento" data-select-item="Ativação digital — origem: CTA mobile da seção de jogos no site">Fale sobre ativações <span aria-hidden="true">↗</span></a>
           </div>
           <div class="activation-demo" id="activation-demo" role="region" aria-label="Modelos interativos de ativações para experimentar">
             <div class="activation-demo-heading"><span><i></i> MODELOS DE ATIVAÇÃO · EXPERIMENTE</span><span id="activation-step">01 / 03</span></div>
@@ -147,30 +146,55 @@
               <button type="button" role="tab" id="activation-tab-wheel" aria-controls="activation-panel-wheel" aria-selected="false" tabindex="-1" data-activation="wheel">Roleta</button>
             </div>
             <div class="activation-panel" id="activation-panel-quiz" role="tabpanel" aria-labelledby="activation-tab-quiz" data-activation-panel="quiz">
-              <span class="demo-kicker">QUIZ DE MARCA</span>
-              <h3>Qual recurso combina com seu evento?</h3>
-              <p>Toque em uma opção para ver como a participação pode começar.</p>
-              <div class="demo-choices"><button type="button" data-quiz-choice="Painel de LED">Painel de LED <span aria-hidden="true">↗</span></button><button type="button" data-quiz-choice="Interatividade">Interatividade <span aria-hidden="true">↗</span></button><button type="button" data-quiz-choice="Áudio e iluminação">Áudio e iluminação <span aria-hidden="true">↗</span></button></div>
-              <p class="demo-status" id="quiz-feedback" role="status" aria-live="polite">Uma escolha pode conduzir à próxima etapa da experiência.</p>
+              <span class="demo-kicker">QUIZ · PLANEJE SEU EVENTO</span>
+              <h3>Quatro escolhas para pensar na experiência.</h3>
+              <p>Responda rápido e veja como audiovisual pode ajudar.</p>
+              <div class="quiz-progress"><span id="quiz-question-count">PERGUNTA 1 DE 4</span><span class="quiz-progress-track"><i id="quiz-progress-fill"></i></span></div>
+              <h4 class="quiz-question" id="quiz-question-title"></h4>
+              <div class="demo-choices quiz-choices" id="quiz-choices" role="group" aria-labelledby="quiz-question-title"></div>
+              <p class="demo-status" id="quiz-feedback" role="status" aria-live="polite">Escolha a opção que mais combina com o seu evento.</p>
+              <div class="quiz-actions"><button type="button" class="demo-next" id="quiz-next" hidden>Próxima pergunta <span aria-hidden="true">→</span></button><button type="button" class="demo-next" id="quiz-restart" hidden>Refazer quiz <span aria-hidden="true">↻</span></button></div>
+              <a class="button game-cta" id="quiz-cta" href="#orcamento" data-select-item="Ativação digital — origem: quiz interativo no site" hidden>Planejar uma ativação com a Brave Bear <span aria-hidden="true">↗</span></a>
             </div>
             <div class="activation-panel" id="activation-panel-memory" role="tabpanel" aria-labelledby="activation-tab-memory" data-activation-panel="memory" hidden>
-              <span class="demo-kicker">JOGO DA MEMÓRIA</span>
-              <h3>Encontre os pares da marca.</h3>
-              <p>Vire duas cartas por rodada e descubra a dinâmica.</p>
-              <div class="memory-grid" role="group" aria-label="Jogo demonstrativo da memória">
-                <button type="button" class="memory-card" data-memory-card data-pair="led" aria-label="Carta 1, virada para baixo"><span aria-hidden="true">?</span><b aria-hidden="true">LED</b></button>
-                <button type="button" class="memory-card" data-memory-card data-pair="bear" aria-label="Carta 2, virada para baixo"><span aria-hidden="true">?</span><b aria-hidden="true">BB</b></button>
-                <button type="button" class="memory-card" data-memory-card data-pair="led" aria-label="Carta 3, virada para baixo"><span aria-hidden="true">?</span><b aria-hidden="true">LED</b></button>
-                <button type="button" class="memory-card" data-memory-card data-pair="bear" aria-label="Carta 4, virada para baixo"><span aria-hidden="true">?</span><b aria-hidden="true">BB</b></button>
+              <span class="demo-kicker">JOGO DA MEMÓRIA · AUDIOVISUAL</span>
+              <h3>Encontre os pares de imagem, som e luz.</h3>
+              <p>Vire as cartas e conecte os recursos que dão vida ao evento.</p>
+              <div class="memory-grid" role="group" aria-label="Jogo da memória com ícones audiovisuais">
+                <button type="button" class="memory-card" data-memory-card data-pair="audio" aria-label="Carta 1, virada para baixo"><span aria-hidden="true">?</span><b aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M4 12v8h6l8 6V6l-8 6H4Z"/><path d="M22 12a6 6 0 0 1 0 8M24 8a11 11 0 0 1 0 16"/></svg></b></button>
+                <button type="button" class="memory-card" data-memory-card data-pair="light" aria-label="Carta 2, virada para baixo"><span aria-hidden="true">?</span><b aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M10 21a10 10 0 1 1 12 0c-1.4 1-2 2-2 4h-8c0-2-.6-3-2-4Z"/><path d="M12 28h8M13 25h6"/></svg></b></button>
+                <button type="button" class="memory-card" data-memory-card data-pair="screen" aria-label="Carta 3, virada para baixo"><span aria-hidden="true">?</span><b aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="3" y="5" width="26" height="18" rx="1"/><path d="M12 28h8M16 23v5"/></svg></b></button>
+                <button type="button" class="memory-card" data-memory-card data-pair="light" aria-label="Carta 4, virada para baixo"><span aria-hidden="true">?</span><b aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M10 21a10 10 0 1 1 12 0c-1.4 1-2 2-2 4h-8c0-2-.6-3-2-4Z"/><path d="M12 28h8M13 25h6"/></svg></b></button>
+                <button type="button" class="memory-card" data-memory-card data-pair="audio" aria-label="Carta 5, virada para baixo"><span aria-hidden="true">?</span><b aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M4 12v8h6l8 6V6l-8 6H4Z"/><path d="M22 12a6 6 0 0 1 0 8M24 8a11 11 0 0 1 0 16"/></svg></b></button>
+                <button type="button" class="memory-card" data-memory-card data-pair="screen" aria-label="Carta 6, virada para baixo"><span aria-hidden="true">?</span><b aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="3" y="5" width="26" height="18" rx="1"/><path d="M12 28h8M16 23v5"/></svg></b></button>
               </div>
-              <p class="demo-status" id="memory-feedback" role="status" aria-live="polite">Encontre os dois pares para concluir.</p>
+              <p class="demo-status" id="memory-feedback" role="status" aria-live="polite">Encontre os três pares para concluir.</p>
+              <button type="button" class="demo-next memory-restart" id="memory-restart">Jogar novamente <span aria-hidden="true">↻</span></button>
+              <a class="button game-cta" href="#orcamento" data-select-item="Ativação digital — origem: jogo da memória no site">Criar um jogo para meu evento <span aria-hidden="true">↗</span></a>
             </div>
             <div class="activation-panel" id="activation-panel-wheel" role="tabpanel" aria-labelledby="activation-tab-wheel" data-activation-panel="wheel" hidden>
-              <span class="demo-kicker">ROLETA DE PRÊMIOS</span>
-              <h3>Uma pausa que vira participação.</h3>
-              <p>Uma demonstração visual de uma dinâmica que pode ser personalizada.</p>
-              <div class="wheel-demo-layout"><div class="demo-wheel" aria-hidden="true"><span>BB</span></div><button type="button" class="demo-spin" data-demo-spin>Girar demonstração <span aria-hidden="true">↗</span></button></div>
-              <p class="demo-status" id="wheel-feedback" role="status" aria-live="polite">A dinâmica e as recompensas são definidas para cada projeto.</p>
+              <span class="demo-kicker">ROLETA AUDIOVISUAL · 7 POSSIBILIDADES</span>
+              <h3>Descubra uma ideia para o seu evento.</h3>
+              <p>Gire a roleta e veja como cada solução pode transformar a experiência do público.</p>
+              <div class="wheel-experience">
+                <div class="wheel-stage">
+                  <div class="demo-wheel-wrap"><span class="wheel-pointer" aria-hidden="true"></span><svg class="demo-wheel" id="demo-wheel" viewBox="0 0 320 320" role="img" aria-label="Roleta com sete soluções audiovisuais"></svg></div>
+                  <button type="button" class="demo-spin" data-demo-spin>Girar a roleta <span aria-hidden="true">↗</span></button>
+                  <span class="wheel-stage-note">Sorteio aleatório somente ao girar</span>
+                  <p class="sr-only" id="wheel-announcement" role="status" aria-live="polite">Clique em girar para sortear uma solução audiovisual.</p>
+                </div>
+                <article class="wheel-result" id="wheel-result" aria-live="polite">
+                  <span class="wheel-result-kicker" id="wheel-result-kicker">IDEIA SORTEADA AO GIRAR · BRAVE BEAR</span>
+                  <span class="wheel-result-number" id="wheel-result-number" aria-hidden="true">BB</span>
+                  <h4 id="wheel-result-title">Qual solução combina com o seu evento?</h4>
+                  <p id="wheel-result-copy">Gire a roleta para revelar uma possibilidade audiovisual e uma forma de aplicá-la no seu projeto.</p>
+                  <div class="wheel-result-use" id="wheel-result-use" hidden><span>IDEAL PARA</span><strong id="wheel-result-applications">Feiras · plenárias · lançamentos</strong></div>
+                  <a class="button game-cta" id="wheel-cta" href="#orcamento" data-select-item="Ativação digital — origem: roleta audiovisual no site">Conversar com a Brave Bear <span aria-hidden="true">↗</span></a>
+                </article>
+              </div>
+              <div class="wheel-legend" aria-label="Sete opções da roleta"><span>Painel de LED</span><span>Sonorização</span><span>Iluminação</span><span>Interatividade</span><span>Transmissão</span><span>Estrutura</span><span>Equipe técnica</span></div>
+              <p class="demo-status" id="wheel-feedback">Sete soluções, uma experiência feita para o seu evento.</p>
+              <a class="button game-cta" href="#orcamento" data-select-item="Ativação digital — origem: roleta audiovisual no site">Planejar uma ativação com a Brave Bear <span aria-hidden="true">↗</span></a>
             </div>
           </div>
         </div>
@@ -356,7 +380,7 @@
   <footer class="site-footer">
     <div class="wrap footer-main">
       <div class="footer-brand"><a class="brand brand-lockup" href="#inicio" aria-label="Brave Bear Events, início"><img src="assets/logo-bravebear-paisagem-branco.png" alt="Brave Bear — Events · Visual · Experience" width="2170" height="725"></a><p>Tecnologia, equipe e estrutura para entregar soluções completas em audiovisual para o seu evento.</p></div>
-      <div class="footer-nav"><span>NAVEGUE</span><a href="#solucoes">Soluções</a><a href="#equipamentos">Equipamentos</a><a href="#kits">Kits</a><a href="#interatividade">Interatividade</a><a href="#catalog-panel">Cubos de LED</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a><a href="catalogo-audiovisual.pdf" target="_blank" rel="noopener noreferrer">Catálogo audiovisual ↗</a></div>
+      <div class="footer-nav"><span>NAVEGUE</span><a href="#solucoes">Soluções</a><a href="#equipamentos">Equipamentos</a><a href="#kits">Kits</a><a href="#interatividade">Interatividade</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a><a href="catalogo-audiovisual.pdf" target="_blank" rel="noopener noreferrer">Catálogo audiovisual ↗</a></div>
       <div class="footer-social"><span>FALE COM A GENTE</span><a href="mailto:comercial@bravebear.com.br">comercial@bravebear.com.br</a><a href="https://wa.me/5511911728323" target="_blank" rel="noopener noreferrer">11 9 1172-8323</a><a href="https://www.instagram.com/bravebearbrasil/" target="_blank" rel="noopener noreferrer">@bravebearbrasil</a><a href="https://bravebear.com.br/" target="_blank" rel="noopener noreferrer">bravebear.com.br</a></div>
       <div class="footer-cta"><span>EVENTS <i>•</i> VISUAL <i>•</i> EXPERIENCE</span><a class="button button-small" href="#orcamento">Solicitar orçamento <span>↗</span></a></div>
     </div>
