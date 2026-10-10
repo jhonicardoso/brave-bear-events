@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#060b13">
+  <meta name="description" content="Conheça os equipamentos audiovisuais da Brave Bear e veja como eles podem ser aplicados ao seu evento.">
+  <title>Catálogo de equipamentos | Brave Bear Events</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="interactivity.css">
+  <link rel="stylesheet" href="equipamentos.css">
+  <script src="catalog-data.js" defer></script>
+  <script src="equipamentos.js" defer></script>
+</head>
+<body class="equipment-page">
+  <header class="equipment-page-header">
+    <a class="equipment-page-brand" href="index.html#inicio" aria-label="Brave Bear Events, voltar ao início"><img src="assets/logo-bravebear-paisagem-branco.png" alt="Brave Bear Events" width="2170" height="725"></a>
+    <nav aria-label="Navegação da categoria"><a class="equipment-back" href="index.html#equipamentos"><span aria-hidden="true">←</span> Todas as categorias</a><a class="button button-small" href="index.html#orcamento">Fale com a equipe <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main>
+    <section class="equipment-detail-hero" id="equipment-detail-hero" aria-labelledby="equipment-page-title">
+      <div class="equipment-detail-hero-image" id="equipment-detail-hero-image" aria-hidden="true"></div>
+      <div class="equipment-detail-hero-content wrap">
+        <p class="eyebrow"><span class="eyebrow-line"></span> CATÁLOGO BRAVE BEAR <span class="equipment-hero-count" id="equipment-hero-count"></span></p>
+        <h1 id="equipment-page-title"></h1>
+        <p class="equipment-detail-tagline" id="equipment-detail-tagline"></p>
+        <a class="button" id="equipment-category-cta" href="#equipment-products">Explorar equipamentos <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="equipment-hero-index" aria-hidden="true"><span>BRAVE BEAR</span><i></i><span id="equipment-current-index">01 / 08</span></div>
+    </section>
+
+    <nav class="equipment-category-nav wrap" id="equipment-category-nav" aria-label="Outras categorias"></nav>
+
+    <section class="equipment-application-section wrap" aria-labelledby="equipment-application-title">
+      <div class="equipment-application-heading"><p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> NO SEU EVENTO</p><h2 id="equipment-application-title">Tecnologia pensada para <span>cada contexto.</span></h2></div>
+      <div class="equipment-application-copy"><p id="equipment-application-description"></p><div class="equipment-use-chips" id="equipment-use-chips" aria-label="Aplicações comuns"></div></div>
+    </section>
+
+    <section class="equipment-products-section" id="equipment-products" aria-labelledby="equipment-products-title">
+      <div class="wrap">
+        <div class="equipment-products-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> OPÇÕES DISPONÍVEIS</p><h2 id="equipment-products-title">Explore os equipamentos</h2><p class="equipment-products-note">Cada proposta é composta conforme o espaço, o formato e o objetivo do evento.</p></div>
+          <label class="catalog-search equipment-page-search"><span class="sr-only">Buscar nesta categoria</span><span aria-hidden="true">⌕</span><input id="equipment-page-search" type="search" placeholder="Buscar nesta categoria" autocomplete="off"></label>
+        </div>
+        <div class="equipment-product-grid" id="equipment-product-grid" aria-live="polite"></div>
+        <p class="equipment-page-empty" id="equipment-page-empty" hidden>Nenhum item encontrado. Tente outro termo.</p>
+      </div>
+    </section>
+    <section class="equipment-detail-cta wrap" aria-label="Solicitar orientação"><div><p class="eyebrow"><span class="eyebrow-line"></span> PROJETO SOB MEDIDA</p><h2>Vamos definir a melhor solução para o seu evento?</h2><p>A equipe ajuda a avaliar os formatos e a composição mais adequados ao projeto.</p></div><a class="button" id="equipment-contact-cta" href="index.html#orcamento">Conversar com a equipe <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer class="equipment-page-footer"><a href="index.html#inicio">Brave Bear Events</a><span>EVENTS <i>•</i> VISUAL <i>•</i> EXPERIENCE</span><a href="index.html#equipamentos">Voltar às categorias ↑</a></footer>
+  <div class="catalog-transition" id="catalog-transition" aria-hidden="true"><div class="catalog-transition-content"><span class="catalog-transition-kicker">BRAVE BEAR · CATÁLOGO</span><strong id="catalog-transition-title">Entrando em cena</strong><span class="catalog-transition-line"></span></div></div>
+</body>
+</html>

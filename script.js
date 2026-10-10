@@ -1,87 +1,4 @@
-const categories = [
-  { id: "led", label: "Painel de LED", short: "Painel de LED", count: "9 opções", tagline: "Imagem que cria grandes experiências.", image: "assets/led.webp", symbol: "▦" },
-  { id: "interactive", label: "Interatividade", short: "Interatividade", count: "11 soluções", tagline: "Tecnologia que conecta pessoas e experiências.", image: "assets/interactive.webp", symbol: "⌁" },
-  { id: "televisions", label: "Televisores", short: "Televisores", count: "8 opções", tagline: "Imagens impactantes com qualidade para o seu evento.", image: "assets/televisions.webp", symbol: "▣" },
-  { id: "projection", label: "Projeção", short: "Projeção", count: "11 opções", tagline: "Soluções de projeção para impactar o público.", image: "assets/projection.webp", symbol: "▱" },
-  { id: "processing", label: "Processamento e controle de LED", short: "Controle de LED", count: "12 opções", tagline: "Processamento e operação de painéis de LED.", image: "assets/processing.webp", symbol: "⌘" },
-  { id: "audio", label: "Sonorização", short: "Sonorização", count: "15 opções", tagline: "Som de alta qualidade para diferentes formatos de evento.", image: "assets/audio.webp", symbol: "◖))" },
-  { id: "lighting", label: "Iluminação", short: "Iluminação", count: "36 opções", tagline: "Luz para valorizar cada detalhe do evento.", image: "assets/lighting.webp", symbol: "✳" },
-  { id: "structure", label: "Estrutura", short: "Estrutura", count: "9 opções", tagline: "Estrutura para dar suporte às ideias do seu evento.", image: "assets/structure.webp", symbol: "⌗" }
-];
-
-const products = {
-  led: [
-    ["LED P1.9MM Indoor", "Placa 50 × 50"],
-    ["LED P2.9MM Flexível Indoor", "Placa 50 × 50"],
-    ["LED P2.9MM Canto Vivo Indoor", "Placa 50 × 50"],
-    ["LED P2.9MM Flexível Canto Vivo", "Placa 50 × 50"],
-    ["LED P3.9MM Canto Vivo Outdoor", "Placa 50 × 50"],
-    ["LED P2.9MM Indoor Curvo", "Placa 50 × 50"],
-    ["LED P3.9MM Outdoor / Indoor", "Placa 50 × 50"],
-    ["Piso de LED P3.9MM Indoor", "Indoor"],
-    ["Totem de LED P1.8", "0,65 × 2 m · Resolução 344 × 1032"]
-  ],
-  interactive: [
-    ["Totem de LED P1.8", "0,65 × 2 m · Resolução 344 × 1032"],
-    ["Totem interativo com tablet", ""],
-    ["Totem interativo 43″", ""],
-    ["Totem interativo 55″", ""],
-    ["Totem interativo 65″", ""],
-    ["Totem interativo 75″", ""],
-    ["Totem interativo 85″", ""],
-    ["Totem interativo vertical", ""],
-    ["Totem interativo horizontal", ""],
-    ["Tablet", "Dispositivo para experiências e interações personalizadas"],
-    ["iPad", "Dispositivo para experiências e interações personalizadas"]
-  ],
-  televisions: [
-    ["TV 85″", ""], ["TV 75″", ""], ["TV 65″", ""], ["TV 55″", ""], ["TV 43″", ""],
-    ["Dog House 43″ a 55″", ""], ["Dog House fechada", ""], ["Pedestal 43″ a 85″", ""]
-  ],
-  projection: [
-    ["Projetor 3.000–4.000 ANSI", ""], ["Projetor 5.000–6.000 ANSI", ""],
-    ["Projetor 8.000–10.000 ANSI", ""], ["Projetor de alta luminosidade", ""],
-    ["Tela de projeção", "Diversos formatos"], ["Tela tripé", ""], ["Tela tensionada", ""],
-    ["Tela frontal / traseira", ""], ["Projetor + lente de longo alcance", ""],
-    ["Switcher para projeção", ""], ["Processadores / scalers", ""]
-  ],
-  processing: [
-    ["Máquina de gerenciamento", ""], ["Processadora H2", ""], ["Processadora 4K", ""],
-    ["Processadora VX1000", ""], ["Processadora 605S / 660", ""], ["Send Card 600", ""],
-    ["Send Card 300", ""], ["Notebook Gamer", ""], ["Notebook i5–i7", ""],
-    ["Cue Light", ""], ["Fibra Óptica HDMI 100M", ""], ["Main Power 5 KVA", ""]
-  ],
-  audio: [
-    ["Mesa TF5", "32 canais"], ["Mesa iX32 Compact", "24 canais"],
-    ["Mesa QSC TouchMix", "32 canais"], ["Mesa QSC TouchMix", "16 canais"],
-    ["Mesa Arcano", "12 canais"], ["Mesa Promixer", "8 canais"],
-    ["Mic bastão Sennheiser G3 / G4 / G5", ""],
-    ["Mic headset Madonna / Countryman Sennheiser G4 / G5", ""],
-    ["Mic headset lapela Sennheiser G4 / G5", ""],
-    ["Rack microfone Sennheiser G5 EW-D 835-S", ""],
-    ["Amplificador de antena", ""], ["Placa de áudio", ""],
-    ["Caixa QSC KC12 Torre", ""], ["Caixa QSC K12.2 / K10.2", ""], ["Sub QSC KW181", ""]
-  ],
-  lighting: [
-    ["Par LED Slim 3W", ""], ["Par LED Slim 12W", ""], ["Par LED Indoor 18W RGBW", ""],
-    ["Par LED 15W RGBWA-UV", ""], ["Par LED Blindada 18W RGBW", ""], ["Par LED Bateria RGBWA-UV", ""],
-    ["LED P5", ""], ["Ribalta RGBW 8W", ""], ["Ribalta RGBW 12W", ""], ["Ribalta Blindada RGBW 30W", ""],
-    ["Strobo LED RGBW 1000W", ""], ["Fresnel 1000W", ""], ["Fresnel 2000W", ""],
-    ["Fresnel LED 200W", ""], ["Vara de Pimbim LED e Quente", ""], ["Mini Brut LED", ""],
-    ["Mini Brut Quente", "2L, 4L ou 6L"], ["Elipsoidal ETC 575W / 750W", ""], ["Elipsoidal LED AB 200W", ""], ["Canhão Seguidor 7R", ""],
-    ["Moving Wash 320W", ""], ["Moving Beam 14R 295W com borda LED", ""],
-    ["Moving Beam 17R 350W", ""], ["Moving Beam 7R 230W", ""], ["Moving Spot LED 150W", ""],
-    ["Sky Light 4000W", ""], ["Sky Paper", ""], ["Rack Buffer", ""],
-    ["Máquina de Fumaça 1500W", ""], ["Máquina de Fumaça 3000W", ""], ["Máquina de Haze", ""],
-    ["Mesa DMX Operator 512", ""], ["Mesa Grand MA2", ""], ["Mesa Avolite 2010", ""], ["Mesa 1024", ""], ["Mesa Kingkong", ""]
-  ],
-  structure: [
-    ["Box Truss Q15", ""], ["Box Truss Q25", ""], ["Box Truss Q30", ""],
-    ["Sleeve", "Acessório de truss"], ["Pau de carga", "Acessório de truss"],
-    ["AlumaLock", "Acessório de truss"], ["Talhas", "Acessório de truss"],
-    ["Bases", "Acessório de truss"], ["Passa cabo", "Segurança e organização"]
-  ]
-};
+const { categories = [], products = {} } = window.BRAVE_CATALOG || {};
 
 const ledCalcForm = document.querySelector("#led-calc-form");
 const ledCalcMap = document.querySelector("#led-map");
@@ -227,81 +144,108 @@ if (ledCalcForm) {
 const categoryGrid = document.querySelector("#equipment-categories");
 const categoryTabs = document.querySelector("#category-tabs");
 const productList = document.querySelector("#product-list");
+const catalogPanel = document.querySelector("#catalog-panel");
 const currentTitle = document.querySelector("#catalog-current-title");
 const currentSubtitle = document.querySelector("#catalog-current-subtitle");
 const searchInput = document.querySelector("#equipment-search");
 const selectedItemInput = document.querySelector("#selected-item");
 const selectedKitItemsInput = document.querySelector("#selected-kit-items");
 const selectedKitSummary = document.querySelector("#selected-kit-summary");
-let activeCategory = "led";
+const catalogTransition = document.querySelector("#catalog-transition");
+const catalogTransitionTitle = document.querySelector("#catalog-transition-title");
+const requestedCategory = new URLSearchParams(window.location.search).get("categoria");
+let activeCategory = categories.some(({ id }) => id === requestedCategory) ? requestedCategory : "led";
 
 function renderCategories() {
+  if (!categoryGrid) return;
   categoryGrid.innerHTML = categories.map((category) => `
     <button class="equipment-feature" type="button" data-category="${category.id}" aria-pressed="${category.id === activeCategory}" style="--card-image: url('${category.image}')">
-      <small>${category.count}</small><strong>${category.short}</strong><em>Explorar categoria <span aria-hidden="true">↗</span></em>
+      <small>${category.count}</small><strong>${category.short}</strong><em>Ver itens <span aria-hidden="true">↘</span></em>
     </button>`).join("");
-
   categoryTabs.innerHTML = categories.map((category) => `
     <button class="category-tab" id="tab-${category.id}" type="button" role="tab" data-category="${category.id}" aria-selected="${category.id === activeCategory}" aria-controls="product-list">${category.label}</button>`).join("");
 }
 
 function renderProducts() {
-  const category = categories.find((item) => item.id === activeCategory);
+  if (!productList || !searchInput) return;
+  const category = categories.find(({ id }) => id === activeCategory);
   const query = searchInput.value.trim().toLocaleLowerCase("pt-BR");
-  const filtered = (products[activeCategory] || []).map(([name, detail], index) => ({ name, detail, index })).filter(({ name, detail }) => `${name} ${detail}`.toLocaleLowerCase("pt-BR").includes(query));
+  const matches = (products[activeCategory] || []).map(([name, detail], index) => ({ name, detail, index }))
+    .filter(({ name, detail }) => `${name} ${detail}`.toLocaleLowerCase("pt-BR").includes(query));
   currentTitle.textContent = category.label;
   currentSubtitle.textContent = category.tagline;
-  categoryTabs.querySelectorAll("[role='tab']").forEach((button) => {
-    const selected = button.dataset.category === activeCategory;
-    button.setAttribute("aria-selected", String(selected));
-    button.tabIndex = selected ? 0 : -1;
+  categoryTabs.querySelectorAll("[role='tab']").forEach((tab) => {
+    const selected = tab.dataset.category === activeCategory;
+    tab.setAttribute("aria-selected", String(selected));
+    tab.tabIndex = selected ? 0 : -1;
   });
   categoryGrid.querySelectorAll("[data-category]").forEach((button) => {
     button.setAttribute("aria-pressed", String(button.dataset.category === activeCategory));
   });
-
-  if (!filtered.length) {
+  if (!matches.length) {
     productList.innerHTML = '<p class="product-empty">Nenhum equipamento encontrado nesta categoria.</p>';
     return;
   }
-
-  const expansion = activeCategory === "structure" && !query ? `
-    <aside class="future-catalog"><small>ESPAÇO PARA EXPANSÃO DO CATÁLOGO</small><p>Categorias previstas para cadastro futuro:</p><span>Palcos</span><span>Praticáveis</span><span>Escadas</span><span>Guarda-corpo</span><span>Coberturas</span><span>Backdrops</span><span>Pórticos</span><span>Torres</span><span>Ground Support</span><span>Suportes para LED</span><span>Suportes para iluminação</span></aside>` : "";
-  productList.innerHTML = filtered.map(({ name, detail, index }) => {
-    const photoIndex = activeCategory === "interactive"
-      ? [1, 2, 3, 3, 3, 3, 3, 3, 4, 5, 5][index]
-      : activeCategory === "led"
-        ? [1, 2, 3, 4, 5, 6, 7, 9, 8][index]
-        : index + 1;
-    const image = `assets/catalog-items/${activeCategory}-${String(photoIndex).padStart(2, "0")}.webp`;
-    return `
-    <article class="product-card">
+  productList.innerHTML = matches.map(({ name, detail, index }) => {
+    let image;
+    if (activeCategory === "led" && index >= 9) {
+      const cubeStyles = ["cubo-no-piso", "cubo-empilhado", "cubo-suspenso"];
+      image = `assets/cubos/${cubeStyles[index - 9]}-desktop.jpg`;
+    } else {
+      const photoIndex = activeCategory === "interactive"
+        ? [1, 2, 3, 3, 3, 3, 3, 3, 4, 5][index]
+        : activeCategory === "led"
+          ? [1, 2, 3, 4, 5, 6, 7, 9, 8][index]
+          : index + 1;
+      image = `assets/catalog-items/${activeCategory}-${String(photoIndex).padStart(2, "0")}.webp`;
+    }
+    return `<article class="product-card">
       <img class="product-image" src="${image}" alt="${name}" loading="lazy" width="640" height="420">
       <span class="product-text"><strong>${name}</strong><small>${detail || category.label}</small></span>
       <button type="button" data-select-item="${name}" aria-label="Solicitar orçamento para ${name}">↗</button>
     </article>`;
-  }).join("") + expansion;
+  }).join("");
 }
 
-function chooseCategory(categoryId) {
-  if (!categories.some((category) => category.id === categoryId)) return;
+function chooseCategory(categoryId, scrollToList = false) {
+  if (!categories.some(({ id }) => id === categoryId)) return;
   activeCategory = categoryId;
   if (searchInput) searchInput.value = "";
   renderProducts();
+  if (scrollToList) catalogPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function showCategory(categoryId) {
+  const category = categories.find(({ id }) => id === categoryId);
+  if (!category) return;
+  if (!catalogTransition || !catalogTransitionTitle || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    chooseCategory(categoryId, true);
+    return;
+  }
+  catalogTransitionTitle.textContent = category.label;
+  catalogTransition.style.setProperty("--transition-image", `url('${category.image}')`);
+  catalogTransition.setAttribute("aria-hidden", "false");
+  catalogTransition.classList.add("is-active");
+  document.body.classList.add("catalog-transitioning");
+  window.setTimeout(() => {
+    chooseCategory(categoryId, true);
+    catalogTransition.classList.remove("is-active");
+    catalogTransition.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("catalog-transitioning");
+  }, 560);
 }
 
 renderCategories();
 renderProducts();
-
-categoryGrid.addEventListener("click", (event) => {
+categoryGrid?.addEventListener("click", (event) => {
   const button = event.target.closest("[data-category]");
-  if (button) chooseCategory(button.dataset.category);
+  if (button) showCategory(button.dataset.category);
 });
-categoryTabs.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-category]");
-  if (button) chooseCategory(button.dataset.category);
+categoryTabs?.addEventListener("click", (event) => {
+  const tab = event.target.closest("[role='tab']");
+  if (tab) chooseCategory(tab.dataset.category);
 });
-categoryTabs.addEventListener("keydown", (event) => {
+categoryTabs?.addEventListener("keydown", (event) => {
   if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
   const tabs = [...categoryTabs.querySelectorAll("[role='tab']")];
   const index = tabs.indexOf(document.activeElement);
@@ -311,11 +255,12 @@ categoryTabs.addEventListener("keydown", (event) => {
   tabs[next].focus();
   chooseCategory(tabs[next].dataset.category);
 });
-searchInput.addEventListener("input", renderProducts);
+searchInput?.addEventListener("input", renderProducts);
 
 function setRequestedItem(item) {
+  if (!selectedItemInput) return;
   selectedItemInput.value = item;
-  document.querySelector("#orcamento").scrollIntoView({ behavior: "smooth", block: "start" });
+  document.querySelector("#orcamento")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 const eventExperienceDetails = [
@@ -372,9 +317,6 @@ document.addEventListener("click", (event) => {
     setRequestedItem(productButton.dataset.selectItem);
     return;
   }
-  const categoryLink = event.target.closest("[data-category-link]");
-  if (categoryLink) chooseCategory(categoryLink.dataset.categoryLink);
-
   const kitLink = event.target.closest("[data-kit]");
   if (kitLink) {
     selectedItemInput.value = kitLink.dataset.kit;
@@ -387,37 +329,6 @@ document.addEventListener("click", (event) => {
     document.querySelector("#orcamento").scrollIntoView({ behavior: "smooth", block: "start" });
   }
 });
-
-const cubeScenes = {
-  floor: {
-    image: "assets/cubos/cubo-no-piso.jpg",
-    alt: "Cubo de LED instalado no piso com conteúdo de marca",
-    description: "No piso, o cubo vira um ponto de atração e conteúdo para o público."
-  },
-  stacked: {
-    image: "assets/cubos/cubo-empilhado.jpg",
-    alt: "Cubos de LED empilhados em um expositor de marca",
-    description: "Empilhados, os módulos criam uma instalação vertical para destacar produtos e marcas."
-  },
-  suspended: {
-    image: "assets/cubos/cubo-suspenso.jpg",
-    alt: "Instalação Brave Bear com cubo de LED suspenso durante um evento",
-    description: "Suspenso, o cubo ganha destaque no alto e amplia a presença visual da ativação."
-  }
-};
-const cubeImage = document.querySelector("#cube-scene-image");
-const cubeDescription = document.querySelector("#cube-description");
-document.querySelectorAll("[data-cube-scene]").forEach((button) => button.addEventListener("click", () => {
-  const scene = cubeScenes[button.dataset.cubeScene];
-  if (!scene || !cubeImage || !cubeDescription) return;
-  document.querySelectorAll("[data-cube-scene]").forEach((option) => option.setAttribute("aria-pressed", String(option === button)));
-  cubeImage.classList.add("is-switching");
-  cubeImage.addEventListener("load", () => cubeImage.classList.remove("is-switching"), { once: true });
-  cubeImage.src = scene.image;
-  cubeImage.alt = scene.alt;
-  cubeImage.closest(".cube-visual")?.classList.toggle("is-wide", button.dataset.cubeScene === "suspended");
-  cubeDescription.textContent = scene.description;
-}));
 
 const menuButton = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector("#main-nav");
@@ -506,7 +417,7 @@ if (clientCarousel && clientTrack && clientList && clientCarouselToggle) {
   });
 }
 
-const revealTargets = document.querySelectorAll(".service-card, .kit-card, .equipment-feature, .process-list li, .client-carousel, .quote-form");
+const revealTargets = document.querySelectorAll(".service-card, .kit-card, .equipment-feature, .process-list li, .client-carousel, .quote-form, .partner-card");
 if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
