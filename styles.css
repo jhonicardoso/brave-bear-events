@@ -52,9 +52,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .hero { position: relative; display: flex; min-height: min(780px, calc(100svh - 100px)); min-height: max(670px, min(780px, calc(100svh - 100px))); overflow: hidden; align-items: center; isolation: isolate; background: #06101c; }
 .hero-photo, .hero-grid { position: absolute; z-index: -2; inset: 0; }
-.hero-photo { background-image: linear-gradient(90deg, rgba(4, 10, 18, .99) 0%, rgba(4, 10, 18, .92) 28%, rgba(4,10,18,.56) 55%, rgba(4,10,18,.12) 100%), linear-gradient(0deg, rgba(4,10,18,.86) 0%, transparent 42%), url("assets/hero-bear.webp"); background-position: center, center, center 47%; background-size: cover; transform: translate3d(0, var(--hero-parallax, 0px), 0) scale(1.015); animation: hero-enter 1.3s ease both; }
+.hero-photo { background-image: linear-gradient(90deg, rgba(4, 10, 18, .99) 0%, rgba(4, 10, 18, .92) 28%, rgba(4,10,18,.56) 55%, rgba(4,10,18,.12) 100%), linear-gradient(0deg, rgba(4,10,18,.86) 0%, transparent 42%), url("assets/hero-event-v2.png"); background-position: center, center, center 47%; background-size: cover; transform: translate3d(0, var(--hero-parallax, 0px), 0) scale(1.015); animation: hero-enter 1.3s ease both; }
 .hero-grid { z-index: -1; opacity: .12; background-image: linear-gradient(rgba(89,155,217,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(89,155,217,.1) 1px, transparent 1px); background-size: 88px 88px; mask-image: linear-gradient(90deg, #000 0%, transparent 75%); }
-.hero-mascot { position: absolute; z-index: -1; top: 17%; right: 3%; width: clamp(290px, 32vw, 440px); height: clamp(230px, 49vh, 360px); background: url("assets/brand-mark.png") center / contain no-repeat; opacity: .66; filter: drop-shadow(0 0 18px rgba(36,197,255,.45)); mix-blend-mode: screen; pointer-events: none; }
+.hero-screen-logo { position: absolute; z-index: -1; top: 49%; left: 76%; width: clamp(190px, 21vw, 310px); height: auto; transform: translate(-50%, -50%) perspective(900px) rotateY(-7deg) rotateZ(-1deg); opacity: .82; filter: drop-shadow(0 5px 14px rgba(0,0,0,.42)) drop-shadow(0 0 16px rgba(36,197,255,.22)); mix-blend-mode: screen; pointer-events: none; }
 .hero-content { position: relative; padding-top: 42px; padding-bottom: 80px; }
 .eyebrow { display: flex; align-items: center; gap: 12px; margin: 0 0 20px; color: #b9c8d7; font-size: 9px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
 .eyebrow-line { width: 32px; height: 2px; flex: 0 0 auto; background: linear-gradient(90deg, var(--cyan), var(--blue)); }
@@ -420,7 +420,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .footer-bottom a { color: #b3bec8; }
 .whatsapp-float { position: fixed; z-index: 99; right: 25px; bottom: 24px; display: flex; min-height: 49px; align-items: center; gap: 9px; padding: 0 15px; border: 1px solid rgba(255,255,255,.2); border-radius: 50px; color: white; background: #128c67; box-shadow: 0 10px 30px rgba(0,0,0,.24); font-size: 10px; font-weight: 700; transition: transform .2s ease, background .2s ease; }
 .whatsapp-float:hover { transform: translateY(-3px); background: #13a477; }
-.whatsapp-float > span:first-child { font-size: 17px; }
+.whatsapp-icon { width: 19px; height: 19px; flex: 0 0 auto; }
 .mobile-quote { display: none; }
 
 @media (max-width: 1100px) {
@@ -491,8 +491,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .wrap { width: calc(100% - 36px); }
   html { scroll-padding-top: 71px; }
   .hero { min-height: max(680px, calc(100svh - 70px)); align-items: flex-start; }
-  .hero-photo { background-image: linear-gradient(90deg, rgba(4,10,18,.94) 0%, rgba(4,10,18,.82) 55%, rgba(4,10,18,.45) 100%), linear-gradient(0deg, rgba(4,10,18,.9), transparent 60%), url("assets/hero-bear.webp"); background-position: center, center, 65% center; }
-  .hero-mascot { display: none; }
+  .hero-photo { background-image: linear-gradient(90deg, rgba(4,10,18,.94) 0%, rgba(4,10,18,.82) 55%, rgba(4,10,18,.45) 100%), linear-gradient(0deg, rgba(4,10,18,.9), transparent 60%), url("assets/hero-event-v2.png"); background-position: center, center, 72% center; }
+  .hero-screen-logo { display: none; }
   .hero-content { padding-top: 95px; }
   .eyebrow { gap: 9px; margin-bottom: 17px; font-size: 8px; letter-spacing: .16em; }
   .eyebrow-line { width: 23px; }
@@ -579,8 +579,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .footer-cta .button { gap: 9px; padding-inline: 10px; font-size: 8px; }
   .footer-bottom { min-height: 67px; flex-wrap: wrap; gap: 5px 14px; justify-content: space-between; padding-block: 11px; font-size: 7px; }
   .footer-bottom span:nth-child(2) { display: none; }
-  .whatsapp-float { right: 15px; bottom: 75px; width: 46px; min-height: 46px; justify-content: center; padding: 0; }
-  .whatsapp-float > span:last-child { display: none; }
+  .whatsapp-float { right: 15px; bottom: 75px; min-height: 46px; justify-content: center; gap: 8px; padding-inline: 13px; font-size: 10px; }
   .mobile-quote { position: fixed; z-index: 98; right: 0; bottom: 0; left: 0; display: flex; min-height: 58px; align-items: center; justify-content: center; gap: 14px; color: #fff; background: linear-gradient(100deg,#0874ee,#09a8ef); box-shadow: 0 -8px 25px rgba(0,0,0,.22); font-size: 11px; font-weight: 700; letter-spacing: .04em; }
   .mobile-quote span { font-size: 16px; }
 }
