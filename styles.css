@@ -793,7 +793,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .founder-role { margin: 0 0 12px; color: #46c9e8; font-size: 8px; font-weight: 700; letter-spacing: .16em; line-height: 1.5; }
 .founder-role span { padding-inline: 3px; color: #91a2b4; }
 .founder-copy h4 { margin: 0 0 8px; color: #f5f8fb; font-family: var(--font-display); font-size: 21px; font-weight: 700; letter-spacing: -.04em; }
-.founder-copy > p:last-child { max-width: 280px; margin: 0; color: #aebdcb; font-size: 11px; line-height: 1.7; }
+.founder-copy > p:not(.founder-role) { max-width: 280px; margin: 0; color: #aebdcb; font-size: 11px; line-height: 1.7; }
+.founder-socials { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 13px; }
+.founder-socials a { display: inline-flex; align-items: center; gap: 5px; color: #b9d7e6; font-size: 10px; font-weight: 600; transition: color .2s ease; }
+.founder-socials a span { color: var(--cyan); font-size: 13px; }
+.founder-socials a:hover, .founder-socials a:focus-visible { color: #fff; }
+.founder-socials a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
 @media (max-width: 850px) {
   .founders-wrap { margin-top: 54px; }
   .founder-card { grid-template-columns: 112px minmax(0,1fr); gap: 16px; }
@@ -807,7 +812,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .founder-card > img { width: 98px; height: 125px; }
   .founder-role { margin-bottom: 8px; font-size: 8px; }
   .founder-copy h4 { font-size: 18px; }
-  .founder-copy > p:last-child { font-size: 11px; }
+  .founder-copy > p:not(.founder-role) { font-size: 11px; }
+  .founder-socials { gap: 8px 13px; margin-top: 11px; }
+  .founder-socials a { font-size: 10px; }
 }
 @media (max-width: 380px) {
   .founder-card { grid-template-columns: 84px minmax(0,1fr); gap: 12px; }
