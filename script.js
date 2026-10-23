@@ -352,45 +352,25 @@ document.addEventListener("keydown", (event) => { if (event.key === "Escape") cl
 document.querySelector("#quote-form")?.addEventListener("submit", (event) => {
   event.preventDefault();
   const form = event.currentTarget;
-  const delivery = event.submitter?.value || "whatsapp";
   const values = new FormData(form);
-  const solutions = values.getAll("solutions");
   const lines = [
     "Olá, Brave Bear! Gostaria de solicitar um orçamento.",
     "",
     `Nome: ${values.get("name")}`,
-    values.get("company") ? `Empresa: ${values.get("company")}` : "",
-    `E-mail: ${values.get("email")}`,
-    values.get("phone") ? `WhatsApp: ${values.get("phone")}` : "",
-    values.get("eventType") ? `Tipo de evento: ${values.get("eventType")}` : "",
-    values.get("date") ? `Data: ${values.get("date")}` : "",
-    values.get("location") ? `Local: ${values.get("location")}` : "",
-    values.get("participants") ? `Participantes: ${values.get("participants")}` : "",
-    solutions.length ? `Soluções desejadas: ${solutions.join(", ")}` : "",
+    `WhatsApp: ${values.get("phone")}`,
     values.get("selectedItem") ? `Interesse específico: ${values.get("selectedItem")}` : "",
     values.get("selectedKitItems") ? `Itens do kit selecionado: ${values.get("selectedKitItems")}` : "",
-    values.get("description") ? `Descrição: ${values.get("description")}` : ""
+    values.get("description") ? `Mensagem: ${values.get("description")}` : ""
   ].filter(Boolean);
   const feedback = document.querySelector("#form-feedback");
   const message = lines.join("\n");
-  const isEmail = delivery === "email";
-  const destination = isEmail
-    ? `mailto:comercial@bravebear.com.br?subject=${encodeURIComponent(`Solicitação de orçamento - ${values.get("name")}`)}&body=${encodeURIComponent(message)}`
-    : `https://wa.me/5511911728323?text=${encodeURIComponent(message)}`;
-  const linkLabel = isEmail ? "Abrir e-mail" : "Abrir conversa no WhatsApp";
-  const feedbackMessage = isEmail
-    ? "Seu aplicativo de e-mail deve abrir com a solicitação preenchida. Revise e envie a mensagem."
-    : "Sua solicitação está pronta no WhatsApp. Revise e envie a mensagem.";
-  feedback.innerHTML = `${feedbackMessage} <a href="${destination}"${isEmail ? "" : ' target="_blank" rel="noopener noreferrer"'}>${linkLabel}</a>`;
-  if (isEmail) {
-    window.location.href = destination;
-  } else {
-    const newTab = window.open(destination, "_blank");
-    if (newTab) newTab.opener = null;
-  }
+  const destination = `https://wa.me/5511911728323?text=${encodeURIComponent(message)}`;
+  feedback.innerHTML = `Sua mensagem está pronta. Revise e envie pelo <a href="${destination}" target="_blank" rel="noopener noreferrer">WhatsApp</a>.`;
+  const newTab = window.open(destination, "_blank");
+  if (newTab) newTab.opener = null;
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ event: "quote_request_prepared", source: "website", method: delivery });
-  if (typeof window.gtag === "function") window.gtag("event", "generate_lead", { method: delivery });
+  window.dataLayer.push({ event: "quote_request_prepared", source: "website", method: "whatsapp" });
+  if (typeof window.gtag === "function") window.gtag("event", "generate_lead", { method: "whatsapp" });
   if (typeof window.fbq === "function") window.fbq("track", "Lead");
 });
 
