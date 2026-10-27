@@ -350,6 +350,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .client-logo { display: grid; flex: 0 0 174px; min-height: 98px; place-items: center; padding: 15px 20px; border-right: 1px solid rgba(193,221,244,.12); }
 .client-logo img { display: block; width: min(100%, 145px); height: 56px; object-fit: contain; opacity: .88; transition: opacity .2s ease; }
 .client-logo-bv img { width: min(100%, 96px); height: 68px; }
+.client-logo-monster img { width: auto; max-width: 130px; height: 82px; }
 .client-logo:hover img { opacity: 1; }
 @keyframes client-logo-marquee { to { transform: translateX(-50%); } }
 
@@ -569,6 +570,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .client-logo { flex-basis: 142px; min-height: 82px; padding: 12px 15px; }
   .client-logo img { height: 48px; }
   .client-logo-bv img { height: 60px; }
+  .client-logo-monster img { height: 66px; }
   .process-list { grid-template-columns: 1fr 1fr; gap: 0 15px; margin-top: 39px; }
   .process-list li { min-height: 150px; padding-top: 22px; border-top: 1px solid rgba(189,215,241,.2); }
   .process-list li:nth-child(4) { border-top: 1px solid rgba(189,215,241,.2); }
