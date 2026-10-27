@@ -26,7 +26,7 @@ const empty = $("#equipment-page-empty");
 
 function categoryHref(id) { return `equipamentos.html?categoria=${encodeURIComponent(id)}`; }
 function productImageIndex(categoryId, index) {
-  if (categoryId === "interactive") return [1, 2, 3, 3, 4, 4, 5][index];
+  if (categoryId === "interactive") return [1, 2, 3, 6, 4, 7, 5][index];
   if (categoryId === "led") return [1, 2, 3, 4, 5, 6, 7, 9, 8][index];
   if (categoryId === "televisions") return [1, 2, 3, 4, 5, 9, 6, 7, 8][index];
   return index + 1;
