@@ -1,7 +1,7 @@
 window.BRAVE_CATALOG = (() => {
 const categories = [
   { id: "led", label: "Painel de LED", short: "Painel de LED", count: "12 opções", tagline: "Painéis, cubos e formatos que dão presença ao conteúdo visual.", image: "assets/led.webp", symbol: "▦" },
-  { id: "interactive", label: "Interatividade", short: "Interatividade", count: "5 soluções", tagline: "Tecnologia que conecta pessoas e experiências.", image: "assets/interactive.webp", symbol: "⌁" },
+  { id: "interactive", label: "Interatividade", short: "Interatividade", count: "7 soluções", tagline: "Tecnologia que conecta pessoas e experiências.", image: "assets/interactive.webp", symbol: "⌁" },
   { id: "televisions", label: "Televisores", short: "Televisores", count: "9 opções", tagline: "Imagens impactantes com qualidade para o seu evento.", image: "assets/televisions.webp", symbol: "▣" },
   { id: "projection", label: "Projeção", short: "Projeção", count: "11 opções", tagline: "Soluções de projeção para impactar o público.", image: "assets/projection.webp", symbol: "▱" },
   { id: "processing", label: "Processamento e controle de LED", short: "Controle de LED", count: "12 opções", tagline: "Processamento e operação de painéis de LED.", image: "assets/processing.webp", symbol: "⌘" },
@@ -29,6 +29,8 @@ const products = {
     ["Totem de LED P1.8", "0,65 × 2 m · Resolução 344 × 1032"],
     ["Totem interativo com tablet", "Estrutura para atendimento, credenciamento e experiências interativas"],
     ["Totem interativo vertical 43″", "Formato vertical para conteúdos, formulários, jogos e ativações"],
+    ["Totem interativo vertical 50″", "Formato vertical para conteúdos, formulários, jogos e ativações"],
+    ["Totem interativo horizontal 43″", "Tela horizontal de 43″ para experiências e apresentações"],
     ["Totem interativo horizontal 50″", "Tela horizontal de 50″ para experiências e apresentações"],
     ["Tablet e iPad", "Dispositivos para aplicativos, formulários, jogos e interações personalizadas"]
   ],
