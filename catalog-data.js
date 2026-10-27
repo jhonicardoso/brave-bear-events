@@ -1,8 +1,8 @@
 window.BRAVE_CATALOG = (() => {
 const categories = [
   { id: "led", label: "Painel de LED", short: "Painel de LED", count: "12 opções", tagline: "Painéis, cubos e formatos que dão presença ao conteúdo visual.", image: "assets/led.webp", symbol: "▦" },
-  { id: "interactive", label: "Interatividade", short: "Interatividade", count: "10 soluções", tagline: "Tecnologia que conecta pessoas e experiências.", image: "assets/interactive.webp", symbol: "⌁" },
-  { id: "televisions", label: "Televisores", short: "Televisores", count: "8 opções", tagline: "Imagens impactantes com qualidade para o seu evento.", image: "assets/televisions.webp", symbol: "▣" },
+  { id: "interactive", label: "Interatividade", short: "Interatividade", count: "5 soluções", tagline: "Tecnologia que conecta pessoas e experiências.", image: "assets/interactive.webp", symbol: "⌁" },
+  { id: "televisions", label: "Televisores", short: "Televisores", count: "9 opções", tagline: "Imagens impactantes com qualidade para o seu evento.", image: "assets/televisions.webp", symbol: "▣" },
   { id: "projection", label: "Projeção", short: "Projeção", count: "11 opções", tagline: "Soluções de projeção para impactar o público.", image: "assets/projection.webp", symbol: "▱" },
   { id: "processing", label: "Processamento e controle de LED", short: "Controle de LED", count: "12 opções", tagline: "Processamento e operação de painéis de LED.", image: "assets/processing.webp", symbol: "⌘" },
   { id: "audio", label: "Sonorização", short: "Sonorização", count: "15 opções", tagline: "Som de alta qualidade para diferentes formatos de evento.", image: "assets/audio.webp", symbol: "◖))" },
@@ -12,14 +12,14 @@ const categories = [
 
 const products = {
   led: [
-    ["LED P1.9MM Indoor", "Placa 50 × 50"],
-    ["LED P2.9MM Flexível Indoor", "Placa 50 × 50"],
-    ["LED P2.9MM Canto Vivo Indoor", "Placa 50 × 50"],
-    ["LED P2.9MM Flexível Canto Vivo", "Placa 50 × 50"],
-    ["LED P3.9MM Canto Vivo Outdoor", "Placa 50 × 50"],
-    ["LED P2.9MM Indoor Curvo", "Placa 50 × 50"],
-    ["LED P3.9MM Outdoor / Indoor", "Placa 50 × 50"],
-    ["Piso de LED P3.9MM Indoor", "Indoor"],
+    ["LED P1.9MM Indoor", "Placa 50 × 50 cm"],
+    ["LED P2.9MM Flexível Indoor", "Placa 50 × 50 cm"],
+    ["LED P2.9MM Canto Vivo Indoor", "Placa 50 × 50 cm"],
+    ["LED P2.9MM Flexível Canto Vivo", "Placa 50 × 50 cm"],
+    ["LED P3.9MM Canto Vivo Outdoor", "Placa 50 × 50 cm"],
+    ["LED P2.9MM Indoor Curvo", "Placas de 50 × 50 cm · configuração curva sob consulta"],
+    ["LED P3.9MM Outdoor / Indoor", "Placas de 50 × 50 cm · formatos variáveis sob consulta"],
+    ["Piso de LED P3.9MM Indoor", "Uso indoor · consulte as dimensões da composição"],
     ["Totem de LED P1.8", "0,65 × 2 m · Resolução 344 × 1032"],
     ["Cubo de LED — no piso", "Formato de instalação para destacar marcas e produtos"],
     ["Cubos de LED — empilhados", "Composição vertical para ações e exposições"],
@@ -27,19 +27,14 @@ const products = {
   ],
   interactive: [
     ["Totem de LED P1.8", "0,65 × 2 m · Resolução 344 × 1032"],
-    ["Totem interativo com tablet", ""],
-    ["Totem interativo 43″", ""],
-    ["Totem interativo 55″", ""],
-    ["Totem interativo 65″", ""],
-    ["Totem interativo 75″", ""],
-    ["Totem interativo 85″", ""],
-    ["Totem interativo vertical", ""],
-    ["Totem interativo horizontal", ""],
-    ["iPad e Tablet", "Dispositivos para experiências e interações personalizadas"]
+    ["Totem interativo com tablet", "Estrutura para atendimento, credenciamento e experiências interativas"],
+    ["Totem interativo vertical 43″", "Formato vertical para conteúdos, formulários, jogos e ativações"],
+    ["Totem interativo horizontal 50″", "Tela horizontal de 50″ para experiências e apresentações"],
+    ["Tablet e iPad", "Dispositivos para aplicativos, formulários, jogos e interações personalizadas"]
   ],
   televisions: [
-    ["TV 85″", ""], ["TV 75″", ""], ["TV 65″", ""], ["TV 55″", ""], ["TV 43″", ""],
-    ["Dog House 43″ a 55″", ""], ["Dog House fechada", ""], ["Pedestal 43″ a 85″", ""]
+    ["TV 85″", "Tela de 85 polegadas"], ["TV 75″", "Tela de 75 polegadas"], ["TV 65″", "Tela de 65 polegadas"], ["TV 55″", "Tela de 55 polegadas"], ["TV 43″", "Tela de 43 polegadas"], ["TV 32″", "Tela de 32 polegadas"],
+    ["Dog House 43″ a 55″", "Compatível com televisores de 43″ a 55″"], ["Dog House fechada", "Estrutura fechada para instalação de televisão"], ["Pedestal 43″ a 85″", "Suporte para televisores de 43″ a 85″"]
   ],
   projection: [
     ["Projetor 3.000–4.000 ANSI", ""], ["Projetor 5.000–6.000 ANSI", ""],

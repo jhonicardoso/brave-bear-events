@@ -41,7 +41,11 @@
 .equipment-product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
 .equipment-product-card { overflow: hidden; border: 1px solid rgba(190,215,239,.15); background: #0d1824; transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease; }
 .equipment-product-card:hover { transform: translateY(-4px); border-color: rgba(47,203,235,.56); box-shadow: 0 17px 38px rgba(0,0,0,.2); }
-.equipment-product-image-wrap { display: grid; height: clamp(190px, 21vw, 258px); place-items: center; overflow: hidden; background: #f8fafc; }
+.equipment-product-image-wrap { display: grid; height: clamp(220px, 25vw, 300px); place-items: center; overflow: hidden; background: linear-gradient(145deg, #fff 0%, #f5f8fb 100%); }
+.equipment-image-trigger { position: relative; display: grid; width: 100%; height: 100%; place-items: center; padding: 0; overflow: hidden; border: 0; background: transparent; cursor: zoom-in; }
+.equipment-image-trigger::after { position: absolute; right: 12px; bottom: 12px; display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(7,16,26,.14); border-radius: 50%; color: #07101a; background: rgba(255,255,255,.9); content: "↗"; font-size: 15px; opacity: .82; transition: transform .2s ease, opacity .2s ease; }
+.equipment-image-trigger:hover::after, .equipment-image-trigger:focus-visible::after { transform: translate(1px,-1px); opacity: 1; }
+.equipment-image-trigger:focus-visible { outline: 3px solid #42d5ed; outline-offset: -4px; }
 .equipment-product-image-wrap img { width: 100%; height: 100%; object-fit: contain !important; object-position: center; transition: transform .45s cubic-bezier(.2,.7,.15,1); }
 .equipment-product-picture { display: grid; width: 100%; height: 100%; place-items: center; }
 .equipment-product-card:hover .equipment-product-image-wrap img { transform: none; }
@@ -53,6 +57,14 @@
 .equipment-product-info > a span { color: #42d5ed; font-size: 16px; }
 .equipment-product-info > a:hover { color: #47d6ed; }
 .equipment-page-empty { padding: 35px 12px; color: #bdcbd8; text-align: center; }
+.equipment-image-dialog { position: fixed; width: min(980px, calc(100% - 32px)); max-width: 980px; max-height: min(92svh, 960px); padding: 16px; overflow: auto; border: 1px solid rgba(255,255,255,.16); color: #f4f7fb; background: #08131e; box-shadow: 0 30px 100px rgba(0,0,0,.55); }
+.equipment-image-dialog::backdrop { background: rgba(2,7,13,.86); backdrop-filter: blur(8px); }
+.equipment-image-dialog > img { display: block; width: 100%; max-height: min(72svh, 740px); object-fit: contain; background: linear-gradient(145deg, #fff 0%, #f5f8fb 100%); }
+.equipment-image-dialog-close { position: sticky; z-index: 1; top: 0; float: right; display: grid; width: 40px; height: 40px; margin: -8px -8px 8px 0; place-items: center; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; color: #fff; background: rgba(6,13,21,.92); cursor: pointer; font-size: 27px; line-height: 1; }
+.equipment-image-dialog-close:focus-visible { outline: 3px solid #42d5ed; outline-offset: 2px; }
+.equipment-image-dialog-caption { padding: 17px 5px 4px; }
+.equipment-image-dialog-caption strong { font-family: var(--font-display); font-size: clamp(19px, 3vw, 26px); }
+.equipment-image-dialog-caption p { margin: 5px 0 0; color: #aab8c6; font-size: 13px; line-height: 1.5; }
 .equipment-detail-cta { display: flex; align-items: center; justify-content: space-between; gap: 34px; padding-block: 72px; }
 .equipment-detail-cta h2 { max-width: 710px; margin: 0; font-family: var(--font-display); font-size: clamp(30px, 4vw, 45px); letter-spacing: -.05em; line-height: 1.12; }
 .equipment-detail-cta > div > p:last-child { margin: 12px 0 0; color: #9cabb9; font-size: 14px; }

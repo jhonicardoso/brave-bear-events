@@ -26,8 +26,9 @@ const empty = $("#equipment-page-empty");
 
 function categoryHref(id) { return `equipamentos.html?categoria=${encodeURIComponent(id)}`; }
 function productImageIndex(categoryId, index) {
-  if (categoryId === "interactive") return [1, 2, 3, 3, 3, 3, 3, 3, 4, 5][index];
+  if (categoryId === "interactive") return [1, 2, 3, 4, 5][index];
   if (categoryId === "led") return [1, 2, 3, 4, 5, 6, 7, 9, 8][index];
+  if (categoryId === "televisions") return [1, 2, 3, 4, 5, 9, 6, 7, 8][index];
   return index + 1;
 }
 const ledCubeImages = [
@@ -49,7 +50,7 @@ function renderProducts() {
       const image = ledCubeImages[index - 9];
       const itemDetail = detail || "Consulte composição e disponibilidade";
       return `<article class="equipment-product-card equipment-product-card-cube">
-        <div class="equipment-product-image-wrap"><picture class="equipment-product-picture"><source media="(max-width: 600px)" srcset="${image.mobile}"><img src="${image.desktop}" alt="${image.alt}" loading="lazy" width="720" height="720"></picture></div>
+        <div class="equipment-product-image-wrap"><button class="equipment-image-trigger" type="button" aria-label="Ampliar imagem: ${name}"><picture class="equipment-product-picture"><source media="(max-width: 600px)" srcset="${image.mobile}"><img src="${image.desktop}" alt="${image.alt}" loading="lazy" width="720" height="720"></picture></button></div>
         <div class="equipment-product-info"><span class="equipment-product-category">${category.short}</span><h3>${name}</h3><p>${itemDetail}</p><a href="${contactHref(category, name)}" target="_blank" rel="noopener noreferrer">Consultar este item <span aria-hidden="true">↗</span></a></div>
       </article>`;
     }
@@ -57,7 +58,7 @@ function renderProducts() {
     const image = `assets/catalog-items/${activeCategory}-${String(photoIndex).padStart(2, "0")}.webp`;
     const itemDetail = detail || "Consulte composição e disponibilidade";
     return `<article class="equipment-product-card">
-      <div class="equipment-product-image-wrap"><img src="${image}" alt="${name}" loading="lazy" width="320" height="320"></div>
+      <div class="equipment-product-image-wrap"><button class="equipment-image-trigger" type="button" aria-label="Ampliar imagem: ${name}"><img src="${image}" alt="${name}" loading="lazy" width="720" height="720"></button></div>
       <div class="equipment-product-info"><span class="equipment-product-category">${category.short}</span><h3>${name}</h3><p>${itemDetail}</p><a href="${contactHref(category, name)}" target="_blank" rel="noopener noreferrer">Consultar este item <span aria-hidden="true">↗</span></a></div>
     </article>`;
   }).join("");
@@ -83,6 +84,28 @@ function renderCategory() {
 
 renderCategory();
 search.addEventListener("input", renderProducts);
+const imageDialog = $("#equipment-image-dialog");
+if (imageDialog) {
+  const dialogImage = imageDialog.querySelector("img");
+  const dialogTitle = imageDialog.querySelector("strong");
+  const dialogDescription = imageDialog.querySelector("p");
+  document.addEventListener("click", (event) => {
+    const trigger = event.target.closest(".equipment-image-trigger");
+    if (trigger && !imageDialog.open) {
+      const card = trigger.closest(".equipment-product-card");
+      const image = trigger.querySelector("img");
+      dialogImage.src = image.currentSrc || image.src;
+      dialogImage.alt = image.alt;
+      dialogTitle.textContent = card.querySelector("h3").textContent;
+      dialogDescription.textContent = card.querySelector(".equipment-product-info p").textContent;
+      imageDialog.showModal();
+    }
+    if (event.target.closest("[data-close-image-dialog]") && imageDialog.open) imageDialog.close();
+  });
+  imageDialog.addEventListener("click", (event) => {
+    if (event.target === imageDialog) imageDialog.close();
+  });
+}
 document.addEventListener("click", (event) => {
   const link = event.target.closest("[data-equipment-link]");
   if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
