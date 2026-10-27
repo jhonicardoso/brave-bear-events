@@ -1,4 +1,4 @@
-const { categories = [], products = {} } = window.BRAVE_CATALOG || {};
+const { categories = [] } = window.BRAVE_CATALOG || {};
 
 const ledCalcForm = document.querySelector("#led-calc-form");
 const ledCalcMap = document.querySelector("#led-map");
@@ -142,120 +142,34 @@ if (ledCalcForm) {
 }
 
 const categoryGrid = document.querySelector("#equipment-categories");
-const categoryTabs = document.querySelector("#category-tabs");
-const productList = document.querySelector("#product-list");
-const catalogPanel = document.querySelector("#catalog-panel");
-const currentTitle = document.querySelector("#catalog-current-title");
-const currentSubtitle = document.querySelector("#catalog-current-subtitle");
-const searchInput = document.querySelector("#equipment-search");
 const selectedItemInput = document.querySelector("#selected-item");
 const selectedKitItemsInput = document.querySelector("#selected-kit-items");
 const selectedKitSummary = document.querySelector("#selected-kit-summary");
 const catalogTransition = document.querySelector("#catalog-transition");
 const catalogTransitionTitle = document.querySelector("#catalog-transition-title");
-const requestedCategory = new URLSearchParams(window.location.search).get("categoria");
-let activeCategory = categories.some(({ id }) => id === requestedCategory) ? requestedCategory : "led";
 
 function renderCategories() {
   if (!categoryGrid) return;
   categoryGrid.innerHTML = categories.map((category) => `
-    <button class="equipment-feature" type="button" data-category="${category.id}" aria-pressed="${category.id === activeCategory}" style="--card-image: url('${category.image}')">
+    <a class="equipment-feature" href="equipamentos.html?categoria=${encodeURIComponent(category.id)}" data-category="${category.id}" aria-label="Ver produtos de ${category.short} (${category.count})" style="--card-image: url('${category.image}')">
       <small>${category.count}</small><strong>${category.short}</strong><em>Ver itens <span aria-hidden="true">↘</span></em>
-    </button>`).join("");
-  categoryTabs.innerHTML = categories.map((category) => `
-    <button class="category-tab" id="tab-${category.id}" type="button" role="tab" data-category="${category.id}" aria-selected="${category.id === activeCategory}" aria-controls="product-list">${category.label}</button>`).join("");
+    </a>`).join("");
 }
 
-function renderProducts() {
-  if (!productList || !searchInput) return;
-  const category = categories.find(({ id }) => id === activeCategory);
-  const query = searchInput.value.trim().toLocaleLowerCase("pt-BR");
-  const matches = (products[activeCategory] || []).map(([name, detail], index) => ({ name, detail, index }))
-    .filter(({ name, detail }) => `${name} ${detail}`.toLocaleLowerCase("pt-BR").includes(query));
-  currentTitle.textContent = category.label;
-  currentSubtitle.textContent = category.tagline;
-  categoryTabs.querySelectorAll("[role='tab']").forEach((tab) => {
-    const selected = tab.dataset.category === activeCategory;
-    tab.setAttribute("aria-selected", String(selected));
-    tab.tabIndex = selected ? 0 : -1;
-  });
-  categoryGrid.querySelectorAll("[data-category]").forEach((button) => {
-    button.setAttribute("aria-pressed", String(button.dataset.category === activeCategory));
-  });
-  if (!matches.length) {
-    productList.innerHTML = '<p class="product-empty">Nenhum equipamento encontrado nesta categoria.</p>';
-    return;
-  }
-  productList.innerHTML = matches.map(({ name, detail, index }) => {
-    let image;
-    if (activeCategory === "led" && index >= 9) {
-      const cubeStyles = ["cubo-no-piso", "cubo-empilhado", "cubo-suspenso"];
-      image = `assets/cubos/${cubeStyles[index - 9]}-desktop.jpg`;
-    } else {
-      const photoIndex = activeCategory === "interactive"
-        ? [1, 2, 3, 3, 3, 3, 3, 3, 4, 5][index]
-        : activeCategory === "led"
-          ? [1, 2, 3, 4, 5, 6, 7, 9, 8][index]
-          : index + 1;
-      image = `assets/catalog-items/${activeCategory}-${String(photoIndex).padStart(2, "0")}.webp`;
-    }
-    return `<article class="product-card">
-      <img class="product-image" src="${image}" alt="${name}" loading="lazy" width="640" height="420">
-      <span class="product-text"><strong>${name}</strong><small>${detail || category.label}</small></span>
-      <button type="button" data-select-item="${name}" aria-label="Solicitar orçamento para ${name}">↗</button>
-    </article>`;
-  }).join("");
-}
-
-function chooseCategory(categoryId, scrollToList = false) {
-  if (!categories.some(({ id }) => id === categoryId)) return;
-  activeCategory = categoryId;
-  if (searchInput) searchInput.value = "";
-  renderProducts();
-  if (scrollToList) catalogPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-function showCategory(categoryId) {
-  const category = categories.find(({ id }) => id === categoryId);
-  if (!category) return;
-  if (!catalogTransition || !catalogTransitionTitle || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    chooseCategory(categoryId, true);
-    return;
-  }
+renderCategories();
+categoryGrid?.addEventListener("click", (event) => {
+  const link = event.target.closest("a[data-category]");
+  if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const category = categories.find(({ id }) => id === link.dataset.category);
+  if (!category || !catalogTransition || !catalogTransitionTitle || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  event.preventDefault();
   catalogTransitionTitle.textContent = category.label;
   catalogTransition.style.setProperty("--transition-image", `url('${category.image}')`);
   catalogTransition.setAttribute("aria-hidden", "false");
   catalogTransition.classList.add("is-active");
   document.body.classList.add("catalog-transitioning");
-  window.setTimeout(() => {
-    chooseCategory(categoryId, true);
-    catalogTransition.classList.remove("is-active");
-    catalogTransition.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("catalog-transitioning");
-  }, 560);
-}
-
-renderCategories();
-renderProducts();
-categoryGrid?.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-category]");
-  if (button) showCategory(button.dataset.category);
+  window.setTimeout(() => { window.location.href = link.href; }, 560);
 });
-categoryTabs?.addEventListener("click", (event) => {
-  const tab = event.target.closest("[role='tab']");
-  if (tab) chooseCategory(tab.dataset.category);
-});
-categoryTabs?.addEventListener("keydown", (event) => {
-  if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
-  const tabs = [...categoryTabs.querySelectorAll("[role='tab']")];
-  const index = tabs.indexOf(document.activeElement);
-  if (index < 0) return;
-  event.preventDefault();
-  const next = (index + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
-  tabs[next].focus();
-  chooseCategory(tabs[next].dataset.category);
-});
-searchInput?.addEventListener("input", renderProducts);
 
 function setRequestedItem(item) {
   if (!selectedItemInput) return;

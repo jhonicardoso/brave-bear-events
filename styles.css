@@ -421,7 +421,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .site-footer { padding-top: 61px; background: #050a10; }
 .footer-main { display: grid; grid-template-columns: 1.3fr .8fr 1.1fr .7fr; gap: 44px; padding-bottom: 48px; }
-.footer-brand .brand img { width: 92px; height: auto; }
+.footer-brand .brand img { width: 204px; height: auto; }
 .footer-brand > p { max-width: 300px; margin: 19px 0 0; color: #8391a0; font-size: 10px; line-height: 1.8; }
 .footer-brand #ra-verified-seal { max-width: 100%; margin-top: 20px; }
 .footer-nav, .footer-social { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; }
