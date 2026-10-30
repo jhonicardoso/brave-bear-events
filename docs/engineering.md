@@ -29,7 +29,7 @@ A calculadora valida as restrições do formulário, limpa resultados inválidos
 
 Node 24 e pnpm 10.32.1. Instalar com `pnpm install --frozen-lockfile`, depois `pnpm exec playwright install chromium`. `pnpm dev` serve em `http://127.0.0.1:4173`. Nunca usar credenciais de produção nos testes.
 
-`pnpm validate` executa Biome, TypeScript, testes Chromium em desktop e celular com movimento reduzido e empacota `dist/` somente após sucesso. `pnpm format` aplica formatação JS/JSON; o HTML/CSS existente não está no escopo do formatador. A instalação é reproduzível pelo lockfile. `pnpm audit` verifica também as dependências de desenvolvimento.
+`pnpm validate` executa Biome, TypeScript, análise sintática de todos os scripts, verificação de recursos HTML, orçamento de JavaScript (160 KB), testes Chromium em desktop e celular com movimento reduzido e auditoria de dependências (bloqueia severidade alta/crítica). Empacota `dist/` somente após sucesso. `pnpm format` aplica formatação JS/JSON; o HTML/CSS existente não está no escopo do formatador. A instalação é reproduzível pelo lockfile.
 
 Os testes cobrem ausência de erros de runtime nas três páginas, layout sem overflow, catálogo/busca/diálogo, limites e recuperação da calculadora, carga sob demanda e preparação segura do orçamento. Testes determinísticos não substituem auditoria completa de acessibilidade, pentest, compatibilidade multi-browser ou métricas de campo de performance.
 
@@ -43,7 +43,9 @@ Para tornar o bloqueio efetivo no GitHub, o administrador deve configurar:
 2. Ruleset para `main`: exigir pull request, revisão aprovada, check `quality` e branch atualizada; impedir pushes diretos e bypass.
 3. Environment `github-pages`: permitir apenas `main`; adicionar aprovação de deploy se exigida pelo processo da equipe.
 
-O workflow versionado depende dessas configurações administrativas. Sua simples presença não impede publicação por um mecanismo alternativo ou push direto permitido pelo repositório. Nenhuma configuração administrativa nem publicação foi alterada nesta entrega.
+Configuração aplicada em 30/10/2026: Pages com source GitHub Actions; proteção clássica de `main` exigindo PR, uma aprovação, descarte de aprovações após novos commits, check `quality`, branch atualizada e aplicação também a administradores. Force push e exclusão da branch não são permitidos. O redirecionamento obrigatório para HTTPS também foi ativado. A configuração de environment acima permanece uma opção adicional. Uma aprovação precisa vir de outro colaborador habilitado, pois o autor não aprova o próprio PR.
+
+O workflow versionado depende da manutenção dessas configurações administrativas. Sua simples presença não impede publicação por um mecanismo alternativo. O PR permanece aberto para revisão; nenhuma alteração de código foi integrada em `main` ou publicada nesta entrega.
 
 ## Performance e evolução
 
