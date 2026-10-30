@@ -22,3 +22,8 @@
 *.pfx
 credentials*.json
 secrets*.json
+
+node_modules/
+dist/
+test-results/
+playwright-report/

@@ -1,0 +1,15 @@
+/* Static placeholders preserve alt text and require no continuous animation. */
+img.image-pending {
+  background: linear-gradient(110deg, #14202d 20%, #24374a 50%, #14202d 80%);
+}
+img.image-failed { background: #14202d; }
+:focus-visible { outline: 3px solid #7fdcff; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-pending { opacity: 1 !important; transform: none !important; }
+}
