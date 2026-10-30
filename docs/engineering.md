@@ -40,12 +40,12 @@ Trabalhar em branch e abrir pull request. O workflow `Quality` valida PRs sem pu
 Para tornar o bloqueio efetivo no GitHub, o administrador deve configurar:
 
 1. Settings → Pages → Source: **GitHub Actions**. Desativar publicação direta por branch e workflows alternativos que contornem `quality`.
-2. Ruleset para `main`: exigir pull request, revisão aprovada, check `quality` e branch atualizada; impedir pushes diretos e bypass.
+2. Ruleset para `main`: exigir pull request, check `quality` e branch atualizada; impedir pushes diretos e bypass.
 3. Environment `github-pages`: permitir apenas `main`; adicionar aprovação de deploy se exigida pelo processo da equipe.
 
-Configuração aplicada em 30/10/2026: Pages com source GitHub Actions; proteção clássica de `main` exigindo PR, uma aprovação, descarte de aprovações após novos commits, check `quality`, branch atualizada e aplicação também a administradores. Force push e exclusão da branch não são permitidos. O redirecionamento obrigatório para HTTPS também foi ativado. A configuração de environment acima permanece uma opção adicional. Uma aprovação precisa vir de outro colaborador habilitado, pois o autor não aprova o próprio PR.
+Configuração aplicada em 30/10/2026: Pages com source GitHub Actions; proteção clássica de `main` exigindo PR, check `quality`, branch atualizada e aplicação também a administradores. Force push e exclusão da branch não são permitidos. O redirecionamento obrigatório para HTTPS também foi ativado. A configuração de environment acima permanece uma opção adicional. Por confirmação do proprietário, que mantém o projeto sozinho, a exigência de aprovação por outro colaborador foi removida; PR e validações automatizadas continuam obrigatórios.
 
-O workflow versionado depende da manutenção dessas configurações administrativas. Sua simples presença não impede publicação por um mecanismo alternativo. O PR permanece aberto para revisão; nenhuma alteração de código foi integrada em `main` ou publicada nesta entrega.
+O workflow versionado depende da manutenção dessas configurações administrativas. Sua simples presença não impede publicação por um mecanismo alternativo. A integração ocorre por PR após os checks obrigatórios; o deploy de produção só ocorre após nova validação de `main`.
 
 ## Performance e evolução
 
