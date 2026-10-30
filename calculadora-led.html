@@ -12,6 +12,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="enhancements.css">
+  <script src="enhancements.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -34,7 +36,8 @@
           <p class="section-intro">Informe as medidas para estimar placas, resolução, peso, cases e distribuição elétrica.</p>
         </div>
         <div class="led-calc-layout">
-          <form class="led-calc-form" id="led-calc-form">
+          <p id="led-calc-feedback" role="status" aria-live="polite"></p>
+          <form aria-describedby="led-calc-feedback" class="led-calc-form" id="led-calc-form">
             <fieldset><legend>Dimensões e módulo</legend>
               <div class="led-calc-fields">
                 <label>Largura do painel (m)<input name="width" type="number" min="0.1" max="100" step="0.01" value="5" required></label>
@@ -53,7 +56,7 @@
                 <label>Limite de pixels por porta<input name="pixelsPerPort" type="number" min="10000" step="10000" value="650000"></label>
                 <label>Margem de segurança (%)<input name="signalMargin" type="number" min="0" max="80" step="1" value="25"></label>
                 <label>Máx. placas em cascata de sinal<input name="signalCascade" type="number" min="1" max="500" step="1" value="17"></label>
-                <label>Potência estimada (W/m²)<input name="wattsPerSqm" type="number" min="1" max="5000" step="10" value="700"></label>
+                <label>Potência estimada (W/m²)<input name="wattsPerSqm" type="number" min="1" max="5000" step="1" value="700"></label>
                 <label>Tensão (V)<select name="voltage"><option value="127">127 V</option><option value="220" selected>220 V</option></select></label>
                 <label>Corrente por circuito (A)<input name="amps" type="number" min="1" max="1000" step="1" value="20"></label>
                 <label>Uso máximo do circuito (%)<input name="circuitUse" type="number" min="10" max="100" step="1" value="80"></label>
@@ -94,6 +97,7 @@
   </main>
   <footer class="site-footer"><div class="wrap footer-bottom"><span>© <span id="current-year">2026</span> Brave Bear Events</span><span>TECNOLOGIA <i>+</i> ESTRUTURA <i>+</i> EXPERIÊNCIA</span><a href="#topo">Voltar ao topo ↑</a></div></footer>
   <a class="whatsapp-float" href="https://wa.me/5511911728323?text=Ol%C3%A1%2C%20equipe%20t%C3%A9cnica%20da%20Brave%20Bear!%20Estou%20usando%20a%20calculadora%20de%20painel%20de%20LED%20e%20gostaria%20de%20validar%20o%20dimensionamento%2C%20o%20pitch%20e%20a%20configura%C3%A7%C3%A3o%20do%20meu%20projeto." target="_blank" rel="noopener noreferrer" aria-label="Acionar a equipe técnica pelo WhatsApp sobre a calculadora de painel de LED"><span aria-hidden="true">◉</span><span>Equipe técnica</span></a>
+  <script src="calculator.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>

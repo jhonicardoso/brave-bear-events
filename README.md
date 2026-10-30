@@ -4,7 +4,9 @@ Site institucional responsivo em HTML, CSS e JavaScript, usando a identidade e o
 
 ## Abrir
 
-Abra `index.html` no navegador. O projeto não precisa de instalação ou processo de build.
+O site continua estático. Para desenvolver e executar verificações, use Node 24 e pnpm: `pnpm install --frozen-lockfile`, `pnpm exec playwright install chromium` e `pnpm dev`. Execute `pnpm validate` antes de integrar alterações. A distribuição validada é gerada em `dist/`.
+
+Consulte [engenharia e operação](docs/engineering.md) para arquitetura, segurança, escopo da tipagem, testes e configurações obrigatórias de proteção/publicação do GitHub Pages.
 
 ## Conteúdo e conversão
 
