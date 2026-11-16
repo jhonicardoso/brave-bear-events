@@ -142,3 +142,22 @@ test("venda LED apresenta soluções consultivas sem dados de fornecedor", async
   await page.goto("/equipamentos.html?categoria=led");
   await expect(page.locator("#sale-consulting")).toBeHidden();
 });
+
+test("card de interatividade mantém identidade visual escura e fotografia no catálogo", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const card = page.locator('.equipment-feature[data-category="interactive"]');
+  await expect(card).toBeVisible();
+  await expect(card).toContainText("Interatividade");
+  const styling = await card.evaluate((element) => {
+    const before = getComputedStyle(element, "::before");
+    return {
+      image: before.backgroundImage,
+      surface: getComputedStyle(element).backgroundColor,
+    };
+  });
+  expect(styling.image).toContain("linear-gradient");
+  expect(styling.image).toContain("interactive-03.webp");
+  expect(styling.surface).toBe("rgb(7, 22, 38)");
+});

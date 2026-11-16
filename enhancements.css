@@ -65,3 +65,26 @@ img.image-failed { background: #14202d; }
   .commercial-paths-grid { grid-template-columns: 1fr; gap: 12px; }
   .commercial-path { padding: 23px; }
 }
+
+/* Interatividade: harmoniza a fotografia de totem com os demais cards escuros do catálogo. */
+.equipment-feature[data-category="interactive"] {
+  background: #071626;
+  border-color: rgba(84, 171, 227, .32);
+}
+.equipment-feature[data-category="interactive"]::before {
+  background-image:
+    linear-gradient(0deg, rgba(3, 10, 20, .97) 0%, rgba(4, 17, 33, .77) 45%, rgba(5, 23, 45, .64) 100%),
+    linear-gradient(105deg, rgba(0, 48, 102, .68), rgba(5, 24, 53, .63)),
+    var(--card-image);
+  background-size: cover;
+  background-position: center, center, 50% 45%;
+  filter: saturate(1.15) contrast(1.15);
+}
+.equipment-feature[data-category="interactive"]::after {
+  box-shadow: inset 0 0 52px rgba(0, 102, 217, .14);
+}
+.equipment-feature[data-category="interactive"]:hover::after,
+.equipment-feature[data-category="interactive"]:focus-visible::after {
+  border-color: #55d7ff;
+  box-shadow: inset 0 0 58px rgba(0, 130, 244, .22);
+}
