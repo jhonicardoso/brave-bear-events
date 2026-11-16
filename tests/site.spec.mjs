@@ -158,6 +158,6 @@ test("card de interatividade mantém identidade visual escura e fotografia no ca
     };
   });
   expect(styling.image).toContain("linear-gradient");
-  expect(styling.image).toContain("interactive-03.webp");
+  expect(styling.image).toContain("totem-interatividade-brave-bear.jpg");
   expect(styling.surface).toBe("rgb(7, 22, 38)");
 });
