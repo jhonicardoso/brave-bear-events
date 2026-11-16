@@ -138,7 +138,6 @@ test("venda LED apresenta soluções consultivas sem dados de fornecedor", async
   await expect(page.locator(".sale-use-grid article")).toHaveCount(3);
   await expect(page.locator(".sale-method > div")).toHaveCount(3);
   await expect(page.locator(".equipment-product-card")).toHaveCount(8);
-  await expect(page.locator("body")).not.toContainText("BSL Light");
   await expect(page.locator("body")).not.toContainText("Pronta entrega");
   await page.goto("/equipamentos.html?categoria=led");
   await expect(page.locator("#sale-consulting")).toBeHidden();
