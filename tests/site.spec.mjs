@@ -163,3 +163,26 @@ test("card de interatividade mantém identidade visual escura e fotografia no ca
   expect(styling.image).not.toContain("rgba(5, 24, 53");
   expect(styling.surface).toBe("rgb(7, 22, 38)");
 });
+
+test("mobile hero follows content without excessive empty space", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  const positions = await page.evaluate(() => {
+    const hero = document.querySelector(".hero").getBoundingClientRect();
+    const note = document.querySelector(".hero-note").getBoundingClientRect();
+    const foot = document.querySelector(".hero-foot").getBoundingClientRect();
+    const next = document
+      .querySelector(".commercial-paths")
+      .getBoundingClientRect();
+    return {
+      heroBottom: hero.bottom,
+      noteBottom: note.bottom,
+      footTop: foot.top,
+      nextTop: next.top,
+    };
+  });
+  expect(positions.footTop - positions.noteBottom).toBeLessThan(150);
+  expect(Math.abs(positions.nextTop - positions.heroBottom)).toBeLessThan(2);
+});
