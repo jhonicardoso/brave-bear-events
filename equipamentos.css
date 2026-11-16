@@ -137,3 +137,29 @@
 @media (prefers-reduced-motion: reduce) {
   .equipment-detail-hero-image, .equipment-product-card, .equipment-product-image-wrap img, .catalog-transition, .catalog-transition::before, .catalog-transition::after, .catalog-transition-line::after { animation: none !important; transition-duration: .01ms !important; }
 }
+
+/* Venda consultiva de LED: componentes exclusivos da categoria de compra. */
+.sale-led-page .equipment-detail-hero { min-height: 570px; }
+.sale-led-page .equipment-detail-hero-image { background-image: linear-gradient(90deg,rgba(4,12,24,.97),rgba(4,12,24,.8) 48%,rgba(4,12,24,.3)),linear-gradient(0deg,rgba(4,12,24,.65),transparent 65%),var(--detail-image); }
+.sale-consulting { padding-block: clamp(55px,8vw,100px) 38px; }
+.sale-consulting[hidden] { display: none; }
+.sale-consulting-heading { max-width: 850px; }
+.sale-consulting-heading h2 { margin: 14px 0 18px; font: 800 clamp(35px,5vw,62px)/1.07 var(--font-display); letter-spacing: -.055em; }
+.sale-consulting-heading h2 span { color: #42ceef; }
+.sale-consulting-heading > p:last-child { max-width: 730px; color: #c1cedc; font-size: 15px; }
+.sale-use-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 13px; margin-top: 35px; }
+.sale-use-grid article { min-width: 0; padding: clamp(20px,2.6vw,32px); border: 1px solid rgba(86,180,238,.3); background: linear-gradient(155deg,#102b45,#0a1523); }
+.sale-use-grid article > span { color: #6bd4ff; font-size: 10px; font-weight: 800; letter-spacing: .13em; }
+.sale-use-grid h3 { margin: 14px 0 10px; color: #fff; font: 800 clamp(20px,2.5vw,27px)/1.22 var(--font-display); letter-spacing: -.03em; }
+.sale-use-grid p { min-height: 75px; color: #b8cad9; font-size: 13px; line-height: 1.65; }
+.sale-use-grid a { display: inline-flex; margin-top: 10px; color: #7bdbff; font-size: 12px; font-weight: 750; text-decoration: underline; text-underline-offset: 5px; }
+.sale-method { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin-top: 25px; }
+.sale-method > div { padding: 18px 10px; border-top: 1px solid rgba(113,198,251,.35); }
+.sale-method strong { display: block; color: #40c8f6; font-size: 11px; letter-spacing: .1em; }
+.sale-method span { display: block; margin-top: 7px; color: #fff; font-weight: 800; }
+.sale-method p { margin: 6px 0; color: #a8b9cb; font-size: 12px; }
+.sale-tech-note { max-width: 950px; margin-top: 16px; padding: 14px 18px; border-left: 2px solid #4bc6f5; color: #bccbd7; background: rgba(31,83,125,.14); font-size: 12px; line-height: 1.7; }
+.sale-led-page .equipment-product-card { border-color: rgba(67,156,221,.3); }
+.sale-led-page .equipment-product-info > a { color: #84dbff; }
+@media(max-width:850px) { .sale-use-grid { grid-template-columns: 1fr; } .sale-use-grid p { min-height: 0; } }
+@media(max-width:600px) { .sale-consulting { padding-block: 55px 25px; } .sale-method { grid-template-columns: 1fr; gap: 0; } .sale-method > div { padding-block: 14px; } }

@@ -2,11 +2,11 @@ window.BRAVE_CATALOG = (() => {
   const categories = [
     {
       id: "venda",
-      label: "Venda de Equipamentos",
-      short: "Venda",
-      count: "3 soluções",
+      label: "Venda de Painéis de LED",
+      short: "Venda LED",
+      count: "8 soluções",
       tagline:
-        "Tecnologia audiovisual para aquisição e instalações permanentes. Projetos e disponibilidade sob consulta.",
+        "Painéis de LED profissionais para projetos permanentes. Soluções indoor, outdoor e totens com dimensionamento e proposta personalizada.",
       image: "assets/led.webp",
       symbol: "▦",
     },
@@ -87,16 +87,36 @@ window.BRAVE_CATALOG = (() => {
   const products = {
     venda: [
       [
-        "Painel LED P2.5 Indoor Magnético",
-        "Alta definição para instalações internas. Projeto, dimensões e especificações sob consulta.",
+        "Painel LED P1.86 Magnético Indoor",
+        "Pitch 1,86 mm • gabinete 640 × 640 mm • brilho 1.200–1.500 nits • atualização 7.680 Hz • manutenção frontal.",
       ],
       [
-        "Painéis de LED para instalação fixa",
-        "Composição personalizada para empresas, auditórios, igrejas e comunicação visual permanente.",
+        "Painel LED P3.076 Magnético Indoor",
+        "Pitch 3,076 mm • gabinetes 960 × 960 ou 960 × 480 mm • brilho 1.200–1.500 nits • ideal para auditórios e comunicação interna.",
       ],
       [
-        "Totem de LED P1.8",
-        "Formato vertical de 0,65 × 2 m. Consulte opções e condições para aquisição.",
+        "Painel LED P4 Magnético Indoor",
+        "Pitch 4 mm • gabinetes 960 × 960 ou 960 × 480 mm • opção para instalações internas de maior área.",
+      ],
+      [
+        "Painel LED P3.91 Fixo Outdoor",
+        "Pitch 3,91 mm • gabinetes 1.000 × 1.000 ou 1.000 × 500 mm • brilho 5.500–6.500 nits • proteção IP65 no modelo 100 × 100.",
+      ],
+      [
+        "Painel LED P5 Fixo Outdoor",
+        "Pitch 5 mm • gabinete 960 × 960 mm • brilho 5.500–6.500 nits • projeto para mídia exterior e fachadas.",
+      ],
+      [
+        "Totem LED P1.86 Indoor",
+        "Pitch 1,86 mm • formatos de 650 × 1.998 ou 1.280 × 2.068 mm • comunicação vertical de alta definição.",
+      ],
+      [
+        "Totem LED P2.5 Indoor",
+        "Pitch 2,5 mm • formato vertical para varejo, recepções e comunicação de marca • dimensões e configuração sob consulta.",
+      ],
+      [
+        "Painel P2.5 Indoor sob Projeto",
+        "Solução para instalação corporativa permanente, dimensionada mediante briefing e confirmação de ficha técnica do lote ofertado.",
       ],
     ],
     led: [

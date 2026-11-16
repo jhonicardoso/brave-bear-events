@@ -2,12 +2,12 @@ const { categories, products } = window.BRAVE_CATALOG;
 const categoryCopy = {
   venda: {
     application:
-      "A Brave Bear oferece soluções audiovisuais para aquisição e instalações permanentes. O projeto é dimensionado conforme o ambiente, o uso e as especificações necessárias, com proposta personalizada.",
+      "Trabalhamos com projetos de painéis de LED para ambientes internos, fachadas externas e comunicação vertical. Cada solução é especificada conforme distância de visualização, luminosidade, área, conteúdo e necessidades de manutenção.",
     uses: [
-      "Empresas e recepções",
-      "Auditórios e igrejas",
-      "Sinalização digital",
-      "Projetos permanentes",
+      "Salas e auditórios",
+      "Igrejas e templos",
+      "Fachadas e mídia externa",
+      "Lojas e sinalização",
     ],
   },
   led: {
@@ -107,7 +107,7 @@ function categoryHref(id) {
   return `equipamentos.html?categoria=${encodeURIComponent(id)}`;
 }
 function productImageIndex(categoryId, index) {
-  if (categoryId === "venda") return [1, 1, 9][index];
+  if (categoryId === "venda") return [1, 1, 1, 5, 5, 9, 9, 1][index];
   if (categoryId === "interactive") return [1, 2, 3, 6, 4, 7, 5][index];
   if (categoryId === "led") return [1, 2, 3, 4, 5, 6, 7, 9, 8][index];
   if (categoryId === "televisions") return [1, 2, 3, 4, 5, 9, 6, 7, 8][index];
@@ -182,14 +182,17 @@ function renderCategory() {
     `${String(index).padStart(2, "0")} / ${String(categories.length).padStart(2, "0")}`;
   heroImage.style.setProperty("--detail-image", `url('${category.image}')`);
   const isSale = activeCategory === "venda";
+  const consulting = $("#sale-consulting");
+  if (consulting) consulting.hidden = !isSale;
+  document.body.classList.toggle("sale-led-page", isSale);
   $("#equipment-products-title").textContent = isSale
-    ? "Soluções disponíveis para compra"
+    ? "Linhas de painéis e displays LED"
     : "Explore os equipamentos";
   $(".equipment-products-note").textContent = isSale
-    ? "Imagens ilustrativas. Especificações, valores e disponibilidade sob consulta comercial."
+    ? "Referências técnicas para orientar a escolha. Imagens ilustrativas, preços e disponibilidade sob consulta."
     : "Cada proposta é composta conforme o espaço, o formato e o objetivo do evento.";
   $("#equipment-application-title").textContent = isSale
-    ? "Tecnologia para seu projeto."
+    ? "Um projeto pensado para durar."
     : "Tecnologia pensada para cada contexto.";
   $(".equipment-detail-cta h2").textContent = isSale
     ? "Vamos planejar a aquisição dos seus equipamentos?"
