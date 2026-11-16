@@ -82,7 +82,9 @@ test("quote text remains data and outbound link isolates opener", async ({
   ).toContain("<img");
 });
 
-test("Interactive Experience Lab showcases the service and retains all three demos", async ({ page }) => {
+test("Interactive Experience Lab showcases the service and retains all three demos", async ({
+  page,
+}) => {
   await page.goto("/");
   const lab = page.locator("#interatividade");
   await expect(lab.locator("h2")).toContainText("Sua marca deixa de ser vista");
@@ -95,6 +97,11 @@ test("Interactive Experience Lab showcases the service and retains all three dem
   await expect(lab.locator("#activation-panel-wheel")).toBeVisible();
   await lab.locator("#activation-tab-quiz").click();
   await expect(lab.locator("#activation-panel-quiz")).toBeVisible();
-  const action = lab.getByRole("link", { name: /Desenvolver minha experiência/ });
-  await expect(action).toHaveAttribute("data-select-item", /Interactive Experience Lab/);
+  const action = lab.getByRole("link", {
+    name: /Desenvolver minha experiência/,
+  });
+  await expect(action).toHaveAttribute(
+    "data-select-item",
+    /Interactive Experience Lab/,
+  );
 });
