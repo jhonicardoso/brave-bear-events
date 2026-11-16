@@ -164,7 +164,7 @@ function renderProducts() {
       const itemDetail = detail || "Consulte composição e disponibilidade";
       return `<article class="equipment-product-card">
       <div class="equipment-product-image-wrap"><button class="equipment-image-trigger" type="button" aria-label="Ampliar imagem: ${name}"><img src="${image}" alt="${name}" loading="lazy" width="720" height="720"></button></div>
-      <div class="equipment-product-info"><span class="equipment-product-category">${category.short}</span><h3>${name}</h3><p>${itemDetail}</p><a href="${contactHref(category, name)}" target="_blank" rel="noopener noreferrer">Consultar este item <span aria-hidden="true">↗</span></a></div>
+      <div class="equipment-product-info"><span class="equipment-product-category">${category.short}</span><h3>${name}</h3><p>${itemDetail}</p><a href="${contactHref(category, name)}" target="_blank" rel="noopener noreferrer">${activeCategory === "venda" ? "Solicitar proposta de compra" : "Consultar este item"} <span aria-hidden="true">↗</span></a></div>
     </article>`;
     })
     .join("");
