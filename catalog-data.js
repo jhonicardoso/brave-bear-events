@@ -1,6 +1,16 @@
 window.BRAVE_CATALOG = (() => {
   const categories = [
     {
+      id: "venda",
+      label: "Venda de Equipamentos",
+      short: "Venda",
+      count: "3 soluções",
+      tagline:
+        "Tecnologia audiovisual para aquisição e instalações permanentes. Projetos e disponibilidade sob consulta.",
+      image: "assets/led.webp",
+      symbol: "▦",
+    },
+    {
       id: "led",
       label: "Painel de LED",
       short: "Painel de LED",
@@ -75,6 +85,20 @@ window.BRAVE_CATALOG = (() => {
   ];
 
   const products = {
+    venda: [
+      [
+        "Painel LED P2.5 Indoor Magnético",
+        "Alta definição para instalações internas. Projeto, dimensões e especificações sob consulta.",
+      ],
+      [
+        "Painéis de LED para instalação fixa",
+        "Composição personalizada para empresas, auditórios, igrejas e comunicação visual permanente.",
+      ],
+      [
+        "Totem de LED P1.8",
+        "Formato vertical de 0,65 × 2 m. Consulte opções e condições para aquisição.",
+      ],
+    ],
     led: [
       ["LED P1.9MM Indoor", "Placa 50 × 50 cm"],
       ["LED P2.9MM Flexível Indoor", "Placa 50 × 50 cm"],
