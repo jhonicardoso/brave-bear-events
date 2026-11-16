@@ -25,7 +25,7 @@ window.BRAVE_CATALOG = (() => {
       short: "Interatividade",
       count: "7 soluções",
       tagline: "Tecnologia que conecta pessoas e experiências.",
-      image: "assets/totem-interatividade-brave-bear.jpg",
+      image: "assets/totem-interatividade-brave-bear.jpg?v=20261116-hd",
       symbol: "⌁",
     },
     {

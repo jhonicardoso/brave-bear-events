@@ -158,7 +158,9 @@ test("card de interatividade mantém identidade visual escura e fotografia no ca
     };
   });
   expect(styling.image).toContain("linear-gradient");
-  expect(styling.image).toContain("totem-interatividade-brave-bear.jpg");
+  expect(styling.image).toContain(
+    "totem-interatividade-brave-bear.jpg?v=20261116-hd",
+  );
   expect(styling.image).not.toContain("rgba(0, 48, 102");
   expect(styling.image).not.toContain("rgba(5, 24, 53");
   expect(styling.surface).toBe("rgb(7, 22, 38)");
@@ -185,4 +187,60 @@ test("mobile hero follows content without excessive empty space", async ({
   });
   expect(positions.footTop - positions.noteBottom).toBeLessThan(150);
   expect(Math.abs(positions.nextTop - positions.heroBottom)).toBeLessThan(2);
+});
+
+test("premium totem loads and games complete without horizontal overflow", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.locator("#interatividade").scrollIntoViewIfNeeded();
+  const image = page.locator(".interactive-image");
+  expect(
+    await image.evaluate((el) => getComputedStyle(el).backgroundImage),
+  ).toContain("totem-interatividade-brave-bear.jpg?v=20261116-hd");
+  const asset = await page.request.get(
+    "/assets/totem-interatividade-brave-bear.jpg?v=20261116-hd",
+  );
+  expect(asset.ok()).toBe(true);
+  const dimensions = await page.evaluate(async () => {
+    const image = new Image();
+    image.src = "/assets/totem-interatividade-brave-bear.jpg?v=20261116-hd";
+    await image.decode();
+    return { width: image.naturalWidth, height: image.naturalHeight };
+  });
+  expect(dimensions.width).toBeGreaterThanOrEqual(1024);
+  expect(dimensions.height).toBeGreaterThanOrEqual(1024);
+  for (let question = 0; question < 4; question++) {
+    await page.locator("#quiz-choices button").first().click();
+    await page.locator("#quiz-next").click();
+  }
+  await expect(page.locator("#quiz-restart")).toBeVisible();
+  await page.locator("#activation-tab-memory").click();
+  for (const pair of ["audio", "light", "screen"]) {
+    const cards = page.locator(`[data-pair="${pair}"]`);
+    await cards.nth(0).click();
+    await cards.nth(1).click();
+    await expect(cards.nth(1)).toHaveClass(/is-matched/);
+  }
+  await expect(page.locator(".is-matched")).toHaveCount(6);
+  await page.locator("#activation-tab-wheel").click();
+  await page.locator(".demo-spin").click();
+  await expect(page.locator(".wheel-result")).toHaveClass(/is-revealed/);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+});
+
+test("interactive catalog hero uses the shared premium image", async ({
+  page,
+}) => {
+  await page.goto("/equipamentos.html?categoria=interactive");
+  const hero = page.locator("#equipment-detail-hero-image");
+  expect(
+    await hero.evaluate((el) =>
+      getComputedStyle(el).getPropertyValue("--detail-image"),
+    ),
+  ).toContain("totem-interatividade-brave-bear.jpg?v=20261116-hd");
 });
