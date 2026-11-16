@@ -1,5 +1,5 @@
 .interactive-section { position: relative; overflow: hidden; padding-block: 88px 62px; isolation: isolate; background: #07111e; }
-.interactive-image { position: absolute; z-index: -1; inset: 0 0 0 auto; width: 68%; opacity: .86; background: linear-gradient(90deg, #07111e 0%, rgba(7,17,30,.8) 18%, rgba(7,17,30,.18) 68%), linear-gradient(0deg, #07111e 0%, transparent 52%), url("assets/interactive.webp") 62% 40% / cover no-repeat; }
+.interactive-image { position: absolute; z-index: -1; inset: 0 0 0 auto; width: 68%; opacity: .86; background: linear-gradient(90deg, #07111e 0%, rgba(7,17,30,.8) 18%, rgba(7,17,30,.18) 68%), linear-gradient(0deg, #07111e 0%, transparent 52%), url("assets/totem-interatividade-brave-bear.jpg?v=20261116-hd") right center / contain no-repeat; }
 .interactive-wrap { position: relative; }
 .interactive-main { display: grid; grid-template-columns: minmax(0,.82fr) minmax(440px,1.18fr); align-items: center; gap: clamp(30px,5vw,72px); }
 .interactive-copy { max-width: 510px; padding: 0; }
@@ -112,7 +112,7 @@
   .wheel-result { padding: 17px 15px; }
   .interactive-copy { max-width: 640px; }
   .interactive-benefits, .interactive-applications { display: none; }
-  .interactive-image { width: 100%; opacity: .48; background-image: linear-gradient(90deg,rgba(7,17,30,.93),rgba(7,17,30,.55)),linear-gradient(0deg,#07111e 0%,transparent 60%),url("assets/interactive.webp"); }
+  .interactive-image { width: 100%; height: 540px; opacity: .48; background-position: center, center, right top; background-size: cover, cover, contain; background-image: linear-gradient(90deg,rgba(7,17,30,.93),rgba(7,17,30,.55)),linear-gradient(0deg,#07111e 0%,transparent 60%),url("assets/totem-interatividade-brave-bear.jpg?v=20261116-hd"); }
 }
 @media (max-width: 600px) {
   .interactive-section { padding-block: 58px 40px; }
