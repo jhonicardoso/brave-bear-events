@@ -105,3 +105,27 @@ test("Interactive Experience Lab showcases the service and retains all three dem
     /Interactive Experience Lab/,
   );
 });
+
+test("venda e locação apresentam navegação e contato para compra", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("link", { name: /Comprar equipamentos/ }),
+  ).toHaveAttribute("href", "equipamentos.html?categoria=venda");
+  await expect(
+    page.getByRole("link", { name: /Locar para meu evento/ }),
+  ).toHaveAttribute("href", "#equipamentos");
+  await expect(page.locator(".commercial-path")).toHaveCount(2);
+  await page.goto("/equipamentos.html?categoria=venda");
+  await expect(page.locator("#equipment-page-title")).toHaveText(
+    "Venda de Equipamentos",
+  );
+  await expect(page.locator(".equipment-product-card")).toHaveCount(3);
+  const contact = page.locator(".equipment-product-card a").first();
+  await expect(contact).toContainText("Solicitar proposta de compra");
+  const href = await contact.getAttribute("href");
+  expect(new URL(href).searchParams.get("text")).toContain(
+    "interesse na compra",
+  );
+});

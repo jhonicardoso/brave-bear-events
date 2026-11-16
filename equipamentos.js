@@ -1,5 +1,15 @@
 const { categories, products } = window.BRAVE_CATALOG;
 const categoryCopy = {
+  venda: {
+    application:
+      "A Brave Bear oferece soluções audiovisuais para aquisição e instalações permanentes. O projeto é dimensionado conforme o ambiente, o uso e as especificações necessárias, com proposta personalizada.",
+    uses: [
+      "Empresas e recepções",
+      "Auditórios e igrejas",
+      "Sinalização digital",
+      "Projetos permanentes",
+    ],
+  },
   led: {
     application:
       "Painéis, pisos e cubos de LED levam conteúdo visual ao palco, à plenária, ao estande ou a áreas de circulação. A montagem é escolhida conforme o espaço e a proposta do evento.",
@@ -97,6 +107,7 @@ function categoryHref(id) {
   return `equipamentos.html?categoria=${encodeURIComponent(id)}`;
 }
 function productImageIndex(categoryId, index) {
+  if (categoryId === "venda") return [1, 1, 9][index];
   if (categoryId === "interactive") return [1, 2, 3, 6, 4, 7, 5][index];
   if (categoryId === "led") return [1, 2, 3, 4, 5, 6, 7, 9, 8][index];
   if (categoryId === "televisions") return [1, 2, 3, 4, 5, 9, 6, 7, 8][index];
@@ -120,9 +131,13 @@ const ledCubeImages = [
   },
 ];
 function contactHref(category, product = "") {
-  const message = `Olá, Brave Bear! Estou consultando o catálogo de ${category.label}${product ? ` e gostaria de informações sobre ${product}` : ""}. Podemos conversar sobre a aplicação no meu evento?`;
+  const message =
+    category.id === "venda"
+      ? `Olá, Brave Bear! Tenho interesse na compra de ${product || "equipamentos audiovisuais"}. Gostaria de solicitar uma proposta comercial com especificações e disponibilidade.`
+      : `Olá, Brave Bear! Estou consultando o catálogo de ${category.label}${product ? ` e gostaria de informações sobre ${product}` : ""}. Podemos conversar sobre a locação para meu evento?`;
   return `https://wa.me/5511911728323?text=${encodeURIComponent(message)}`;
 }
+
 function renderProducts() {
   const category = categories.find(({ id }) => id === activeCategory);
   const query = search.value.trim().toLocaleLowerCase("pt-BR");
@@ -138,15 +153,18 @@ function renderProducts() {
         const itemDetail = detail || "Consulte composição e disponibilidade";
         return `<article class="equipment-product-card equipment-product-card-cube">
         <div class="equipment-product-image-wrap"><button class="equipment-image-trigger" type="button" aria-label="Ampliar imagem: ${name}"><picture class="equipment-product-picture"><source media="(max-width: 600px)" srcset="${image.mobile}"><img src="${image.desktop}" alt="${image.alt}" loading="lazy" width="720" height="720"></picture></button></div>
-        <div class="equipment-product-info"><span class="equipment-product-category">${category.short}</span><h3>${name}</h3><p>${itemDetail}</p><a href="${contactHref(category, name)}" target="_blank" rel="noopener noreferrer">Consultar este item <span aria-hidden="true">↗</span></a></div>
+        <div class="equipment-product-info"><span class="equipment-product-category">${category.short}</span><h3>${name}</h3><p>${itemDetail}</p><a href="${contactHref(category, name)}" target="_blank" rel="noopener noreferrer">${activeCategory === "venda" ? "Solicitar proposta de compra" : "Consultar este item"} <span aria-hidden="true">↗</span></a></div>
       </article>`;
       }
       const photoIndex = productImageIndex(activeCategory, index);
-      const image = `assets/catalog-items/${activeCategory}-${String(photoIndex).padStart(2, "0")}.webp`;
+      const image =
+        activeCategory === "venda"
+          ? `assets/catalog-items/led-${String(photoIndex).padStart(2, "0")}.webp`
+          : `assets/catalog-items/${activeCategory}-${String(photoIndex).padStart(2, "0")}.webp`;
       const itemDetail = detail || "Consulte composição e disponibilidade";
       return `<article class="equipment-product-card">
       <div class="equipment-product-image-wrap"><button class="equipment-image-trigger" type="button" aria-label="Ampliar imagem: ${name}"><img src="${image}" alt="${name}" loading="lazy" width="720" height="720"></button></div>
-      <div class="equipment-product-info"><span class="equipment-product-category">${category.short}</span><h3>${name}</h3><p>${itemDetail}</p><a href="${contactHref(category, name)}" target="_blank" rel="noopener noreferrer">Consultar este item <span aria-hidden="true">↗</span></a></div>
+      <div class="equipment-product-info"><span class="equipment-product-category">${category.short}</span><h3>${name}</h3><p>${itemDetail}</p><a href="${contactHref(category, name)}" target="_blank" rel="noopener noreferrer">${activeCategory === "venda" ? "Solicitar proposta de compra" : "Consultar este item"} <span aria-hidden="true">↗</span></a></div>
     </article>`;
     })
     .join("");
@@ -163,6 +181,25 @@ function renderCategory() {
   $("#equipment-current-index").textContent =
     `${String(index).padStart(2, "0")} / ${String(categories.length).padStart(2, "0")}`;
   heroImage.style.setProperty("--detail-image", `url('${category.image}')`);
+  const isSale = activeCategory === "venda";
+  $("#equipment-products-title").textContent = isSale
+    ? "Soluções disponíveis para compra"
+    : "Explore os equipamentos";
+  $(".equipment-products-note").textContent = isSale
+    ? "Imagens ilustrativas. Especificações, valores e disponibilidade sob consulta comercial."
+    : "Cada proposta é composta conforme o espaço, o formato e o objetivo do evento.";
+  $("#equipment-application-title").textContent = isSale
+    ? "Tecnologia para seu projeto."
+    : "Tecnologia pensada para cada contexto.";
+  $(".equipment-detail-cta h2").textContent = isSale
+    ? "Vamos planejar a aquisição dos seus equipamentos?"
+    : "Vamos definir a melhor solução para o seu evento?";
+  $(".equipment-detail-cta p:not(.eyebrow)").textContent = isSale
+    ? "Nossa equipe prepara uma proposta comercial personalizada para sua instalação."
+    : "A equipe ajuda a avaliar os formatos e a composição mais adequados ao projeto.";
+  $("#equipment-category-cta").innerHTML = isSale
+    ? 'Explorar opções de compra <span aria-hidden="true">↓</span>'
+    : 'Explorar equipamentos <span aria-hidden="true">↓</span>';
   application.textContent = details.application;
   uses.innerHTML = details.uses.map((use) => `<span>${use}</span>`).join("");
   const nav = $("#equipment-category-nav");
