@@ -40,7 +40,71 @@
     "sameAs": ["https://www.instagram.com/bravebearbrasil/", "https://www.linkedin.com/company/brave-bear-events"]
   }
   </script>
-  <link rel="stylesheet" href="enhancements.css?v=20261116-mobile-spacing">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Como peço um orçamento?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Clique em Orçamento e informe o serviço, a data e o local do evento. A conversa continua no WhatsApp, com a mensagem pronta para você revisar e enviar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "A Brave Bear opera os equipamentos durante o evento?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim. A equipe técnica cuida da montagem, da operação durante o evento e da desmontagem, conforme o escopo contratado."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qual a diferença entre locação e venda?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A locação atende eventos, com montagem e operação técnica. A venda atende instalações permanentes, como empresas, igrejas, auditórios e espaços comerciais."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como sei o tamanho de painel de LED que preciso?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use a calculadora do site: informe largura, altura e pitch e veja placas e resolução. A equipe técnica confirma sinal, energia e montagem no seu projeto."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Para quais tipos de evento vocês atendem?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Eventos corporativos, congressos, convenções, palestras, workshops, treinamentos, feiras, exposições, lançamentos, premiações, eventos sociais e ativações de marca."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Com quanta antecedência devo pedir o orçamento?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Quanto antes, melhor, porque a disponibilidade de equipamentos e equipe depende da data. Envie o pedido assim que tiver data e local definidos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Vocês atendem em outras cidades?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Informe a cidade e o local do evento no orçamento. A equipe confirma a logística e as condições para o endereço."
+        }
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="enhancements.css?v=20261118-home-v2">
   <script src="enhancements.js" defer></script>
 </head>
 <body>
@@ -54,14 +118,13 @@
         <span></span><span></span>
       </button>
       <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
-        <a href="#inicio">Início</a>
-        <a href="#solucoes">Soluções</a>
-        <a href="#equipamentos">Equipamentos</a>
+        <a href="#solucoes">Serviços</a>
+        <a href="#equipamentos">Catálogo</a>
         <a href="#kits">Kits</a>
-        <a href="#interatividade">Interatividade</a>
-        <a href="#sobre">Sobre</a>
+        <a href="#interatividade">Digital</a>
+        <a href="#projetos">Projetos</a>
         <a href="#contato">Contato</a>
-        <a class="button button-small nav-quote" href="#orcamento">Solicitar orçamento <span aria-hidden="true">↗</span></a>
+        <a class="button button-small nav-quote" href="#orcamento" data-quick-quote>Orçamento <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </header>
@@ -72,12 +135,13 @@
       <div class="hero-grid"></div>
       <img class="hero-screen-logo" src="assets/brand-lockup-white.png" alt="" aria-hidden="true" width="2170" height="725">
       <div class="hero-content wrap">
-        <p class="eyebrow"><span class="eyebrow-line"></span> VENDA E LOCAÇÃO DE EQUIPAMENTOS AUDIOVISUAIS</p>
+        <p class="eyebrow"><span class="eyebrow-line"></span> AUDIOVISUAL <b>·</b> SOFTWARE <b>·</b> EXPERIÊNCIAS DIGITAIS</p>
         <h1 id="hero-title">Tecnologia que transforma projetos em <span>experiências.</span></h1>
-        <p class="hero-copy">Locação para eventos e venda de soluções audiovisuais para instalações permanentes. Da ideia à entrega, tecnologia e atendimento especializado.</p>
+        <p class="hero-copy">Locação e venda de equipamentos audiovisuais, com equipe técnica e desenvolvimento de software.</p>
         <div class="hero-actions">
-          <a class="button" href="equipamentos.html?categoria=venda">Comprar equipamentos <span aria-hidden="true">↗</span></a>
+          <a class="button" href="#orcamento" data-quick-quote>Orçamento em 1 minuto <span aria-hidden="true">↗</span></a>
           <a class="button button-ghost" href="#equipamentos">Locar para meu evento <span aria-hidden="true">↓</span></a>
+          <a class="hero-buy" href="equipamentos.html?categoria=venda">Comprar equipamentos <span aria-hidden="true">↗</span></a>
         </div>
         <div class="hero-note"><span class="signal-dot"></span> Tecnologia <b>+</b> equipe <b>+</b> estrutura</div>
       </div>
@@ -93,79 +157,82 @@
         <article class="commercial-path commercial-path-sale">
           <span class="commercial-path-kicker">01 / SOLUÇÕES PARA AQUISIÇÃO</span>
           <h2>Venda de <span>equipamentos.</span></h2>
-          <p>Projetos de painéis de LED e tecnologia audiovisual para instalações permanentes em empresas, igrejas, auditórios e espaços comerciais.</p>
-          <a href="equipamentos.html?categoria=venda">Explorar opções de compra <span aria-hidden="true">↗</span></a>
+          <p>Painéis de LED e tecnologia para instalações permanentes.</p>
+          <a href="equipamentos.html?categoria=venda">Ver opções de compra <span aria-hidden="true">↗</span></a>
         </article>
         <article class="commercial-path commercial-path-rental">
           <span class="commercial-path-kicker">02 / EXPERIÊNCIAS PARA EVENTOS</span>
           <h2>Locação <span>audiovisual.</span></h2>
-          <p>Painéis de LED, som, iluminação, TVs e interatividade com montagem e operação técnica para seu próximo evento.</p>
-          <a href="#equipamentos">Explorar equipamentos para locação <span aria-hidden="true">↗</span></a>
+          <p>Painéis de LED, som, luz e TVs, com montagem e operação técnica.</p>
+          <a href="#equipamentos">Ver equipamentos para locação <span aria-hidden="true">↗</span></a>
         </article>
       </div>
     </section>
 
     <div class="capability-bar" aria-label="Principais soluções">
-      <div class="wrap capability-list">
-        <span>Painel de LED</span><i></i><span>Sonorização</span><i></i><span>Iluminação</span><i></i><span>Projeção</span><i></i><span>Interatividade</span><i></i><span>Estrutura</span>
+      <div class="capability-marquee">
+        <ul class="capability-track"><li>Painel de LED</li><li>Sonorização</li><li>Iluminação</li><li>Projeção</li><li>Transmissão ao vivo</li><li>Captação de vídeo</li><li>Operação técnica</li><li>Montagem e desmontagem</li><li>Cenografia audiovisual</li><li>Interatividade</li><li>Vídeo e conteúdo</li></ul>
+        <ul class="capability-track" aria-hidden="true"><li>Painel de LED</li><li>Sonorização</li><li>Iluminação</li><li>Projeção</li><li>Transmissão ao vivo</li><li>Captação de vídeo</li><li>Operação técnica</li><li>Montagem e desmontagem</li><li>Cenografia audiovisual</li><li>Interatividade</li><li>Vídeo e conteúdo</li></ul>
       </div>
     </div>
+
+    <section class="stats-section" aria-labelledby="stats-title">
+      <div class="wrap">
+        <h2 class="sr-only" id="stats-title">Brave Bear em números</h2>
+        <ul class="stats-grid">
+          <li class="stat"><small class="stat-pre">Mais de</small><strong class="stat-value" data-count-to="220">220</strong><span class="stat-label">clientes atendidos</span></li>
+          <li class="stat" data-stat="projects"><small class="stat-pre">Mais de</small><strong class="stat-value" data-count-to="750">750</strong><span class="stat-label">projetos entregues</span></li>
+          <li class="stat"><small class="stat-pre">Mais de</small><strong class="stat-value" data-count-to="300">300</strong><span class="stat-label">marcas atendidas</span></li>
+          <li class="stat"><small class="stat-pre" aria-hidden="true">&nbsp;</small><strong class="stat-value" data-count-to="11">11</strong><span class="stat-label">soluções em um só contrato</span></li>
+          <li class="stat"><small class="stat-pre" aria-hidden="true">&nbsp;</small><strong class="stat-value" data-count-to="6">6</strong><span class="stat-label">etapas, do briefing à desmontagem</span></li>
+        </ul>
+      </div>
+    </section>
 
     <section class="section section-light" id="solucoes" aria-labelledby="solutions-title">
       <div class="wrap">
         <div class="section-heading heading-split">
           <div>
-            <p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> EXPERIÊNCIA INTEGRADA</p>
-            <h2 id="solutions-title">Soluções audiovisuais <span>para cada momento.</span></h2>
+            <p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> SERVIÇOS</p>
+            <h2 id="solutions-title">Tudo para o seu <span>evento.</span></h2>
           </div>
-          <p class="section-intro">Combine tecnologia, montagem e operação em uma solução pensada para o ritmo do seu evento.</p>
         </div>
         <div class="service-grid">
-          <article class="service-card"><span class="service-number">01</span><div class="service-icon icon-audio" aria-hidden="true">◖))</div><h3>Sonorização</h3><p>Som profissional com clareza e cobertura adequadas ao espaço.</p><a href="equipamentos.html?categoria=audio">Ver equipamentos <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">02</span><div class="service-icon icon-light" aria-hidden="true">✳</div><h3>Iluminação</h3><p>Luz cênica e arquitetural para valorizar cada ambiente.</p><a href="equipamentos.html?categoria=lighting">Ver equipamentos <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">03</span><div class="service-icon icon-led" aria-hidden="true">▦</div><h3>Painel de LED</h3><p>Painéis de alta definição em diferentes formatos e montagens.</p><a href="equipamentos.html?categoria=led">Ver equipamentos <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">04</span><div class="service-icon icon-projection" aria-hidden="true">▱</div><h3>Projeção</h3><p>Projetores e telas para espaços de diversos tamanhos.</p><a href="equipamentos.html?categoria=projection">Ver equipamentos <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">05</span><div class="service-icon icon-live" aria-hidden="true">◉</div><h3>Transmissão ao vivo</h3><p>Captação e operação para transmissões estáveis.</p><a href="#kits">Conhecer kit <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">06</span><div class="service-icon icon-camera" aria-hidden="true">▣</div><h3>Captação de vídeo</h3><p>Registro audiovisual profissional do evento.</p><a href="#orcamento">Planejar captação <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">07</span><div class="service-icon icon-crew" aria-hidden="true">⌘</div><h3>Operação técnica</h3><p>Equipe técnica para operar os sistemas do evento.</p><a href="#como-funciona">Como funciona <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">08</span><div class="service-icon icon-build" aria-hidden="true">⌗</div><h3>Montagem e desmontagem</h3><p>Montagem e retirada planejadas para cada espaço.</p><a href="#como-funciona">Como funciona <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">09</span><div class="service-icon icon-stage" aria-hidden="true">◇</div><h3>Cenografia audiovisual</h3><p>Vídeo, luz e estrutura integrados ao ambiente.</p><a href="#orcamento">Montar meu projeto <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">10</span><div class="service-icon icon-touch" aria-hidden="true">⌁</div><h3>Interatividade</h3><p>Totens, jogos e ativações digitais para o público.</p><a href="#interatividade">Explorar interatividade <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">11</span><div class="service-icon icon-content" aria-hidden="true">▷</div><h3>Vídeo e conteúdo</h3><p>Produção audiovisual para eventos e campanhas.</p><a href="#orcamento">Falar com especialista <span>↗</span></a></article>
+          <article class="service-card"><span class="service-number">01</span><div class="service-icon icon-audio" aria-hidden="true">◖))</div><h3>Sonorização</h3><a href="equipamentos.html?categoria=audio">Ver equipamentos <span>↗</span></a></article>
+          <article class="service-card"><span class="service-number">02</span><div class="service-icon icon-light" aria-hidden="true">✳</div><h3>Iluminação</h3><a href="equipamentos.html?categoria=lighting">Ver equipamentos <span>↗</span></a></article>
+          <article class="service-card"><span class="service-number">03</span><div class="service-icon icon-led" aria-hidden="true">▦</div><h3>Painel de LED</h3><a href="equipamentos.html?categoria=led">Ver equipamentos <span>↗</span></a></article>
+          <article class="service-card"><span class="service-number">04</span><div class="service-icon icon-projection" aria-hidden="true">▱</div><h3>Projeção</h3><a href="equipamentos.html?categoria=projection">Ver equipamentos <span>↗</span></a></article>
+          <article class="service-card"><span class="service-number">05</span><div class="service-icon icon-live" aria-hidden="true">◉</div><h3>Transmissão ao vivo</h3><a href="#kits">Conhecer kit <span>↗</span></a></article>
+          <article class="service-card"><span class="service-number">06</span><div class="service-icon icon-camera" aria-hidden="true">▣</div><h3>Captação de vídeo</h3><a href="#orcamento">Planejar captação <span>↗</span></a></article>
+          <article class="service-card"><span class="service-number">07</span><div class="service-icon icon-crew" aria-hidden="true">⌘</div><h3>Operação técnica</h3><a href="#como-funciona">Como funciona <span>↗</span></a></article>
+          <article class="service-card"><span class="service-number">08</span><div class="service-icon icon-build" aria-hidden="true">⌗</div><h3>Montagem e desmontagem</h3><a href="#como-funciona">Como funciona <span>↗</span></a></article>
+          <article class="service-card"><span class="service-number">09</span><div class="service-icon icon-stage" aria-hidden="true">◇</div><h3>Cenografia audiovisual</h3><a href="#orcamento">Montar meu projeto <span>↗</span></a></article>
+          <article class="service-card"><span class="service-number">10</span><div class="service-icon icon-touch" aria-hidden="true">⌁</div><h3>Interatividade</h3><a href="#interatividade">Explorar interatividade <span>↗</span></a></article>
+          <article class="service-card"><span class="service-number">11</span><div class="service-icon icon-content" aria-hidden="true">▷</div><h3>Vídeo e conteúdo</h3><a href="#orcamento">Falar com especialista <span>↗</span></a></article>
         </div>
-        <aside class="led-planner" aria-labelledby="led-planner-title">
-          <div class="led-planner-icon" aria-hidden="true"><span><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
-          <div class="led-planner-copy">
-            <p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> DIMENSIONAMENTO DE PAINEL</p>
-            <h3 id="led-planner-title">Planeje seu painel de LED.</h3>
-            <p>Visualize a configuração técnica do painel antes da montagem.</p>
-            <ul class="led-planner-highlights" aria-label="Recursos da calculadora"><li>Resolução</li><li>Mapa de placas</li><li>Sinal e energia</li></ul>
-          </div>
-          <a class="button led-planner-button" href="calculadora-led.html">Começar dimensionamento <span aria-hidden="true">↗</span></a>
-        </aside>
       </div>
     </section>
 
-    <section class="interactive-section" id="interatividade" data-lazy-script="interactivity.js" aria-labelledby="interactive-title">
+        <section class="interactive-section" id="interatividade" data-lazy-script="interactivity.js" aria-labelledby="interactive-title">
       <div class="interactive-image" role="img" aria-label="Totem premium Brave Bear para experiências interativas"></div>
       <div class="wrap interactive-wrap">
         <div class="interactive-main">
           <div class="interactive-copy">
-            <p class="eyebrow experience-eyebrow"><span class="eyebrow-line"></span> BRAVE BEAR · INTERACTIVE EXPERIENCE LAB</p>
-            <h2 id="interactive-title">Sua marca deixa de ser vista. <span>Passa a ser vivida.</span></h2>
-            <p>Criamos experiências digitais personalizadas que conectam marcas e pessoas. Da ideia à ativação, unimos desenvolvimento criativo, jogos interativos e tecnologia audiovisual em uma entrega integrada.</p>
+            <p class="eyebrow experience-eyebrow"><span class="eyebrow-line"></span> BRAVE BEAR DIGITAL</p>
+            <h2 id="interactive-title">Software, apps e <span>experiências digitais.</span></h2>
+            <p>Também somos desenvolvedores. Criamos a tecnologia que conecta a sua marca ao público.</p>
+            <ul class="digital-pillars" aria-label="O que desenvolvemos">
+              <li><span>01</span><h3>Software</h3><p>Sistemas sob medida para a sua operação.</p></li>
+              <li><span>02</span><h3>Aplicativos</h3><p>Apps para o seu público e para a sua equipe.</p></li>
+              <li><span>03</span><h3>Experiências digitais</h3><p>Jogos, totens e ativações interativas.</p></li>
+            </ul>
             <div class="experience-actions">
-              <a class="button interactive-cta" href="#orcamento" data-select-item="Projeto personalizado — Brave Bear Interactive Experience Lab">Desenvolver minha experiência <span aria-hidden="true">↗</span></a>
-              <a class="experience-demo-link" href="#activation-demo">Testar nossas demonstrações <span aria-hidden="true">↓</span></a>
-            </div>
-            <div class="experience-process" aria-label="Etapas da experiência">
-              <div><span>01 / CONCEITO</span><strong>Criamos</strong><p>Do briefing à ideia que representa sua marca.</p></div>
-              <div><span>02 / CRIAÇÃO</span><strong>Personalizamos</strong><p>Conteúdo, identidade visual e dinâmica do jogo.</p></div>
-              <div><span>03 / EVENTO</span><strong>Ativamos</strong><p>Integramos a experiência à operação audiovisual.</p></div>
+              <a class="button interactive-cta" href="#orcamento" data-quick-quote="Software ou aplicativo">Desenvolver meu projeto <span aria-hidden="true">↗</span></a>
+              <a class="experience-demo-link" href="#activation-demo">Experimente <span aria-hidden="true">↓</span></a>
             </div>
           </div>
           <div class="activation-demo" id="activation-demo" role="region" aria-label="Modelos interativos de ativações para experimentar">
-            <div class="activation-demo-heading"><span><i></i> EXPERIÊNCIAS DEMONSTRATIVAS · EXPERIMENTE</span><span id="activation-step">01 / 03</span></div>
+            <div class="activation-demo-heading"><span><i></i> EXPERIMENTE</span><span id="activation-step">01 / 03</span></div>
             <div class="activation-tabs" role="tablist" aria-label="Tipos de ativação">
               <button type="button" role="tab" id="activation-tab-quiz" aria-controls="activation-panel-quiz" aria-selected="true" tabindex="0" data-activation="quiz">Quiz</button>
               <button type="button" role="tab" id="activation-tab-memory" aria-controls="activation-panel-memory" aria-selected="false" tabindex="-1" data-activation="memory">Memória</button>
@@ -223,29 +290,20 @@
             </div>
           </div>
         </div>
-        <div class="experience-outro"><div><span>UMA EXPERIÊNCIA COM A IDENTIDADE DA SUA MARCA</span><h3>Cada projeto começa com uma ideia. Vamos desenvolver a sua?</h3><p>Personalizamos conteúdos, desafios e mecânicas para feiras, convenções, ações promocionais e eventos corporativos.</p></div><a class="button" href="#orcamento" data-select-item="Briefing — jogo ou ativação digital personalizada">Solicitar um projeto personalizado <span aria-hidden="true">↗</span></a></div>
-        <div class="interactive-benefits" role="group" aria-label="O que a ativação pode oferecer">
-          <article><span>01</span><div><strong>Participação ativa</strong><p>Convide o público a interagir com a marca.</p></div></article>
-          <article><span>02</span><div><strong>Conteúdo personalizado</strong><p>Adapte a dinâmica ao objetivo do evento.</p></div></article>
-          <article><span>03</span><div><strong>Operação integrada</strong><p>Conte com suporte técnico no local.</p></div></article>
-        </div>
-        <p class="interactive-applications"><span>PARA</span> Feiras <i>·</i> lançamentos <i>·</i> eventos corporativos <i>·</i> ações promocionais</p>
       </div>
     </section>
 
     <section class="section section-light kits-section" id="kits" aria-labelledby="kits-title">
       <div class="wrap">
         <div class="section-heading heading-split">
-          <div><p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> CONFIGURAÇÕES PRÁTICAS</p><h2 id="kits-title">Soluções em <span>kits.</span></h2></div>
-          <p class="section-intro">Equipamentos, tecnologia e operação reunidos para atender diferentes necessidades do seu evento.</p>
+          <div><p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> KITS PRONTOS</p><h2 id="kits-title">Escolha um <span>kit.</span></h2></div>
         </div>
         <div class="kits-grid">
-          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 01</span><span class="kit-mark" aria-hidden="true">01</span></div><h3>Palestra</h3><p>Uma base audiovisual para palestras, treinamentos e apresentações.</p><ul><li>Painel LED</li><li>Notebook</li><li>2 microfones</li><li>Sistema de áudio e retorno</li><li>Iluminação</li><li>Operador</li></ul><a class="button" href="#orcamento" data-kit="Kit Palestra" data-kit-items="Painel LED, Notebook, 2 microfones, sistema de áudio e retorno, iluminação e operador">Quero este kit <span>↗</span></a></article>
-          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 02</span><span class="kit-mark" aria-hidden="true">02</span></div><h3>Evento corporativo</h3><p>Estrutura integrada para comunicação visual e operação do evento.</p><ul><li>Painel LED</li><li>TVs de apoio</li><li>Sistema de áudio e microfones</li><li>Iluminação</li><li>Estrutura</li><li>Operação técnica</li></ul><a class="button" href="#orcamento" data-kit="Kit Evento Corporativo" data-kit-items="Painel LED, TVs de apoio, sistema de áudio e microfones, iluminação, estrutura e operação técnica">Quero este kit <span>↗</span></a></article>
-          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 03</span><span class="kit-mark" aria-hidden="true">03</span></div><h3>Transmissão</h3><p>Equipamentos e operador para transmissões ao vivo.</p><ul><li>Câmeras e tripés</li><li>Mesa de corte</li><li>Encoder</li><li>Computador</li><li>Internet</li><li>Operador</li></ul><a class="button" href="#orcamento" data-kit="Kit Transmissão" data-kit-items="Câmeras e tripés, mesa de corte, encoder, computador, internet e operador">Quero este kit <span>↗</span></a></article>
-          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 04</span><span class="kit-mark" aria-hidden="true">04</span></div><h3>Administrativo</h3><p>Itens de apoio para a operação administrativa do evento.</p><ul><li>Notebook e monitor</li><li>Teclado e mouse</li><li>Impressora</li><li>Celulares e tablet</li><li>Cabos e acessórios</li></ul><a class="button" href="#orcamento" data-kit="Kit Administrativo" data-kit-items="Notebook e monitor, teclado e mouse, impressora, celulares e tablet, cabos e acessórios">Quero este kit <span>↗</span></a></article>
+          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 01</span><span class="kit-mark" aria-hidden="true">01</span></div><h3>Palestra</h3><ul><li>Painel LED</li><li>Notebook</li><li>2 microfones</li><li>Sistema de áudio e retorno</li><li>Iluminação</li><li>Operador</li></ul><a class="button" href="#orcamento" data-quick-quote="Kit Palestra" data-kit="Kit Palestra" data-kit-items="Painel LED, Notebook, 2 microfones, sistema de áudio e retorno, iluminação e operador">Quero este kit <span>↗</span></a></article>
+          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 02</span><span class="kit-mark" aria-hidden="true">02</span></div><h3>Evento corporativo</h3><ul><li>Painel LED</li><li>TVs de apoio</li><li>Sistema de áudio e microfones</li><li>Iluminação</li><li>Estrutura</li><li>Operação técnica</li></ul><a class="button" href="#orcamento" data-quick-quote="Kit Evento Corporativo" data-kit="Kit Evento Corporativo" data-kit-items="Painel LED, TVs de apoio, sistema de áudio e microfones, iluminação, estrutura e operação técnica">Quero este kit <span>↗</span></a></article>
+          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 03</span><span class="kit-mark" aria-hidden="true">03</span></div><h3>Transmissão</h3><ul><li>Câmeras e tripés</li><li>Mesa de corte</li><li>Encoder</li><li>Computador</li><li>Internet</li><li>Operador</li></ul><a class="button" href="#orcamento" data-quick-quote="Kit Transmissão" data-kit="Kit Transmissão" data-kit-items="Câmeras e tripés, mesa de corte, encoder, computador, internet e operador">Quero este kit <span>↗</span></a></article>
+          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 04</span><span class="kit-mark" aria-hidden="true">04</span></div><h3>Administrativo</h3><ul><li>Notebook e monitor</li><li>Teclado e mouse</li><li>Impressora</li><li>Celulares e tablet</li><li>Cabos e acessórios</li></ul><a class="button" href="#orcamento" data-quick-quote="Kit Administrativo" data-kit="Kit Administrativo" data-kit-items="Notebook e monitor, teclado e mouse, impressora, celulares e tablet, cabos e acessórios">Quero este kit <span>↗</span></a></article>
         </div>
-        <p class="kit-footnote">As configurações podem ser ajustadas conforme o escopo e as necessidades de cada evento.</p>
       </div>
     </section>
 
@@ -253,15 +311,21 @@
       <div class="wrap">
         <div class="section-heading heading-split equipment-heading">
           <div><p class="eyebrow"><span class="eyebrow-line"></span> CATÁLOGO BRAVE BEAR</p><h2 id="equipment-title">Tecnologia pronta <span>para entrar em cena.</span></h2></div>
-          <p class="section-intro">Explore categorias para locação e opções para aquisição. Consulte disponibilidade e condições de cada projeto com nossa equipe.</p>
         </div>
         <div class="equipment-feature-grid" id="equipment-categories" aria-label="Categorias de equipamentos"></div>
+        <div class="catalog-download">
+          <div><strong>Quer ver todos os equipamentos?</strong><span>Catálogo completo em PDF, cerca de 53 MB.</span></div>
+          <div class="catalog-actions">
+            <a class="button" href="catalogo-audiovisual.pdf?v=20261027-2" download>Baixar catálogo em PDF <span aria-hidden="true">↓</span></a>
+            <a class="button button-ghost" href="calculadora-led.html">Calculadora de painel de LED <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="event-types section section-light" id="eventos" aria-labelledby="events-title">
       <div class="wrap event-types-layout">
-        <div class="event-types-title"><p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> EVENTOS E EXPERIÊNCIAS</p><h2 id="events-title">Uma estrutura para <span>cada experiência.</span></h2><p>Do encontro corporativo à ativação de marca, a solução parte do formato e do objetivo de cada evento.</p><a class="text-link text-link-dark" href="#orcamento">Conte sobre o seu evento <span>↗</span></a></div>
+        <div class="event-types-title"><p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> EVENTOS E EXPERIÊNCIAS</p><h2 id="events-title">Uma estrutura para <span>cada experiência.</span></h2><a class="text-link text-link-dark" href="#orcamento">Conte sobre o seu evento <span>↗</span></a></div>
         <div class="event-tags" aria-label="Categorias de eventos">
           <button type="button" class="event-tag" data-event-detail="0">Eventos corporativos</button>
           <button type="button" class="event-tag" data-event-detail="1">Congressos</button>
@@ -291,9 +355,24 @@
       </div>
     </dialog>
 
+<section class="projects-section section" id="projetos" aria-labelledby="projects-title">
+      <div class="wrap">
+        <div class="section-heading"><p class="eyebrow"><span class="eyebrow-line"></span> PROJETOS</p><h2 id="projects-title">Eventos que <span>já realizamos.</span></h2></div>
+        <!-- TROCAR pelas fotos reais dos eventos em assets/projetos/ e ajustar as legendas. -->
+        <div class="projects-grid">
+          <figure class="project"><img src="assets/hero-stage.webp" alt="Palco com painel de LED e iluminação cênica" loading="lazy" decoding="async"><figcaption>Palco e painel de LED</figcaption></figure>
+          <figure class="project"><img src="assets/structure.webp" alt="Estrutura de montagem para evento" loading="lazy" decoding="async"><figcaption>Estrutura</figcaption></figure>
+          <figure class="project"><img src="assets/totem-interatividade-brave-bear.jpg?v=20261116-hd" alt="Totem interativo em evento" loading="lazy" decoding="async"><figcaption>Interatividade</figcaption></figure>
+          <figure class="project"><img src="assets/televisions.webp" alt="Televisores instalados em evento" loading="lazy" decoding="async"><figcaption>TVs e telas</figcaption></figure>
+          <figure class="project"><img src="assets/lighting.webp" alt="Iluminação cênica em evento" loading="lazy" decoding="async"><figcaption>Iluminação</figcaption></figure>
+          <figure class="project"><img src="assets/audio.webp" alt="Sonorização profissional em evento" loading="lazy" decoding="async"><figcaption>Sonorização</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
     <section class="client-section" aria-labelledby="clients-title">
       <div class="wrap client-layout">
-        <div class="client-heading"><p class="eyebrow"><span class="eyebrow-line"></span> CLIENTES</p><h2 id="clients-title">Marcas que fazem parte dos projetos da <span>Brave Bear.</span></h2></div>
+        <div class="client-heading"><p class="eyebrow"><span class="eyebrow-line"></span> CLIENTES</p><h2 id="clients-title">Marcas que fazem parte dos projetos da <span>Brave Bear.</span></h2><p class="client-note">Mais de 300 marcas já foram atendidas. Estas são algumas delas.</p></div>
         <div class="client-carousel" role="region" aria-roledescription="carrossel" aria-label="Logos dos clientes atendidos pela Brave Bear">
           <div class="client-carousel-controls"><button class="client-carousel-toggle" type="button" aria-label="Pausar a rolagem automática das logos" aria-pressed="false">Pausar</button></div>
           <div class="client-carousel-viewport" tabindex="0" aria-label="Faixa horizontal de logos de clientes">
@@ -335,9 +414,18 @@
       </div>
     </section>
 
+        <!-- Depoimentos: a seção fica oculta até haver depoimentos REAIS, com autorização do cliente.
+         Para ativar, remova o atributo hidden e preencha os cartões conforme docs/prova-social.md. -->
+    <section class="testimonials-section section section-light" id="depoimentos" aria-labelledby="testimonials-title" hidden>
+      <div class="wrap">
+        <div class="section-heading"><p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> DEPOIMENTOS</p><h2 id="testimonials-title">O que dizem <span>nossos clientes.</span></h2></div>
+        <div class="testimonial-grid"></div>
+      </div>
+    </section>
+
     <section class="process-section section" id="como-funciona" aria-labelledby="process-title">
       <div class="wrap">
-        <div class="section-heading heading-split"><div><p class="eyebrow"><span class="eyebrow-line"></span> ORGANIZAÇÃO EM CADA ETAPA</p><h2 id="process-title">Do primeiro briefing ao último <span>equipamento retirado.</span></h2></div><p class="section-intro">Um fluxo de trabalho pensado para integrar projeto, estrutura e equipe ao longo do evento.</p></div>
+        <div class="section-heading heading-split"><div><p class="eyebrow"><span class="eyebrow-line"></span> ORGANIZAÇÃO EM CADA ETAPA</p><h2 id="process-title">Do primeiro briefing ao último <span>equipamento retirado.</span></h2></div></div>
         <ol class="process-list">
           <li><span>01</span><div><h3>Briefing</h3><p>Entendemos o evento e suas necessidades.</p></div></li>
           <li><span>02</span><div><h3>Projeto</h3><p>Definimos uma solução audiovisual adequada.</p></div></li>
@@ -353,7 +441,7 @@
       <div class="about-photo" role="img" aria-label="Estrutura de palco com iluminação e painel de LED"></div>
       <div class="wrap about-layout">
         <div class="about-copy"><p class="eyebrow"><span class="eyebrow-line"></span> BRAVE BEAR EVENTS</p><h2 id="about-title">Mais do que equipamentos. <span>Uma entrega integrada.</span></h2></div>
-        <div class="about-detail"><p>A Brave Bear reúne soluções audiovisuais, tecnologia, estrutura e experiências para eventos. Cada projeto é pensado para conectar os recursos certos ao formato e ao objetivo da ocasião.</p><p class="about-signature">EVENTS <i>•</i> VISUAL <i>•</i> EXPERIENCE</p><a class="text-link" href="#orcamento">Fale com nossa equipe <span>↗</span></a></div>
+        <div class="about-detail"><p>Audiovisual, software e experiências digitais em uma só equipe.</p><p class="about-signature">EVENTS <i>•</i> VISUAL <i>•</i> EXPERIENCE</p><a class="text-link" href="#orcamento">Fale com nossa equipe <span>↗</span></a></div>
       </div>
       <div class="wrap founders-wrap">
         <div class="founders-heading"><span class="founders-kicker">QUEM ESTÁ À FRENTE</span><h3>Fundadores da Brave Bear</h3></div>
@@ -366,6 +454,21 @@
             <img src="assets/socios/katlyn-gualberto-brave-bear.png" alt="Katlyn Gualberto, fundadora e responsável pela equipe comercial da Brave Bear" loading="lazy" width="1122" height="1408">
             <div class="founder-copy"><p class="founder-role">FUNDADORA <span>·</span> COMERCIAL</p><h4>Katlyn Gualberto</h4><p>Responsável pela equipe comercial e pelo relacionamento com cada cliente.</p><nav class="founder-socials" aria-label="Redes sociais de Katlyn Gualberto"><a href="https://www.linkedin.com/in/katlyn-gualberto-664495117/?isSelfProfile=false" target="_blank" rel="noopener noreferrer">LinkedIn <span>↗</span></a><a href="https://www.instagram.com/katy.gualberto/" target="_blank" rel="noopener noreferrer">Instagram <span>↗</span></a></nav></div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section section section-light" id="duvidas" aria-labelledby="faq-title">
+      <div class="wrap faq-layout">
+        <div class="faq-heading"><p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> DÚVIDAS FREQUENTES</p><h2 id="faq-title">O que perguntam <span>antes de fechar.</span></h2><a class="text-link text-link-dark" href="#orcamento">Não achou sua dúvida? Fale com a equipe <span>↗</span></a></div>
+        <div class="faq-list">
+          <details class="faq-item"><summary>Como peço um orçamento?</summary><p>Clique em Orçamento e informe o serviço, a data e o local do evento. A conversa continua no WhatsApp, com a mensagem pronta para você revisar e enviar.</p></details>
+          <details class="faq-item"><summary>A Brave Bear opera os equipamentos durante o evento?</summary><p>Sim. A equipe técnica cuida da montagem, da operação durante o evento e da desmontagem, conforme o escopo contratado.</p></details>
+          <details class="faq-item"><summary>Qual a diferença entre locação e venda?</summary><p>A locação atende eventos, com montagem e operação técnica. A venda atende instalações permanentes, como empresas, igrejas, auditórios e espaços comerciais.</p></details>
+          <details class="faq-item"><summary>Como sei o tamanho de painel de LED que preciso?</summary><p>Use a calculadora do site: informe largura, altura e pitch e veja placas e resolução. A equipe técnica confirma sinal, energia e montagem no seu projeto.</p></details>
+          <details class="faq-item"><summary>Para quais tipos de evento vocês atendem?</summary><p>Eventos corporativos, congressos, convenções, palestras, workshops, treinamentos, feiras, exposições, lançamentos, premiações, eventos sociais e ativações de marca.</p></details>
+          <details class="faq-item"><summary>Com quanta antecedência devo pedir o orçamento?</summary><p>Quanto antes, melhor, porque a disponibilidade de equipamentos e equipe depende da data. Envie o pedido assim que tiver data e local definidos.</p></details>
+          <details class="faq-item"><summary>Vocês atendem em outras cidades?</summary><p>Informe a cidade e o local do evento no orçamento. A equipe confirma a logística e as condições para o endereço.</p></details>
         </div>
       </div>
     </section>
@@ -408,13 +511,37 @@
     <div class="wrap footer-bottom"><span>© <span id="current-year">2026</span> Brave Bear Events</span><span>TECNOLOGIA <i>+</i> ESTRUTURA <i>+</i> EXPERIÊNCIA</span><a href="#topo">Voltar ao topo ↑</a></div>
   </footer>
 
+  <dialog class="quick-dialog" id="quick-dialog" aria-labelledby="quick-quote-title">
+    <form class="quick-quote" id="quick-quote">
+      <div class="quick-quote-head">
+        <div><strong id="quick-quote-title">Orçamento em 1 minuto</strong><span>A conversa continua no WhatsApp.</span></div>
+        <button class="quick-close" type="button" id="quick-close" aria-label="Fechar">×</button>
+      </div>
+      <div class="quick-quote-fields">
+        <label class="quick-wide">Seu nome<input name="quickName" type="text" autocomplete="name" required placeholder="Seu nome"></label>
+        <label class="quick-wide">O que você precisa?
+          <select name="quickService">
+            <option>Painel de LED</option><option>Sonorização</option><option>Iluminação</option><option>Projeção e telões</option><option>Transmissão ao vivo</option><option>Interatividade</option><option>Software ou aplicativo</option><option>Evento completo</option><option>Comprar equipamentos</option>
+            <option>Kit Palestra</option><option>Kit Evento Corporativo</option><option>Kit Transmissão</option><option>Kit Administrativo</option>
+          </select>
+        </label>
+        <p class="quick-kit" id="quick-kit" hidden></p>
+        <label>Data do evento<input name="quickDate" type="date"></label>
+        <label>Cidade ou local<input name="quickPlace" type="text" autocomplete="address-level2" placeholder="Ex.: São Paulo"></label>
+      </div>
+      <input type="hidden" name="quickKitItems" id="quick-kit-items" value="">
+      <button class="button quick-quote-submit" type="submit">Continuar no WhatsApp <span aria-hidden="true">↗</span></button>
+      <div class="quick-quote-feedback" id="quick-quote-feedback" role="status" aria-live="polite"></div>
+    </form>
+  </dialog>
+
   <a class="whatsapp-float" href="https://wa.me/5511911728323?text=Olá%2C%20Brave%20Bear!%20Quero%20conversar%20sobre%20um%20evento." target="_blank" rel="noopener noreferrer" aria-label="Falar com a Brave Bear pelo WhatsApp"><svg class="whatsapp-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 3.5A12.4 12.4 0 0 0 5.3 22.2l-1.5 5.5 5.7-1.5A12.4 12.4 0 1 0 16 3.5Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/><path d="M11.2 9.2c-.3-.6-.6-.6-.9-.6h-.7c-.3 0-.7.1-1 .5-.4.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.8c.2.3 2.6 4.1 6.3 5.6 3.1 1.2 3.7 1 4.4.9.7-.1 2.2-.9 2.5-1.7.3-.8.3-1.5.2-1.7-.1-.1-.3-.2-.7-.4l-2.4-1.1c-.3-.1-.6-.2-.8.2-.2.3-.9 1.1-1.1 1.4-.2.2-.4.3-.7.1-.3-.2-1.5-.6-2.9-1.8-1.1-1-1.8-2.2-2-2.5-.2-.3 0-.5.2-.7l.6-.7c.2-.2.3-.4.4-.6.1-.2 0-.4 0-.6l-1.1-2.7Z" fill="currentColor"/></svg><span>WhatsApp</span></a>
-  <a class="mobile-quote" href="#orcamento">Solicitar orçamento <span aria-hidden="true">↗</span></a>
+  <a class="mobile-quote" href="#orcamento" data-quick-quote>Orçamento em 1 minuto <span aria-hidden="true">↗</span></a>
   <div class="catalog-transition" id="catalog-transition" aria-hidden="true">
     <div class="catalog-transition-content"><span class="catalog-transition-kicker">BRAVE BEAR · CATÁLOGO</span><strong id="catalog-transition-title">Entrando em cena</strong><span class="catalog-transition-line"></span></div>
   </div>
   <script src="catalog-data.js?v=20261116-premium-hd" defer></script>
-  <script src="script.js?v=20261027-2" defer></script>
+  <script src="script.js?v=20261118-home-v2" defer></script>
   <script src="https://atendimento.bravebear.com.br/widget.js" data-bottom="92" data-bottom-mobile="135" defer></script>
 
 </body>
