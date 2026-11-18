@@ -8,6 +8,38 @@ const ledCalcFormat = (value, digits = 0) =>
 const ledCalcValue = (name) => Number(ledCalcForm.elements[name].value);
 let ledCalcState = null;
 
+const ledQuoteLink = document.querySelector("#led-calc-quote");
+const ledPreview = document.querySelector("#led-preview");
+const ledQuoteBase = "https://wa.me/5511911728323";
+
+function resetLedExtras() {
+  if (ledQuoteLink) ledQuoteLink.href = ledQuoteBase;
+  if (ledPreview) ledPreview.style.removeProperty("aspect-ratio");
+}
+
+function updateLedExtras(state, pitchLabel) {
+  const size = `${ledCalcFormat(state.builtWidth, 2)} × ${ledCalcFormat(state.builtHeight, 2)} m`;
+  if (ledPreview) {
+    ledPreview.style.aspectRatio = `${state.builtWidth} / ${state.builtHeight}`;
+    ledPreview.style.setProperty("--cols", String(state.columns));
+    ledPreview.style.setProperty("--rows", String(state.rows));
+  }
+  const sentence = document.querySelector('[data-result="sentence"]');
+  if (sentence)
+    sentence.textContent = `Painel de ${size}, com ${ledCalcFormat(state.tiles)} placas e imagem de ${ledCalcFormat(state.resolutionWidth)} × ${ledCalcFormat(state.resolutionHeight)} pixels. O público enxerga bem a partir de ${ledCalcFormat(state.distanceMin, 1)} m.`;
+  if (ledQuoteLink) {
+    const message = [
+      "Olá, Brave Bear! Usei a calculadora de painel de LED e quero um orçamento.",
+      `Painel: ${size} (${state.columns} × ${state.rows} = ${state.tiles} placas)`,
+      `Pitch: ${pitchLabel}`,
+      `Resolução: ${state.resolutionWidth} × ${state.resolutionHeight} px`,
+    ].join("\n");
+    ledQuoteLink.href = `${ledQuoteBase}?text=${encodeURIComponent(message)}`;
+    ledQuoteLink.target = "_blank";
+    ledQuoteLink.rel = "noopener noreferrer";
+  }
+}
+
 function updateLedCalculator() {
   if (!ledCalcForm || !ledCalcMap) return;
   ledCalcState = null;
@@ -20,6 +52,7 @@ function updateLedCalculator() {
     document.querySelectorAll("[data-result]").forEach((result) => {
       result.textContent = "—";
     });
+    resetLedExtras();
     return;
   }
   if (feedback) feedback.textContent = "";
@@ -53,6 +86,7 @@ function updateLedCalculator() {
     document.querySelectorAll("[data-result]").forEach((result) => {
       result.textContent = "—";
     });
+    resetLedExtras();
     return;
   }
   const modulePixelsWide = Math.max(
@@ -103,8 +137,8 @@ function updateLedCalculator() {
   );
   const acGroups = Math.ceil(tiles / tilesPerAcCircuit);
   const estimatedKva = power / 1000 / 0.9;
-  const distanceMin = pitch / 1000;
-  const distanceMax = (pitch * 3) / 1000;
+  const distanceMin = pitch;
+  const distanceMax = pitch * 3;
 
   ledCalcState = {
     rows,
@@ -145,6 +179,7 @@ function updateLedCalculator() {
     const output = document.querySelector(`[data-result="${key}"]`);
     if (output) output.textContent = value;
   });
+  updateLedExtras(ledCalcState, `P${pitch}`);
   const summary = document.querySelector('[data-result="mapSummary"]');
   if (summary)
     summary.textContent = `${rows} linhas × ${columns} colunas · ${builtWidth.toFixed(2)} × ${builtHeight.toFixed(2)} m`;
@@ -199,6 +234,14 @@ if (ledCalcForm) {
     ledCalcForm.querySelector(".custom-pitch-field").hidden =
       ledCalcForm.elements.pitch.value !== "custom";
     updateLedCalculator();
+  });
+  ledCalcForm.querySelectorAll("[data-size]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const [width, height] = String(button.dataset.size).split("x");
+      ledCalcForm.elements.width.value = width;
+      ledCalcForm.elements.height.value = height;
+      updateLedCalculator();
+    });
   });
   const mapDownload = document.querySelector("#led-map-download");
   mapDownload?.addEventListener("click", () => {

@@ -87,8 +87,8 @@ test("Interactive Experience Lab showcases the service and retains all three dem
 }) => {
   await page.goto("/");
   const lab = page.locator("#interatividade");
-  await expect(lab.locator("h2")).toContainText("Sua marca deixa de ser vista");
-  await expect(lab.locator(".experience-process > div")).toHaveCount(3);
+  await expect(lab.locator("h2")).toContainText("Software, apps");
+  await expect(lab.locator(".digital-pillars > li")).toHaveCount(3);
   await expect(lab.locator(".activation-tabs [role=tab]")).toHaveCount(3);
   await lab.scrollIntoViewIfNeeded();
   await lab.locator("#activation-tab-memory").click();
@@ -97,12 +97,15 @@ test("Interactive Experience Lab showcases the service and retains all three dem
   await expect(lab.locator("#activation-panel-wheel")).toBeVisible();
   await lab.locator("#activation-tab-quiz").click();
   await expect(lab.locator("#activation-panel-quiz")).toBeVisible();
-  const action = lab.getByRole("link", {
-    name: /Desenvolver minha experiência/,
-  });
+  const action = lab.getByRole("link", { name: /Desenvolver meu projeto/ });
   await expect(action).toHaveAttribute(
-    "data-select-item",
-    /Interactive Experience Lab/,
+    "data-quick-quote",
+    "Software ou aplicativo",
+  );
+  await action.click();
+  await expect(page.locator("#quick-dialog")).toBeVisible();
+  await expect(page.locator('#quick-quote [name="quickService"]')).toHaveValue(
+    "Software ou aplicativo",
   );
 });
 
@@ -243,4 +246,61 @@ test("interactive catalog hero uses the shared premium image", async ({
       getComputedStyle(el).getPropertyValue("--detail-image"),
     ),
   ).toContain("totem-interatividade-brave-bear.jpg?v=20261116-hd");
+});
+
+test("orçamento em 1 minuto abre em janela, recebe o kit e monta o WhatsApp", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator("#quick-dialog")).toBeHidden();
+  await page.locator('[data-kit="Kit Palestra"]').click();
+  const dialog = page.locator("#quick-dialog");
+  await expect(dialog).toBeVisible();
+  await expect(dialog.locator('[name="quickService"]')).toHaveValue(
+    "Kit Palestra",
+  );
+  await expect(dialog.locator("#quick-kit")).toContainText("Itens do kit");
+  await dialog.locator('[name="quickName"]').fill("<b>Ana</b>");
+  const popup = page.waitForEvent("popup");
+  await dialog.locator('button[type="submit"]').click();
+  await popup.catch(() => undefined);
+  const link = dialog.locator("#quick-quote-feedback a");
+  const text = new URL(await link.getAttribute("href")).searchParams.get(
+    "text",
+  );
+  expect(text).toContain("Kit Palestra");
+  expect(text).toContain("<b>Ana</b>");
+  expect(text).toContain("Itens do kit");
+  await dialog.locator("#quick-close").click();
+  await expect(dialog).toBeHidden();
+});
+
+test("números do topo terminam nos valores finais e não há calculadora na home", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator("#calculadora")).toHaveCount(0);
+  await page.locator(".stats-grid").scrollIntoViewIfNeeded();
+  const first = page.locator(".stat-value").first();
+  const value =
+    (await first.getAttribute("aria-label")) ?? (await first.textContent());
+  expect(value).toMatch(/220/);
+  await expect(
+    page.locator(".stat-label", { hasText: "projetos entregues" }),
+  ).toHaveCount(1);
+});
+
+test("calculadora tem passos simples, atalhos de tamanho e orçamento pronto", async ({
+  page,
+}) => {
+  await page.goto("/calculadora-led.html");
+  await page.getByRole("button", { name: "6 × 3,5 m" }).click();
+  await expect(page.locator('[name="width"]')).toHaveValue("6");
+  await expect(page.locator('[data-result="tiles"]')).toHaveText("84 placas");
+  await expect(page.locator('[data-result="sentence"]')).toContainText(
+    "84 placas",
+  );
+  await expect(page.locator(".calc-advanced")).not.toHaveAttribute("open", "");
+  const href = await page.locator("#led-calc-quote").getAttribute("href");
+  expect(new URL(href).searchParams.get("text")).toContain("84 placas");
 });

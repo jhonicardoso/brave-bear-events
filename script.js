@@ -339,3 +339,160 @@ if (
     { passive: true },
   );
 }
+
+/* Utilidades das novas interações da página inicial. */
+function whatsappUrl(message) {
+  return `https://wa.me/5511911728323?text=${encodeURIComponent(message)}`;
+}
+function formatDate(value) {
+  const [year, month, day] = String(value || "").split("-");
+  return year && month && day ? `${day}/${month}/${year}` : "";
+}
+
+/* Orçamento em 1 minuto: janela única, aberta por vários pontos do site. */
+const quickDialog = document.querySelector("#quick-dialog");
+const quickForm = document.querySelector("#quick-quote");
+const quickKitNote = document.querySelector("#quick-kit");
+const quickKitItems = document.querySelector("#quick-kit-items");
+
+function openQuickQuote(service, kitItems) {
+  if (!(quickDialog instanceof HTMLDialogElement) || !quickForm) return false;
+  const select = quickForm.elements.quickService;
+  if (service && select) {
+    const match = [...select.options].find(
+      (option) => option.value === service,
+    );
+    if (match) select.value = match.value;
+  }
+  if (quickKitItems) quickKitItems.value = kitItems || "";
+  if (quickKitNote) {
+    quickKitNote.hidden = !kitItems;
+    quickKitNote.textContent = kitItems ? `Itens do kit: ${kitItems}` : "";
+  }
+  document.querySelector("#quick-quote-feedback")?.replaceChildren();
+  if (!quickDialog.open) quickDialog.showModal();
+  quickForm.elements.quickName?.focus();
+  return true;
+}
+
+document.addEventListener("click", (event) => {
+  const target = event.target instanceof Element ? event.target : null;
+  const trigger = target?.closest("[data-quick-quote]");
+  if (!trigger) return;
+  const kit = trigger.closest("[data-kit]") || trigger;
+  const opened = openQuickQuote(
+    trigger.getAttribute("data-quick-quote") || "",
+    kit.getAttribute("data-kit-items") || "",
+  );
+  if (opened) {
+    event.preventDefault();
+    closeMenu();
+  }
+});
+document.querySelector("#quick-close")?.addEventListener("click", () => {
+  quickDialog?.close();
+});
+quickDialog?.addEventListener("click", (event) => {
+  if (event.target === quickDialog) quickDialog.close();
+});
+
+quickForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const values = new FormData(quickForm);
+  const kitItems = String(values.get("quickKitItems") || "");
+  const lines = [
+    "Olá, Brave Bear! Gostaria de um orçamento.",
+    "",
+    `Nome: ${values.get("quickName")}`,
+    `Serviço: ${values.get("quickService")}`,
+    kitItems ? `Itens do kit: ${kitItems}` : "",
+    values.get("quickDate")
+      ? `Data: ${formatDate(values.get("quickDate"))}`
+      : "",
+    values.get("quickPlace")
+      ? `Cidade ou local: ${values.get("quickPlace")}`
+      : "",
+  ].filter(Boolean);
+  const destination = whatsappUrl(lines.join("\n"));
+  const link = document.createElement("a");
+  link.href = destination;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = "WhatsApp";
+  document
+    .querySelector("#quick-quote-feedback")
+    ?.replaceChildren("Mensagem pronta. Revise e envie pelo ", link, ".");
+  window.open(destination, "_blank", "noopener,noreferrer");
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "quote_request_prepared",
+    source: "quick_quote_dialog",
+    method: "whatsapp",
+  });
+  if (typeof window.gtag === "function")
+    window.gtag("event", "generate_lead", { method: "whatsapp" });
+  if (typeof window.fbq === "function") window.fbq("track", "Lead");
+});
+
+/* Números: contador estilo odômetro. Sem movimento, o valor final fica direto no HTML. */
+const statsGrid = document.querySelector(".stats-grid");
+if (
+  statsGrid &&
+  "IntersectionObserver" in window &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+  const numberFormat = new Intl.NumberFormat("pt-BR");
+  const counters = [...statsGrid.querySelectorAll("[data-count-to]")];
+  const rollers = counters.map((counter) => {
+    const finalText = numberFormat.format(Number(counter.dataset.countTo));
+    counter.setAttribute("aria-label", finalText);
+    counter.replaceChildren();
+    const strips = [];
+    [...finalText].forEach((char) => {
+      const slot = document.createElement("span");
+      slot.className = "odo-slot";
+      slot.setAttribute("aria-hidden", "true");
+      if (/\d/.test(char)) {
+        const strip = document.createElement("span");
+        strip.className = "odo-strip";
+        strip.dataset.digit = char;
+        for (let cycle = 0; cycle < 3; cycle += 1) {
+          for (let digit = 0; digit < 10; digit += 1) {
+            const cell = document.createElement("i");
+            cell.textContent = String(digit);
+            strip.append(cell);
+          }
+        }
+        slot.append(strip);
+        strips.push(strip);
+      } else {
+        slot.textContent = char;
+        slot.classList.add("odo-sep");
+      }
+      counter.append(slot);
+    });
+    return strips;
+  });
+  statsGrid.classList.add("stats-ready");
+  new IntersectionObserver(
+    (entries, observer) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      observer.disconnect();
+      counters.forEach((counter, index) => {
+        const stat = counter.closest(".stat");
+        window.setTimeout(() => {
+          stat?.classList.add("is-counted");
+          rollers[index].forEach((strip, position) => {
+            const spin = Math.floor(Math.random() * 2) + 1;
+            strip.style.transitionDelay = `${position * 110}ms`;
+            strip.style.setProperty(
+              "--odo-y",
+              `${-(Number(strip.dataset.digit) + 10 * spin)}em`,
+            );
+          });
+        }, index * 140);
+      });
+    },
+    { threshold: 0.35 },
+  ).observe(statsGrid);
+}
