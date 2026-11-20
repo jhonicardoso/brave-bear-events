@@ -259,8 +259,12 @@ document.querySelector("#quote-form")?.addEventListener("submit", (event) => {
     source: "website",
     method: "whatsapp",
   });
-  if (typeof window.gtag === "function")
-    window.gtag("event", "generate_lead", { method: "whatsapp" });
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "quote_form_submit", {
+      form_name: "quote_form",
+      destination: "whatsapp",
+    });
+  }
   if (typeof window.fbq === "function") window.fbq("track", "Lead");
 });
 
@@ -429,8 +433,12 @@ quickForm?.addEventListener("submit", (event) => {
     source: "quick_quote_dialog",
     method: "whatsapp",
   });
-  if (typeof window.gtag === "function")
-    window.gtag("event", "generate_lead", { method: "whatsapp" });
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "quote_form_submit", {
+      form_name: "quick_quote",
+      destination: "whatsapp",
+    });
+  }
   if (typeof window.fbq === "function") window.fbq("track", "Lead");
 });
 
