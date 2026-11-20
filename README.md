@@ -20,6 +20,12 @@ Consulte [engenharia e operação](docs/engineering.md) para arquitetura, segura
 
 O envio de leads para CRM, Google Analytics 4 e Meta Pixel depende dos IDs e do endpoint fornecidos pela Brave Bear. O formulário já publica o evento `quote_request_prepared` em `dataLayer` e chama `gtag` / `fbq` quando essas integrações estiverem carregadas. Nenhum identificador foi preenchido no projeto.
 
+### Ativar GA4 e Meta Pixel
+
+Edite o objeto `TRACKING` no topo de `tracking.js` e preencha `ga4MeasurementId` (formato `G-XXXXXXXXXX`) e `metaPixelId` (número do Gerenciador de Eventos). Abra um pull request; a validação roda automaticamente. Com os IDs vazios (estado atual), nenhum script de terceiros é carregado e nenhum aviso aparece.
+
+Com algum ID preenchido, o site mostra um aviso de cookies e só carrega Google e Meta depois que o visitante aceita (LGPD). A escolha fica salva no navegador (`localStorage`). Os eventos `generate_lead` (GA4) e `Lead` (Meta) já disparam ao preparar o orçamento no WhatsApp. Publique uma política de privacidade informando o uso desses cookies.
+
 ## Imagens
 
 `prepare_assets.py` gera versões leves para web a partir do logo, do cartão e das páginas do catálogo oficial. `prepare_client_logos.py` converte as 30 marcas enviadas para versões brancas com fundo transparente. Ambos requerem Python com Pillow.
