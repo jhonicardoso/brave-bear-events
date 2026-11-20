@@ -304,3 +304,45 @@ test("calculadora tem passos simples, atalhos de tamanho e orçamento pronto", a
   const href = await page.locator("#led-calc-quote").getAttribute("href");
   expect(new URL(href).searchParams.get("text")).toContain("84 placas");
 });
+
+test("sem IDs configurados, nenhum aviso nem rastreador é carregado", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator(".consent-banner")).toHaveCount(0);
+  expect(
+    await page.evaluate(
+      () =>
+        typeof window.gtag === "undefined" && typeof window.fbq === "undefined",
+    ),
+  ).toBe(true);
+});
+
+for (const choice of ["Aceitar", "Recusar"]) {
+  test(`com IDs, rastreadores só carregam após consentimento (${choice})`, async ({
+    page,
+  }) => {
+    await page.route("**/tracking.js", async (route) => {
+      const response = await route.fetch();
+      const body = (await response.text())
+        .replace('ga4MeasurementId: ""', 'ga4MeasurementId: "G-TEST1234"')
+        .replace('metaPixelId: ""', 'metaPixelId: "1234567890"');
+      await route.fulfill({ response, body });
+    });
+    const thirdParty =
+      'script[src*="googletagmanager"], script[src*="fbevents"]';
+    await page.goto("/");
+    await expect(page.locator(".consent-banner")).toBeVisible();
+    await expect(page.locator(thirdParty)).toHaveCount(0);
+    await page.getByRole("button", { name: choice }).click();
+    await expect(page.locator(".consent-banner")).toHaveCount(0);
+    await expect(page.locator(thirdParty)).toHaveCount(
+      choice === "Aceitar" ? 2 : 0,
+    );
+    await page.reload();
+    await expect(page.locator(".consent-banner")).toHaveCount(0);
+    await expect(page.locator(thirdParty)).toHaveCount(
+      choice === "Aceitar" ? 2 : 0,
+    );
+  });
+}

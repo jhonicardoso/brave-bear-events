@@ -15,6 +15,7 @@ const files = [
   "equipamentos.js",
   "interactivity.js",
   "enhancements.js",
+  "tracking.js",
   "assets",
   "CNAME",
   ".nojekyll",
