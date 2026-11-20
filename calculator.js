@@ -225,6 +225,12 @@ function drawLedMap() {
 }
 
 if (ledCalcForm) {
+  function trackCalculatorUse() {
+    if (ledCalcState && typeof window.gtag === "function") {
+      window.gtag("event", "led_calculator_use");
+    }
+  }
+
   ledCalcForm.addEventListener("input", updateLedCalculator);
   ledCalcForm.addEventListener("change", (_event) => {
     const showModule = ledCalcForm.elements.modulePreset.value === "custom";
@@ -234,6 +240,7 @@ if (ledCalcForm) {
     ledCalcForm.querySelector(".custom-pitch-field").hidden =
       ledCalcForm.elements.pitch.value !== "custom";
     updateLedCalculator();
+    trackCalculatorUse();
   });
   ledCalcForm.querySelectorAll("[data-size]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -241,6 +248,7 @@ if (ledCalcForm) {
       ledCalcForm.elements.width.value = width;
       ledCalcForm.elements.height.value = height;
       updateLedCalculator();
+      trackCalculatorUse();
     });
   });
   const mapDownload = document.querySelector("#led-map-download");

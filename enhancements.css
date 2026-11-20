@@ -296,3 +296,33 @@ body:has(dialog[open]) { overflow: hidden; }
 .led-calc-layout { grid-template-columns: minmax(300px, .8fr) minmax(0, 1.2fr); }
 @media (max-width: 960px) { .led-calc-layout { grid-template-columns: 1fr; } }
 .led-result-key article span { min-height: 2.6em; }
+
+.analytics-cookie-panel {
+  position: fixed;
+  z-index: 1000;
+  inset: auto auto 1rem 1rem;
+  width: min(24rem, calc(100% - 2rem));
+  padding: 1rem;
+  border: 1px solid #748299;
+  border-radius: 0.75rem;
+  background: #101827;
+  color: #fff;
+}
+
+.analytics-cookie-panel p {
+  margin: 0 0 0.75rem;
+}
+
+.analytics-cookie-panel button,
+.analytics-cookie-settings {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #748299;
+  border-radius: 0.375rem;
+  background: #1c293c;
+  color: #fff;
+  cursor: pointer;
+}
+
+.analytics-cookie-settings {
+  margin: 0.75rem;
+}
