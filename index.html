@@ -500,12 +500,27 @@
     <section class="contact-strip section" id="contato" aria-labelledby="contact-title">
       <div class="wrap contact-layout"><div><p class="eyebrow"><span class="eyebrow-line"></span> CONTATO</p><h2 id="contact-title">Vamos conversar sobre <span>o seu projeto.</span></h2></div><div class="contact-details"><a href="mailto:comercial@bravebear.com.br"><small>E-MAIL COMERCIAL</small><strong>comercial@bravebear.com.br</strong><span>↗</span></a><a href="https://wa.me/5511911728323" target="_blank" rel="noopener noreferrer"><small>TELEFONE / WHATSAPP</small><strong>11 9 1172-8323</strong><span>↗</span></a><a href="https://www.instagram.com/bravebearbrasil/" target="_blank" rel="noopener noreferrer"><small>INSTAGRAM</small><strong>@bravebearbrasil</strong><span>↗</span></a><a href="https://www.linkedin.com/company/brave-bear-events" target="_blank" rel="noopener noreferrer"><small>LINKEDIN</small><strong>Brave Bear Events</strong><span>↗</span></a><a href="https://maps.google.com/?q=Avenida+Raimundo+Pereira+de+Magalh%C3%A3es,+1720" target="_blank" rel="noopener noreferrer"><small>ENDEREÇO</small><strong>Avenida Raimundo Pereira de Magalhães, 1720</strong><span>↗</span></a></div></div>
     </section>
+    <section class="news-strip section" id="novidades" aria-labelledby="news-title">
+      <div class="wrap news-layout">
+        <div><p class="eyebrow"><span class="eyebrow-line"></span> NOVIDADES</p><h2 id="news-title">Receba novidades <span>por e-mail.</span></h2><p class="news-copy">Equipamentos, ofertas de locação e venda e novidades da Brave Bear. Poucas mensagens por mês, e você cancela quando quiser.</p></div>
+        <form class="news-form" id="news-form" novalidate>
+          <div class="news-fields">
+            <label>E-mail <input name="email" type="email" autocomplete="email" required maxlength="200" placeholder="voce@empresa.com.br"></label>
+            <label>Nome (opcional) <input name="nome" type="text" autocomplete="name" maxlength="100" placeholder="Seu nome"></label>
+          </div>
+          <input class="news-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="news-consent"><input name="aceito" type="checkbox"><span>Aceito receber novidades e ofertas da Brave Bear Events por e-mail. Posso cancelar quando quiser. <a href="https://atendimento.bravebear.com.br/privacidade" target="_blank" rel="noopener noreferrer">Política de privacidade</a></span></label>
+          <button class="button news-submit" type="submit">Quero receber <span aria-hidden="true">↗</span></button>
+          <div class="news-feedback" id="news-feedback" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="wrap footer-main">
       <div class="footer-brand"><a class="brand brand-lockup" href="#inicio" aria-label="Brave Bear Events, início"><img src="assets/logo-bravebear-paisagem-branco.png" alt="Brave Bear — Events · Visual · Experience" width="2170" height="725"></a><p>Tecnologia, equipe e estrutura para entregar soluções completas em audiovisual para o seu evento.</p><div id="ra-verified-seal" data-lazy-script="https://s3.amazonaws.com/raichu-beta/ra-verified/bundle.js"><span data-seal-id="TVl4OVZ1Uk1wT1ZGMVh0WTo2MC0yNjgtOTk4LWpob25pLWdvbmNhbHZlcy1jYXJkb3Nv"></span></div></div>
-      <div class="footer-nav"><span>NAVEGUE</span><a href="#solucoes">Soluções</a><a href="#equipamentos">Equipamentos</a><a href="#kits">Kits</a><a href="#interatividade">Interatividade</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a><a href="catalogo-audiovisual.pdf?v=20261027-2" target="_blank" rel="noopener noreferrer">Catálogo audiovisual ↗</a></div>
+      <div class="footer-nav"><span>NAVEGUE</span><a href="#solucoes">Soluções</a><a href="#equipamentos">Equipamentos</a><a href="#kits">Kits</a><a href="#interatividade">Interatividade</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a><a href="#novidades">Novidades</a><a href="catalogo-audiovisual.pdf?v=20261027-2" target="_blank" rel="noopener noreferrer">Catálogo audiovisual ↗</a></div>
       <div class="footer-social"><span>FALE COM A GENTE</span><a href="mailto:comercial@bravebear.com.br">comercial@bravebear.com.br</a><a href="https://wa.me/5511911728323" target="_blank" rel="noopener noreferrer">11 9 1172-8323</a><a href="https://www.instagram.com/bravebearbrasil/" target="_blank" rel="noopener noreferrer">@bravebearbrasil</a><a href="https://www.linkedin.com/company/brave-bear-events" target="_blank" rel="noopener noreferrer">LinkedIn · Brave Bear Events</a><a href="https://bravebear.com.br/" target="_blank" rel="noopener noreferrer">bravebear.com.br</a></div>
       <div class="footer-cta"><span>EVENTS <i>•</i> VISUAL <i>•</i> EXPERIENCE</span><a class="button button-small" href="#orcamento">Solicitar orçamento <span>↗</span></a></div>
     </div>
@@ -543,6 +558,7 @@
   </div>
   <script src="catalog-data.js?v=20261116-premium-hd" defer></script>
   <script src="script.js?v=20261120-analytics" defer></script>
+  <script src="novidades.js?v=20261122" defer></script>
   <script src="https://atendimento.bravebear.com.br/widget.js" data-bottom="92" data-bottom-mobile="135" defer></script>
 
 </body>

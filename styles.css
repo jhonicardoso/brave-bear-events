@@ -819,3 +819,30 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .founder-card { grid-template-columns: 84px minmax(0,1fr); gap: 12px; }
   .founder-card > img { width: 84px; height: 112px; }
 }
+
+.news-strip { padding-block: 64px; background: #08111b; border-top: 1px solid rgba(189,215,241,.08); }
+.news-layout { display: grid; grid-template-columns: .8fr 1.2fr; align-items: start; gap: 70px; }
+.news-strip h2 { max-width: 420px; font-size: clamp(30px, 3.6vw, 44px); }
+.news-copy { max-width: 420px; margin: 18px 0 0; color: #a9b8c6; font-size: 13px; line-height: 1.7; }
+.news-form { display: grid; gap: 14px; }
+.news-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.news-form label { display: grid; gap: 6px; color: #9fb1c2; font-size: 11px; font-weight: 700; letter-spacing: .04em; }
+.news-form input[type="email"], .news-form input[type="text"] { width: 100%; min-height: 46px; padding: 0 12px; border: 1px solid rgba(189,215,241,.22); border-radius: 3px; color: #eef3f7; background: rgba(255,255,255,.04); font: inherit; font-size: 14px; }
+.news-form input:focus-visible { outline: 2px solid #20d7ef; outline-offset: 2px; }
+.news-form .news-consent { display: flex; align-items: flex-start; gap: 10px; color: #b3c0cd; font-size: 12px; font-weight: 400; letter-spacing: 0; line-height: 1.5; }
+.news-consent input { flex: none; width: 18px; height: 18px; margin-top: 1px; accent-color: #20d7ef; }
+.news-consent a { color: #9de6f2; text-decoration: underline; text-underline-offset: 3px; }
+.news-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.news-submit { justify-self: start; cursor: pointer; }
+.news-submit:disabled { opacity: .6; cursor: default; }
+.news-feedback { min-height: 1.4em; color: #9de6f2; font-size: 12px; line-height: 1.5; }
+.news-feedback.is-error { color: #ffb4a8; }
+@media (max-width: 860px) {
+  .news-layout { grid-template-columns: 1fr; gap: 28px; }
+  .news-strip { padding-block: 48px; }
+}
+@media (max-width: 560px) {
+  .news-fields { grid-template-columns: 1fr; }
+  .news-submit { justify-self: stretch; }
+}
+.news-strip h2 span { white-space: nowrap; }

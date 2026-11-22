@@ -304,3 +304,54 @@ test("calculadora tem passos simples, atalhos de tamanho e orçamento pronto", a
   const href = await page.locator("#led-calc-quote").getAttribute("href");
   expect(new URL(href).searchParams.get("text")).toContain("84 placas");
 });
+
+test("novidades por e-mail exige aceite, envia ao atendimento e mostra a confirmação", async ({
+  page,
+}) => {
+  const requests = [];
+  await page.route(
+    "https://atendimento.bravebear.com.br/api/novidades",
+    (route) => {
+      requests.push(route.request().postDataJSON());
+      return route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        headers: { "access-control-allow-origin": "*" },
+        body: JSON.stringify({ ok: true }),
+      });
+    },
+  );
+  await page.goto("/#novidades");
+  const form = page.locator("#news-form");
+  const feedback = page.locator("#news-feedback");
+  await form.locator("[name=email]").fill("cliente@example.com");
+  await form.getByRole("button", { name: /Quero receber/ }).click();
+  await expect(feedback).toContainText("Marque a caixa de aceite");
+  expect(requests).toHaveLength(0);
+
+  await form.locator("[name=aceito]").check();
+  await form.locator("[name=email]").fill("invalido");
+  await form.getByRole("button", { name: /Quero receber/ }).click();
+  await expect(feedback).toContainText("e-mail válido");
+  expect(requests).toHaveLength(0);
+
+  await form.locator("[name=email]").fill("cliente@example.com");
+  await form.locator("[name=nome]").fill("<b>Maria</b>");
+  await form.getByRole("button", { name: /Quero receber/ }).click();
+  await expect(feedback).toContainText("Enviamos um e-mail de confirmação");
+  expect(requests).toEqual([
+    {
+      email: "cliente@example.com",
+      nome: "<b>Maria</b>",
+      website: "",
+      aceito: true,
+      origem: "site",
+    },
+  ]);
+  await expect(form.locator("[name=aceito]")).not.toBeChecked();
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+});

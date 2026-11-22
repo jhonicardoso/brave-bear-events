@@ -10,6 +10,7 @@ const files = [
   "interactivity.css",
   "enhancements.css",
   "script.js",
+  "novidades.js",
   "analytics.js",
   "calculator.js",
   "catalog-data.js",
