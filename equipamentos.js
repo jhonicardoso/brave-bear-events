@@ -107,7 +107,9 @@ function categoryHref(id) {
   return `equipamentos.html?categoria=${encodeURIComponent(id)}`;
 }
 function productImageIndex(categoryId, index) {
-  if (categoryId === "venda") return [1, 1, 1, 5, 5, 9, 9, 1][index];
+  // Venda reaproveita as fotos de led-NN. Os dois totens (índices 5 e 6) usam
+  // led-08 (totem vertical); led-09 é o piso de LED, que não representa totem.
+  if (categoryId === "venda") return [1, 1, 1, 5, 5, 8, 8, 1][index];
   if (categoryId === "interactive") return [1, 2, 3, 6, 4, 7, 5][index];
   if (categoryId === "led") return [1, 2, 3, 4, 5, 6, 7, 9, 8][index];
   if (categoryId === "televisions") return [1, 2, 3, 4, 5, 9, 6, 7, 8][index];
