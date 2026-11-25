@@ -17,7 +17,7 @@ O JavaScript legado continua com análise sintática e lint, mas ainda não poss
 
 ## Segurança e dados
 
-Não existe login próprio nem emissão/armazenamento de credenciais ou tokens. O formulário prepara uma URL do WhatsApp com os dados informados. Esses dados seguem para o WhatsApp ao abrir a URL; não são persistidos pelo site e não integram os eventos de analytics. A interface de feedback usa APIs DOM, sem interpolação de dados do formulário em HTML. Links externos usam isolamento de `opener`.
+Não existe login próprio nem emissão/armazenamento de credenciais ou tokens. O formulário de orçamento prepara uma URL do WhatsApp com os dados informados. A exceção é o formulário "Receba novidades por e-mail" (`novidades.js`): ele envia e-mail, nome opcional e o aceite por `fetch` para `https://atendimento.bravebear.com.br/api/novidades`, onde o aceite é registrado com dupla confirmação por e-mail (o contato só entra na lista depois de confirmar). O site continua sem persistir esses dados; mensagens de retorno são inseridas como texto. Dependência operacional: se o atendimento estiver fora do ar, o formulário mostra erro e nada é enviado. Esses dados seguem para o WhatsApp ao abrir a URL; não são persistidos pelo site e não integram os eventos de analytics. A interface de feedback usa APIs DOM, sem interpolação de dados do formulário em HTML. Links externos usam isolamento de `opener`.
 
 O catálogo interpolado em templates é conteúdo local confiável, revisado em Git. Dados de CMS/API exigiriam validação e renderização segura antes de substituir essa origem. O parâmetro de categoria é validado contra IDs conhecidos.
 
