@@ -18,6 +18,7 @@ const files = [
   "analytics.js",
   "calculator.js",
   "catalog-data.js",
+  "depoimentos-data.js",
   "equipamentos.js",
   "enhancements.js",
   "galeria.js",

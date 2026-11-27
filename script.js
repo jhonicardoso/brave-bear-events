@@ -408,3 +408,47 @@ for (const card of document.querySelectorAll(
     card.style.setProperty("--my", `${event.clientY - box.top}px`);
   });
 }
+
+// Prova social: mostra a seção somente quando há depoimentos reais em depoimentos-data.js.
+const socialSection = document.querySelector("#depoimentos");
+const socialGrid = document.querySelector("#social-grid");
+const socialItems = Array.isArray(window.BRAVE_DEPOIMENTOS)
+  ? window.BRAVE_DEPOIMENTOS.filter((item) => item?.quote && item?.name)
+  : [];
+if (socialSection && socialGrid && socialItems.length) {
+  for (const [index, item] of socialItems.entries()) {
+    const card = document.createElement("figure");
+    card.className = `social-card${index === 0 ? " social-card-featured" : ""}`;
+    const mark = document.createElement("span");
+    mark.className = "social-mark";
+    mark.setAttribute("aria-hidden", "true");
+    mark.textContent = "“";
+    const quote = document.createElement("blockquote");
+    quote.textContent = item.quote;
+    const caption = document.createElement("figcaption");
+    const avatar = document.createElement("span");
+    avatar.className = "social-avatar";
+    avatar.setAttribute("aria-hidden", "true");
+    avatar.textContent = item.name
+      .split(/\s+/)
+      .slice(0, 2)
+      .map((word) => word[0])
+      .join("")
+      .toUpperCase();
+    const who = document.createElement("span");
+    const name = document.createElement("strong");
+    name.textContent = item.name;
+    const role = document.createElement("small");
+    role.textContent = [item.role, item.company].filter(Boolean).join(" · ");
+    who.append(name, role);
+    caption.append(avatar, who);
+    if (item.source) {
+      const source = document.createElement("em");
+      source.textContent = item.source;
+      caption.append(source);
+    }
+    card.append(mark, quote, caption);
+    socialGrid.append(card);
+  }
+  socialSection.hidden = false;
+}

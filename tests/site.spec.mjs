@@ -366,3 +366,38 @@ test("catálogo: nove categorias com imagens distintas", async ({ page }) => {
   const cards = page.locator("#equipment-categories .equipment-feature");
   await expect(cards).toHaveCount(9);
 });
+
+test("prova social fica oculta sem depoimentos reais", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("#depoimentos")).toBeHidden();
+});
+
+test("prova social aparece quando há depoimentos cadastrados", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    window.__seed = [
+      {
+        quote: "<b>Texto de teste</b>",
+        name: "Ana Souza",
+        role: "Gerente",
+        company: "Empresa X",
+        source: "Google",
+      },
+      { quote: "Segundo texto de teste.", name: "Beto Lima" },
+    ];
+  });
+  await page.route("**/depoimentos-data.js*", (route) =>
+    route.fulfill({
+      contentType: "text/javascript",
+      body: "window.BRAVE_DEPOIMENTOS = window.__seed;",
+    }),
+  );
+  await page.goto("/");
+  await expect(page.locator("#depoimentos")).toBeAttached();
+  await expect(page.locator("#social-grid .social-card")).toHaveCount(2);
+  await expect(page.locator("#social-grid blockquote").first()).toHaveText(
+    "<b>Texto de teste</b>",
+  );
+  await expect(page.locator("#social-grid b")).toHaveCount(0);
+});
