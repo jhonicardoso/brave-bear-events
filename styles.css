@@ -533,6 +533,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .footer-bottom { min-height: 67px; flex-wrap: wrap; gap: 5px 14px; justify-content: space-between; padding-block: 11px; font-size: 7px; }
   .footer-bottom > span:nth-child(2):not(.footer-bottom-links) { display: none; }
   .whatsapp-float { right: 15px; bottom: 75px; min-height: 46px; justify-content: center; gap: 8px; padding-inline: 13px; font-size: 10px; }
+  .site-footer { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
   .mobile-quote { position: fixed; z-index: 98; right: 0; bottom: 0; left: 0; display: flex; min-height: 58px; align-items: center; justify-content: center; gap: 14px; color: #fff; background: linear-gradient(100deg,#0874ee,#09a8ef); box-shadow: 0 -8px 25px rgba(0,0,0,.22); font-size: 11px; font-weight: 700; letter-spacing: .04em; }
   .mobile-quote span { font-size: 16px; }
 }
