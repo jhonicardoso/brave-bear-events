@@ -350,12 +350,15 @@
       </div>
     </section>
 
-        <!-- Depoimentos: a seção fica oculta até haver depoimentos REAIS, com autorização do cliente.
-         Para ativar, remova o atributo hidden e preencha os cartões conforme docs/prova-social.md. -->
-    <section class="testimonials-section section section-light" id="depoimentos" aria-labelledby="testimonials-title" hidden>
+    <!-- Prova social: a seção só aparece quando há depoimentos REAIS em depoimentos-data.js (veja docs/prova-social.md). -->
+    <section class="social-section" id="depoimentos" aria-labelledby="testimonials-title" hidden>
       <div class="wrap">
-        <div class="section-heading"><p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> DEPOIMENTOS</p><h2 id="testimonials-title">O que dizem <span>nossos clientes.</span></h2></div>
-        <div class="testimonial-grid"></div>
+        <div class="social-head">
+          <div><p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> PROVA SOCIAL</p><h2 id="testimonials-title">Quem fala da <span>Brave Bear.</span></h2></div>
+          <p>Relatos de clientes e parceiros que já contaram com a nossa equipe em feiras, convenções e eventos corporativos.</p>
+        </div>
+        <div class="social-grid" id="social-grid"></div>
+        <div class="social-foot"><span>Quer contar a sua experiência? Fale com a gente.</span><a class="button button-ghost-dark" href="contato.html">Falar com a equipe <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
 
@@ -492,6 +495,7 @@
   <div class="catalog-transition" id="catalog-transition" aria-hidden="true">
     <div class="catalog-transition-content"><span class="catalog-transition-kicker">BRAVE BEAR · CATÁLOGO</span><strong id="catalog-transition-title">Entrando em cena</strong><span class="catalog-transition-line"></span></div>
   </div>
+  <script src="depoimentos-data.js?v=20261127-social" defer></script>
   <script src="catalog-data.js?v=20261116-premium-hd" defer></script>
   <script src="script.js?v=20261120-analytics" defer></script>
   <script src="https://atendimento.bravebear.com.br/widget.js" data-bottom="92" data-bottom-mobile="135" defer></script>

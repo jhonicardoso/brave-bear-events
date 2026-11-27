@@ -213,12 +213,6 @@ body:has(dialog[open]) { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) { .odo-strip { transition: none; } }
 
 /* Depoimentos (ficam ocultos até haver conteúdo real). */
-.testimonial-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.testimonial { margin: 0; padding: 26px; border: 1px solid #d9e0e8; border-radius: 4px; background: #fff; }
-.testimonial blockquote { margin: 0 0 18px; color: var(--paper-ink); font-size: 16px; line-height: 1.6; }
-.testimonial figcaption { color: var(--paper-muted); font-size: 13px; }
-.testimonial figcaption strong { display: block; color: var(--paper-ink); }
-@media (max-width: 860px) { .testimonial-grid { grid-template-columns: 1fr; } }
 
 /* 5. Download do catálogo em PDF. */
 .catalog-download { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; margin-top: 28px; padding: 22px 26px; border: 1px solid rgba(87, 175, 241, .22); border-radius: 4px; background: linear-gradient(120deg, rgba(19, 89, 148, .45), rgba(8, 21, 36, .9)); }
@@ -405,3 +399,30 @@ body:has(dialog[open]) { overflow: hidden; }
   .equipment-feature::before, .equipment-heading h2 span { animation: none !important; }
   .equipment-feature:hover, .equipment-feature:focus-visible { transform: none; }
 }
+
+/* Prova social. */
+.social-section { padding-block: 100px; color: var(--paper-ink); background: var(--paper); }
+.social-section[hidden] { display: none; }
+.social-head { display: grid; grid-template-columns: 1.1fr .9fr; align-items: end; gap: 24px 60px; margin-bottom: 44px; }
+.social-head h2 { margin: 12px 0 0; font: 800 clamp(36px, 5vw, 60px)/1.04 var(--font-display); letter-spacing: -.05em; }
+.social-head h2 span { color: #1b8fc9; }
+.social-head > p { margin: 0; max-width: 430px; color: var(--paper-muted); font-size: 16px; line-height: 1.65; }
+.social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 18px; }
+.social-card { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 26px; margin: 0; padding: 34px 30px 28px; border: 1px solid #d9e0e8; border-radius: 18px; background: #fff; transition: transform .35s cubic-bezier(.2, .7, .1, 1), box-shadow .35s, border-color .3s; }
+.social-card:hover { transform: translateY(-5px); border-color: #38c7f4; box-shadow: 0 22px 44px rgba(10, 40, 80, .12); }
+.social-card-featured { grid-column: 1 / -1; color: #fff; border-color: transparent; background: linear-gradient(135deg, #0c2340, #10345c); }
+.social-card-featured:hover { border-color: #38c7f4; }
+.social-mark { color: #38c7f4; font: 800 64px/.6 var(--font-display); }
+.social-card blockquote { margin: 0; font-size: 17px; line-height: 1.65; }
+.social-card-featured blockquote { font: 600 clamp(20px, 2.2vw, 26px)/1.45 var(--font-display); letter-spacing: -.01em; }
+.social-card figcaption { display: flex; align-items: center; gap: 14px; }
+.social-avatar { display: grid; flex: none; width: 44px; height: 44px; place-items: center; border-radius: 50%; color: #04101f; background: #38c7f4; font: 800 14px var(--font-display); }
+.social-card figcaption strong { display: block; font: 800 15px var(--font-display); }
+.social-card figcaption small { display: block; margin-top: 2px; color: var(--paper-muted); font-size: 13px; }
+.social-card-featured figcaption small { color: #a9c3dc; }
+.social-card figcaption em { margin-left: auto; padding: 4px 10px; border: 1px solid currentColor; border-radius: 999px; font-size: 11px; font-style: normal; letter-spacing: .08em; text-transform: uppercase; opacity: .6; }
+.social-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; margin-top: 34px; padding-top: 26px; border-top: 1px solid #d9e0e8; color: var(--paper-muted); font-size: 15px; }
+@media (max-width: 900px) { .social-head { grid-template-columns: 1fr; }  .social-section { padding-block: 70px; } }
+@media (prefers-reduced-motion: reduce) { .social-card:hover { transform: none; } }
+.button-ghost-dark { color: #0c2340; border: 1px solid #b9c7d6; background: transparent; box-shadow: none; }
+.button-ghost-dark:hover { border-color: #38c7f4; background: rgba(56, 199, 244, .1); }

@@ -3,14 +3,14 @@
 A seção `#depoimentos` do `index.html` está oculta (`hidden`) até existirem depoimentos reais, com autorização de quem os deu.
 
 ## Como ativar
-1. Preencha `.testimonial-grid` com cartões neste formato:
-   ```html
-   <figure class="testimonial">
-     <blockquote>“Texto exato enviado pelo cliente.”</blockquote>
-     <figcaption><strong>Nome da pessoa</strong>Cargo, Empresa</figcaption>
-   </figure>
+1. Abra `depoimentos-data.js` e acrescente cada depoimento real:
+   ```js
+   window.BRAVE_DEPOIMENTOS = [
+     { quote: "Texto exato enviado pelo cliente.", name: "Nome", role: "Cargo", company: "Empresa", source: "Google" },
+   ];
    ```
-2. Remova o atributo `hidden` da seção `#depoimentos`.
+   O primeiro da lista aparece em destaque. `source` é opcional.
+2. A seção "Quem fala da Brave Bear" aparece sozinha quando a lista deixa de estar vazia.
 3. Guarde a autorização (e-mail ou WhatsApp) de cada cliente.
 
 ## Mensagem para pedir o depoimento
