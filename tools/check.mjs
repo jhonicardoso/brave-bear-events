@@ -16,6 +16,7 @@ for (const file of [
   "calculadora-led.html",
   "projetos.html",
   "caso.html",
+  "contato.html",
 ]) {
   const html = await readFile(file, "utf8");
   for (const match of html.matchAll(

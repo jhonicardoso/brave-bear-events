@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#060b13">
+  <meta name="description" content="Fale com a Brave Bear Events: e-mail, WhatsApp, endereço e formulário para pedir orçamento de audiovisual para eventos.">
+  <title>Contato | Brave Bear Events</title>
+  <link rel="canonical" href="https://www.bravebear.com.br/contato.html">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="enhancements.css?v=20261120-analytics">
+  <link rel="stylesheet" href="galeria.css?v=20261127-galeria">
+  <link rel="stylesheet" href="contato.css?v=20261127-contato">
+  <script src="analytics.js" defer></script>
+  <script src="enhancements.js" defer></script>
+  <script src="contato.js?v=20261127-contato" defer></script>
+</head>
+<body class="g-page contact-page">
+  <header class="g-header">
+    <div class="wrap g-header-inner">
+      <a href="index.html#inicio" aria-label="Brave Bear Events, voltar ao início"><img src="assets/logo-bravebear-paisagem-branco.png" alt="Brave Bear Events" width="2170" height="725"></a>
+      <nav aria-label="Navegação"><a href="index.html#inicio">Início</a><a href="projetos.html">Projetos</a><a href="contato.html" aria-current="page">Contato</a><a class="button button-small" href="#formulario">Pedir orçamento <span aria-hidden="true">↓</span></a></nav>
+    </div>
+  </header>
+  <main id="conteudo">
+    <section class="contact-hero wrap" aria-labelledby="contato-title">
+      <p class="g-eyebrow">Fale com a Brave Bear</p>
+      <h1 id="contato-title">Contato</h1>
+      <a class="contact-hero-phone" href="https://wa.me/5511911728323" target="_blank" rel="noopener noreferrer">11 9 1172-8323</a>
+    </section>
+    <section class="contact-body wrap">
+      <div class="contact-info">
+        <div class="contact-block"><h2>Onde estamos</h2><a href="https://maps.google.com/?q=Avenida+Raimundo+Pereira+de+Magalh%C3%A3es,+1720" target="_blank" rel="noopener noreferrer">Avenida Raimundo Pereira de Magalhães, 1720</a></div>
+        <div class="contact-block"><h2>E-mail comercial</h2><a class="contact-strong" href="mailto:comercial@bravebear.com.br?subject=Solicita%C3%A7%C3%A3o%20de%20proposta%20audiovisual">comercial@bravebear.com.br</a></div>
+        <div class="contact-block"><h2>Telefone e WhatsApp</h2><a class="contact-strong" href="https://wa.me/5511911728323" target="_blank" rel="noopener noreferrer">11 9 1172-8323</a></div>
+        <div class="contact-block"><h2>Redes sociais</h2><p class="contact-social"><a href="https://www.instagram.com/bravebearbrasil/" target="_blank" rel="noopener noreferrer">Instagram · @bravebearbrasil</a><a href="https://www.linkedin.com/company/brave-bear-events" target="_blank" rel="noopener noreferrer">LinkedIn · Brave Bear Events</a></p></div>
+      </div>
+      <form class="quote-form contact-form" id="formulario" novalidate>
+        <div class="form-heading"><span>FALE CONOSCO</span><strong>Envie sua mensagem</strong><small>Campos com * são obrigatórios.</small></div>
+        <div class="form-grid">
+          <label>Nome completo * <input name="name" type="text" autocomplete="name" required placeholder="Seu nome"></label>
+          <label>Empresa <input name="company" type="text" autocomplete="organization" placeholder="Nome da empresa"></label>
+          <label>E-mail <input name="email" type="email" autocomplete="email" placeholder="voce@empresa.com.br"></label>
+          <label>WhatsApp * <input name="phone" type="tel" autocomplete="tel" required placeholder="(11) 90000-0000"></label>
+          <label>Data e cidade do evento <input name="eventInfo" type="text" placeholder="Ex.: 12/03, São Paulo"></label>
+          <label>Como encontrou a Brave Bear?
+            <select name="source"><option value="">Selecione</option><option>Indicação</option><option>Busca na internet</option><option>Redes sociais</option><option>Evento</option><option>Outro</option></select>
+          </label>
+        </div>
+        <fieldset class="contact-services"><legend>O que você procura?</legend>
+          <label><input type="checkbox" name="services" value="Painel de LED"> Painel de LED</label>
+          <label><input type="checkbox" name="services" value="Sonorização"> Sonorização</label>
+          <label><input type="checkbox" name="services" value="Iluminação"> Iluminação</label>
+          <label><input type="checkbox" name="services" value="Projeção e telões"> Projeção e telões</label>
+          <label><input type="checkbox" name="services" value="Transmissão ao vivo"> Transmissão ao vivo</label>
+          <label><input type="checkbox" name="services" value="Interatividade"> Interatividade</label>
+          <label><input type="checkbox" name="services" value="Venda de equipamentos"> Venda de equipamentos</label>
+          <label><input type="checkbox" name="services" value="Outros"> Outros</label>
+        </fieldset>
+        <label class="message-label">Conte mais sobre o seu evento ou solicitação * <textarea name="description" rows="4" required placeholder="Tipo de evento, público esperado, o que precisa"></textarea></label>
+        <div class="form-actions"><button class="button form-submit" type="submit">Enviar mensagem <span aria-hidden="true">↗</span></button></div>
+        <p class="form-privacy">O WhatsApp abrirá com a mensagem pronta para você revisar e enviar. Nenhum dado é guardado neste site.</p>
+        <div class="form-feedback" id="form-feedback" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+  <footer class="site-footer site-footer-clean">
+    <div class="wrap footer-clean">
+      <div class="footer-clean-brand"><a class="brand brand-lockup" href="index.html#inicio" aria-label="Brave Bear Events, início"><img src="assets/logo-bravebear-paisagem-branco.png" alt="Brave Bear — Events · Visual · Experience" width="2170" height="725"></a><div id="ra-verified-seal" data-lazy-script="https://s3.amazonaws.com/raichu-beta/ra-verified/bundle.js"><span data-seal-id="TVl4OVZ1Uk1wT1ZGMVh0WTo2MC0yNjgtOTk4LWpob25pLWdvbmNhbHZlcy1jYXJkb3Nv"></span></div></div>
+      <div class="footer-clean-col">
+        <p class="footer-clean-title">Onde estamos</p>
+        <a class="footer-clean-address" href="https://maps.google.com/?q=Avenida+Raimundo+Pereira+de+Magalh%C3%A3es,+1720" target="_blank" rel="noopener noreferrer">Avenida Raimundo Pereira de Magalhães, 1720</a>
+        <p class="footer-clean-title footer-clean-title-spaced">Fale conosco</p>
+        <a class="footer-clean-strong" href="mailto:comercial@bravebear.com.br">comercial@bravebear.com.br</a>
+        <a class="footer-clean-phone" href="https://wa.me/5511911728323" target="_blank" rel="noopener noreferrer">11 9 1172-8323</a>
+      </div>
+      <div class="footer-clean-col">
+        <p class="footer-clean-title">Serviços</p>
+        <ul class="footer-clean-links">
+          <li><a href="equipamentos.html?categoria=led">Painel de LED</a></li>
+          <li><a href="equipamentos.html?categoria=audio">Sonorização</a></li>
+          <li><a href="equipamentos.html?categoria=lighting">Iluminação</a></li>
+          <li><a href="equipamentos.html?categoria=projection">Projeção</a></li>
+          <li><a href="index.html#interatividade">Interatividade</a></li>
+          <li><a href="projetos.html">Projetos</a></li>
+        </ul>
+      </div>
+      <div class="footer-clean-col">
+        <p class="footer-clean-title">Redes</p>
+        <div class="footer-clean-social">
+          <a href="https://www.instagram.com/bravebearbrasil/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Brave Bear"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/company/brave-bear-events" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Brave Bear"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M4 9h3v11H4zM5.5 4a1.75 1.75 0 110 3.5 1.75 1.75 0 010-3.5zM10 9h2.9v1.6c.5-.9 1.7-1.9 3.5-1.9 3.3 0 3.6 2.2 3.6 4.7V20h-3v-5.6c0-1.3 0-2.9-1.8-2.9s-2.2 1.4-2.2 2.8V20H10z"/></svg></a>
+          <a href="https://wa.me/5511911728323" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da Brave Bear"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 00-7.8 13.5L3 21l4.6-1.2A9 9 0 1012 3zm0 1.8a7.2 7.2 0 11-3.7 13.4l-.3-.2-2.7.7.7-2.6-.2-.3A7.2 7.2 0 0112 4.8zM9 8.2c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.2.8 2.6.6 3.1.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.3-.7-.7-1.2-1.5-1.4-1.8-.1-.2 0-.4.1-.5l.4-.5.3-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap footer-bottom"><span>© <span id="current-year">2026</span> Brave Bear Events</span><span class="footer-bottom-links"><a href="contato.html">Contato</a><a href="catalogo-audiovisual.pdf?v=20261027-2" target="_blank" rel="noopener noreferrer">Catálogo audiovisual</a></span><a href="index.html#topo">Voltar ao topo ↑</a></div>
+  </footer>
+</body>
+</html>

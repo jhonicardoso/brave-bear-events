@@ -15,7 +15,6 @@
 .g-header-inner nav { display: flex; align-items: center; gap: 22px; }
 .g-header-inner nav a:not(.button) { color: var(--g-muted); font: 500 13px/1 var(--font-display); transition: color .2s; }
 .g-header-inner nav a:not(.button):hover { color: var(--g-accent); }
-.g-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding: 28px 0 40px; border-top: 1px solid var(--g-line); color: var(--g-muted); font-size: 12px; }
 
 /* textos */
 .g-eyebrow { display: flex; align-items: center; gap: 14px; margin: 0 0 18px; color: var(--g-accent); font: 700 10px/1 var(--font-display); letter-spacing: .22em; text-transform: uppercase; }
@@ -85,7 +84,10 @@
 @media (max-width: 640px) {
   .g-grid { grid-template-columns: 1fr; }
   .g-head { flex-direction: column; align-items: flex-start; gap: 18px; }
-  .g-header-inner img { width: 130px; }
+  .g-header-inner img { width: 110px; }
+  .g-header-inner nav { gap: 12px; }
+  .g-header-inner nav a:not(.button) { font-size: 12px; }
+  .g-header-inner nav .button { padding-inline: 12px; font-size: 11px; }
   .gmedia.is-portrait { flex-basis: 100%; }
   .g-cta { flex-direction: column; align-items: flex-start; padding: 28px; }
   .g-case-nav a strong { font-size: 14px; }

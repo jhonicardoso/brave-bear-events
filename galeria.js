@@ -1,5 +1,7 @@
 /* Galeria de projetos: lista completa (projetos.html) e página de cada projeto (caso.html). */
 (() => {
+  const year = document.querySelector("#current-year");
+  if (year) year.textContent = String(new Date().getFullYear());
   const BASES = {
     p: "assets/galeria/projetos/",
     e: "assets/galeria/estandes/",
@@ -89,7 +91,7 @@
         <a class="g-case-all" href="projetos.html">Todos os projetos</a>
         <a class="is-next" href="caso.html?c=${next.slug}"><span>Próximo projeto →</span><strong>${esc(next.title)}</strong></a>
       </nav>
-      <div class="g-cta"><div><h2>Quer um projeto como este?</h2><p>Fale com a equipe e conte o que o seu evento precisa.</p></div><a class="button" href="index.html#orcamento">Fale com nossa equipe <span aria-hidden="true">↗</span></a></div>
+      <div class="g-cta"><div><h2>Quer um projeto como este?</h2><p>Fale com a equipe e conte o que o seu evento precisa.</p></div><a class="button" href="contato.html">Fale com nossa equipe <span aria-hidden="true">↗</span></a></div>
     </article>`;
     document.title = `${item.title} | Brave Bear Events`;
     const observer =
