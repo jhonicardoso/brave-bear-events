@@ -208,14 +208,6 @@ body:has(dialog[open]) { overflow: hidden; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
 
 /* Brave Bear Digital: seção minimalista. */
-.digital-pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 34px 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(174, 205, 239, .18); }
-.digital-pillars li { display: grid; gap: 6px; padding: 22px 22px 4px 0; }
-.digital-pillars li + li { padding-left: 22px; border-left: 1px solid rgba(174, 205, 239, .14); }
-.digital-pillars span { color: #20d7ef; font: 700 11px var(--font-display); letter-spacing: .18em; }
-.digital-pillars h3 { margin: 0; color: #fff; font: 800 18px/1.2 var(--font-display); letter-spacing: -.02em; }
-.digital-pillars p { margin: 0; color: #9db0c3; font-size: 13px; line-height: 1.55; }
-.experience-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-top: 32px; }
-@media (max-width: 700px) { .digital-pillars { grid-template-columns: 1fr; } .digital-pillars li, .digital-pillars li + li { padding: 18px 0; border-left: 0; border-bottom: 1px solid rgba(174, 205, 239, .12); } }
 
 /* Projetos: ver galeria.css. */
 @media (prefers-reduced-motion: reduce) { .odo-strip { transition: none; } }
