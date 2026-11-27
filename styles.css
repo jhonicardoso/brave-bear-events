@@ -299,35 +299,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @keyframes catalog-light-sweep { to { left: 115%; } }
 @keyframes catalog-progress { to { transform: scaleX(1); } }
 
-.event-types { padding-block: 92px; }
-.event-types-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 90px; align-items: center; }
-.event-types-title h2 { max-width: 480px; font-family: var(--font-display); font-size: clamp(36px, 4.5vw, 54px); font-weight: 800; letter-spacing: -.055em; line-height: 1.08; }
-.event-types-title h2 span { color: #087ee3; }
-.event-types-title > p:not(.eyebrow) { max-width: 390px; margin: 17px 0 23px; color: var(--paper-muted); font-size: 12px; line-height: 1.75; }
 .text-link-dark { color: #0878ce; }
-.event-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.event-tags button { padding: 11px 14px; border: 1px solid #dce4e9; color: #263648; background: #fbfcfd; font-size: 10px; font-weight: 600; cursor: pointer; transition: color .2s ease, border-color .2s ease, background .2s ease, transform .2s ease; }
-.event-tags button:hover { transform: translateY(-2px); color: #fff; border-color: #087de2; background: #087de2; }
-.event-tags button:focus-visible { outline: 2px solid #087de2; outline-offset: 3px; }
-.event-dialog { width: min(920px, calc(100% - 32px)); max-width: none; max-height: min(86svh, 760px); overflow: auto; padding: 0; border: 1px solid #dce4e9; color: var(--paper-ink); background: #fff; box-shadow: 0 28px 90px rgba(0,0,0,.35); }
-.event-dialog::backdrop { background: rgba(4, 12, 20, .76); backdrop-filter: blur(4px); }
-.event-dialog[open] { animation: event-dialog-in .22s ease-out both; }
-@keyframes event-dialog-in { from { opacity: 0; transform: translateY(10px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
-.event-dialog-layout { display: grid; grid-template-columns: 1.1fr .9fr; align-items: stretch; }
-.event-dialog-image { display: block; width: 100%; height: 100%; min-height: 360px; object-fit: cover; background: #101827; }
-.event-dialog-content { padding: clamp(24px, 4vw, 42px); }
-.event-dialog-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
-.event-dialog-top .eyebrow { margin-bottom: 0; }
-.event-dialog-close { display: grid; width: 38px; height: 38px; flex: 0 0 auto; place-items: center; margin-top: -8px; border: 1px solid #dce4e9; color: #25364a; background: #f7f9fb; font-size: 25px; line-height: 1; cursor: pointer; }
-.event-dialog-close:hover { color: #fff; border-color: #087de2; background: #087de2; }
-.event-dialog h2 { margin: 24px 0 13px; font-family: var(--font-display); font-size: clamp(28px, 5vw, 40px); font-weight: 800; letter-spacing: -.045em; line-height: 1.1; }
-#event-dialog-copy { margin: 0 0 24px; color: #536274; font-size: 15px; line-height: 1.75; }
-.event-dialog .button { min-height: 48px; }
-@media (max-width: 760px) {
-  .event-dialog-layout { grid-template-columns: 1fr; }
-  .event-dialog-image { height: auto; min-height: 0; max-height: 36svh; aspect-ratio: 16 / 9; }
-}
-
 .client-section { padding-block: 66px; border-top: 1px solid rgba(255,255,255,.07); border-bottom: 1px solid rgba(255,255,255,.07); background: #0b1420; }
 .client-layout { display: block; }
 .client-heading { max-width: 700px; margin-bottom: 30px; }
@@ -479,7 +451,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .interactive-offers { padding-right: 0; }
   .benefit-row { margin-top: 10px; border-top: 1px solid rgba(255,255,255,.14); border-left: 0; }
   .benefit-row div:first-child { padding-left: 0; }
-  .event-types-layout { grid-template-columns: 1fr; gap: 35px; }
   .benefit-row { grid-template-columns: repeat(3, 1fr); border-left: 0; }
   .client-logo { flex-basis: 160px; }
   .process-list { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px 0; }
@@ -557,9 +528,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .category-tabs { margin-inline: -14px; padding: 14px; }
   .product-list { grid-template-columns: 1fr; }
   .product-card { min-height: 72px; }
-  .event-types { padding-block: 72px; }
-  .event-tags { gap: 7px; }
-  .event-tags button { padding: 9px 10px; font-size: 10px; }
   .client-section { padding-block: 55px; }
   .client-heading { margin-bottom: 23px; }
   .client-logo { flex-basis: 142px; min-height: 82px; padding: 12px 15px; }
@@ -636,10 +604,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .catalog-subtitle, .catalog-note { font-size: 12px; line-height: 1.6; }
   .product-list { gap: 8px; }
   .product-card { min-height: 66px; }
-  .event-types { padding-block: 58px; }
-  .event-types-title > p:not(.eyebrow) { font-size: 14px; line-height: 1.7; }
-  .event-tags { gap: 8px; }
-  .event-tags button { padding: 9px 11px; font-size: 11px; }
   .client-section { padding-block: 46px; }
   .process-list { margin-top: 27px; }
   .process-list li { min-height: 132px; }
@@ -697,8 +661,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .benefit-row span, .kit-card > p, .kit-card li, .kit-footnote, .process-list p, .about-detail > p:first-child { font-size: 13px; }
 .kit-card .button { font-size: 12px; }
 .equipment-feature small, .equipment-feature em, .catalog-subtitle, .catalog-note, .product-text small, .future-catalog p { font-size: 11px; }
-.product-text strong, .category-tab, .event-tags button, .process-list h3 { font-size: 12px; }
-.event-types-title > p:not(.eyebrow) { font-size: 14px; }
+.product-text strong, .category-tab, .process-list h3 { font-size: 12px; }
 .quote-form label, .solution-fieldset legend { font-size: 11px; }
 .quote-form input:not([type="checkbox"]), .quote-form select, .quote-form textarea, .catalog-search input { font-size: 13px; }
 .form-heading > span, .footer-nav > span, .footer-social > span { font-size: 9px; }
@@ -728,7 +691,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .section-intro, .interactive-copy > p:not(.eyebrow), .quote-copy > p:not(.eyebrow), .about-detail > p:first-child { font-size: 14px; }
   .service-card p, .service-card > a, .interactive-offers span, .benefit-row strong, .benefit-row span, .kit-card > p, .kit-card li { font-size: 13px; }
   .equipment-feature small, .equipment-feature em, .catalog-subtitle, .catalog-note, .product-text small, .future-catalog p { font-size: 12px; }
-  .product-text strong, .category-tab, .event-tags button, .process-list h3 { font-size: 13px; }
+  .product-text strong, .category-tab, .process-list h3 { font-size: 13px; }
   .process-list p, .quote-form label, .solution-fieldset legend { font-size: 12px; }
   .quote-form input:not([type="checkbox"]), .quote-form select, .quote-form textarea, .catalog-search input { font-size: 14px; }
   .led-calc-fields label, .led-result-grid article span, .calc-hint { font-size: 12px; }
