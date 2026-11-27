@@ -11,6 +11,7 @@ for (const path of [
   "/calculadora-led.html",
   "/projetos.html",
   "/caso.html?c=experiencia-imersiva-mar-2026",
+  "/contato.html",
 ]) {
   test(`${path}: runtime, landmarks and responsive layout`, async ({
     page,
@@ -350,4 +351,44 @@ test("galeria: filtro por tipo, página de projeto e navegação entre projetos"
   await page.getByRole("link", { name: /Próximo projeto/ }).click();
   await expect(page).toHaveURL(/caso\.html\?c=/);
   expect(page.url()).not.toBe(before);
+});
+
+test("home: sem introdução 'Mais do que equipamentos', sem contato duplicado e com rodapé limpo", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator("#contato")).toHaveCount(0);
+  await expect(page.locator(".contact-strip")).toHaveCount(0);
+  await expect(page.getByText("Mais do que equipamentos.")).toHaveCount(0);
+  await expect(
+    page.getByRole("link", { name: "Contato", exact: true }).first(),
+  ).toHaveAttribute("href", "contato.html");
+  const footer = page.locator(".site-footer-clean");
+  await expect(footer.getByText("Onde estamos")).toBeAttached();
+  await expect(footer.getByText("Fale conosco")).toBeAttached();
+  await expect(footer.locator(".footer-clean-social a")).toHaveCount(3);
+});
+
+test("contato: dados da empresa e formulário que prepara a mensagem no WhatsApp", async ({
+  page,
+}) => {
+  await page.goto("/contato.html");
+  await expect(page.locator("h1")).toHaveText("Contato");
+  await expect(
+    page.locator(".contact-info").getByText("comercial@bravebear.com.br"),
+  ).toBeVisible();
+  await page.getByRole("button", { name: /Enviar mensagem/ }).click();
+  await expect(page.locator("#form-feedback")).toContainText("Preencha nome");
+  await page.getByLabel(/Nome completo/).fill("Maria Teste");
+  await page.getByLabel(/WhatsApp \*/).fill("11 90000-0000");
+  await page.getByLabel(/Painel de LED/).check();
+  await page.getByLabel(/Conte mais/).fill("Convenção para 300 pessoas");
+  await page.getByRole("button", { name: /Enviar mensagem/ }).click();
+  const link = page.locator("#form-feedback a");
+  const url = new URL(await link.getAttribute("href"));
+  expect(url.hostname).toBe("wa.me");
+  const text = url.searchParams.get("text");
+  expect(text).toContain("Nome: Maria Teste");
+  expect(text).toContain("Procuro: Painel de LED");
+  expect(text).toContain("Mensagem: Convenção para 300 pessoas");
 });

@@ -323,10 +323,11 @@ body:has(dialog[open]) { overflow: hidden; }
 
 
 /* Estrutura da equipe (comercial, operação, logística e software). */
-.team-structure { margin-top: 68px; }
+.team-structure { margin-top: 0; }
+.team-structure-head h2 { max-width: none; }
 .team-structure-head { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: end; padding-bottom: 30px; border-bottom: 1px solid rgba(189, 215, 241, .18); }
-.team-structure-head h3 { margin: 0; color: #f4f7fb; font: 800 clamp(26px, 3.4vw, 38px)/1.12 var(--font-display); letter-spacing: -.045em; }
-.team-structure-head h3 span { color: #38c7f4; }
+.team-structure-head h2 { margin: 0; color: #f4f7fb; font: 800 clamp(26px, 3.4vw, 38px)/1.12 var(--font-display); letter-spacing: -.045em; }
+.team-structure-head h2 span { color: #38c7f4; }
 .team-structure-head > p { max-width: 46ch; margin: 0; color: #aebdcb; font-size: 14px; line-height: 1.7; }
 .team-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 30px; }
 .team-card { position: relative; overflow: hidden; isolation: isolate; padding: 24px 22px 26px; border: 1px solid rgba(189, 215, 241, .16); border-radius: 18px; background: linear-gradient(115deg, rgba(14, 34, 52, .92), rgba(8, 19, 32, .9)); transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s, box-shadow .35s; }
@@ -350,7 +351,7 @@ body:has(dialog[open]) { overflow: hidden; }
 .founder-card:hover { box-shadow: 0 18px 40px -20px rgba(56, 199, 244, .4); }
 .founder-card > img { border-radius: 12px; }
 @media (max-width: 1000px) { .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 760px) { .team-structure { margin-top: 50px; } .team-structure-head { grid-template-columns: 1fr; gap: 16px; } }
+@media (max-width: 760px) { .team-structure-head { grid-template-columns: 1fr; gap: 16px; } }
 @media (max-width: 560px) { .team-grid { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .team-card, .team-card-figure, .founder-card { transition: none; } }
 .quote-email-link { color: #7fdcff; text-decoration: underline; text-underline-offset: 3px; }
