@@ -4,4 +4,8 @@
     <loc>https://www.bravebear.com.br/</loc>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://www.bravebear.com.br/projetos.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>
