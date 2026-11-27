@@ -194,7 +194,7 @@ if (clientCarousel && clientTrack && clientList && clientCarouselToggle) {
 }
 
 const revealTargets = document.querySelectorAll(
-  ".service-card, .kit-card, .equipment-feature, .team-structure-head, .team-card, .founder-card, .projects-section .gcard, .client-carousel, .quote-form",
+  ".service-card, .kit-card, .equipment-feature, .team-structure-head, .team-card, .digital-head, .digital-card, .digital-steps, .founder-card, .projects-section .gcard, .client-carousel, .quote-form",
 );
 if (
   "IntersectionObserver" in window &&
@@ -400,7 +400,7 @@ if (
 
 // Brilho que acompanha o mouse nos cartões da equipe.
 for (const card of document.querySelectorAll(
-  ".team-card, .equipment-feature",
+  ".team-card, .equipment-feature, .digital-card",
 )) {
   card.addEventListener("pointermove", (event) => {
     const box = card.getBoundingClientRect();

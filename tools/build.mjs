@@ -19,7 +19,6 @@ const files = [
   "calculator.js",
   "catalog-data.js",
   "equipamentos.js",
-  "interactivity.js",
   "enhancements.js",
   "galeria.js",
   "contato.js",

@@ -62,18 +62,6 @@ test("calculator validates limits and clears stale results", async ({
   await expect(page.locator('[data-result="tiles"]')).toHaveText("60 placas");
 });
 
-test("optional interaction script loads near its section", async ({ page }) => {
-  await page.goto("/");
-  await page.locator("#interatividade").scrollIntoViewIfNeeded();
-  await expect(page.locator('script[src="interactivity.js"]')).toHaveCount(1);
-  await expect(page.locator("#interatividade")).not.toHaveAttribute(
-    "data-lazy-script",
-  );
-  const tabs = page.locator("[data-activation]");
-  await tabs.nth(1).click();
-  await expect(tabs.nth(1)).toHaveAttribute("aria-selected", "true");
-});
-
 test("quote text remains data and outbound link isolates opener", async ({
   page,
 }) => {
@@ -89,21 +77,15 @@ test("quote text remains data and outbound link isolates opener", async ({
   ).toContain("<img");
 });
 
-test("Interactive Experience Lab showcases the service and retains all three demos", async ({
+test("Brave Bear Digital apresenta software, apps e experiências digitais", async ({
   page,
 }) => {
   await page.goto("/");
   const lab = page.locator("#interatividade");
   await expect(lab.locator("h2")).toContainText("Software, apps");
-  await expect(lab.locator(".digital-pillars > li")).toHaveCount(3);
-  await expect(lab.locator(".activation-tabs [role=tab]")).toHaveCount(3);
+  await expect(lab.locator(".digital-card")).toHaveCount(3);
+  await expect(lab.locator(".digital-steps > li")).toHaveCount(4);
   await lab.scrollIntoViewIfNeeded();
-  await lab.locator("#activation-tab-memory").click();
-  await expect(lab.locator("#activation-panel-memory")).toBeVisible();
-  await lab.locator("#activation-tab-wheel").click();
-  await expect(lab.locator("#activation-panel-wheel")).toBeVisible();
-  await lab.locator("#activation-tab-quiz").click();
-  await expect(lab.locator("#activation-panel-quiz")).toBeVisible();
   const action = lab.getByRole("link", { name: /Desenvolver meu projeto/ });
   await expect(action).toHaveAttribute(
     "data-quick-quote",
@@ -199,43 +181,12 @@ test("mobile hero follows content without excessive empty space", async ({
   expect(Math.abs(positions.nextTop - positions.heroBottom)).toBeLessThan(2);
 });
 
-test("premium totem loads and games complete without horizontal overflow", async ({
-  page,
-}) => {
+test("seção digital cabe na tela sem rolagem horizontal", async ({ page }) => {
   await page.goto("/");
   await page.locator("#interatividade").scrollIntoViewIfNeeded();
-  const image = page.locator(".interactive-image");
-  expect(
-    await image.evaluate((el) => getComputedStyle(el).backgroundImage),
-  ).toContain("totem-interatividade-brave-bear.jpg?v=20261116-hd");
-  const asset = await page.request.get(
-    "/assets/totem-interatividade-brave-bear.jpg?v=20261116-hd",
-  );
-  expect(asset.ok()).toBe(true);
-  const dimensions = await page.evaluate(async () => {
-    const image = new Image();
-    image.src = "/assets/totem-interatividade-brave-bear.jpg?v=20261116-hd";
-    await image.decode();
-    return { width: image.naturalWidth, height: image.naturalHeight };
-  });
-  expect(dimensions.width).toBeGreaterThanOrEqual(1024);
-  expect(dimensions.height).toBeGreaterThanOrEqual(1024);
-  for (let question = 0; question < 4; question++) {
-    await page.locator("#quiz-choices button").first().click();
-    await page.locator("#quiz-next").click();
-  }
-  await expect(page.locator("#quiz-restart")).toBeVisible();
-  await page.locator("#activation-tab-memory").click();
-  for (const pair of ["audio", "light", "screen"]) {
-    const cards = page.locator(`[data-pair="${pair}"]`);
-    await cards.nth(0).click();
-    await cards.nth(1).click();
-    await expect(cards.nth(1)).toHaveClass(/is-matched/);
-  }
-  await expect(page.locator(".is-matched")).toHaveCount(6);
-  await page.locator("#activation-tab-wheel").click();
-  await page.locator(".demo-spin").click();
-  await expect(page.locator(".wheel-result")).toHaveClass(/is-revealed/);
+  await expect(
+    page.locator("#interatividade .digital-card").first(),
+  ).toBeVisible();
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
