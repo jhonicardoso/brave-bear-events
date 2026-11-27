@@ -366,7 +366,7 @@ test("home: sem introdução 'Mais do que equipamentos', sem contato duplicado e
   const footer = page.locator(".site-footer-clean");
   await expect(footer.getByText("Onde estamos")).toBeAttached();
   await expect(footer.getByText("Fale conosco")).toBeAttached();
-  await expect(footer.locator(".footer-clean-social a")).toHaveCount(3);
+  await expect(footer.locator(".footer-clean-social a")).toHaveCount(4);
 });
 
 test("contato: dados da empresa e formulário que prepara a mensagem no WhatsApp", async ({
@@ -391,4 +391,27 @@ test("contato: dados da empresa e formulário que prepara a mensagem no WhatsApp
   expect(text).toContain("Nome: Maria Teste");
   expect(text).toContain("Procuro: Painel de LED");
   expect(text).toContain("Mensagem: Convenção para 300 pessoas");
+});
+
+test("voltar ao topo sobe até o início e o TikTok está no rodapé", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Recusar" }).click();
+  await expect(
+    page.locator('.footer-clean-social a[href*="tiktok.com/@bravebearbrasil"]'),
+  ).toBeAttached();
+  await page
+    .locator(".footer-bottom")
+    .getByText("Voltar ao topo")
+    .scrollIntoViewIfNeeded();
+  await page.locator(".footer-bottom").getByText("Voltar ao topo").click();
+  await page.waitForFunction(() => window.scrollY === 0);
+  expect(await page.evaluate(() => window.scrollY)).toBe(0);
+});
+
+test("catálogo: nove categorias com imagens distintas", async ({ page }) => {
+  await page.goto("/");
+  const cards = page.locator("#equipment-categories .equipment-feature");
+  await expect(cards).toHaveCount(9);
 });

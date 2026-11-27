@@ -399,7 +399,9 @@ if (
 }
 
 // Brilho que acompanha o mouse nos cartões da equipe.
-for (const card of document.querySelectorAll(".team-card")) {
+for (const card of document.querySelectorAll(
+  ".team-card, .equipment-feature",
+)) {
   card.addEventListener("pointermove", (event) => {
     const box = card.getBoundingClientRect();
     card.style.setProperty("--mx", `${event.clientX - box.left}px`);

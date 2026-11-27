@@ -87,3 +87,15 @@ function initializeDeferredScripts() {
 
 initializeImages();
 initializeDeferredScripts();
+
+// "Voltar ao topo": o cabeçalho é fixo, então o link para #topo não rolava de verdade.
+for (const link of document.querySelectorAll(
+  'a[href="#topo"], a[href="index.html#topo"]',
+)) {
+  link.setAttribute("href", "#");
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: calm ? "auto" : "smooth" });
+  });
+}
