@@ -323,16 +323,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .client-logo:hover img { opacity: 1; }
 @keyframes client-logo-marquee { to { transform: translateX(-50%); } }
 
-.process-section { background: #090f18; }
-.process-section h2 { font-size: clamp(37px, 4.8vw, 58px); }
-.process-section h2 span { color: #38c7f4; }
-.process-section .section-intro { color: #9eacba; }
-.process-list { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); margin: 58px 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(189,215,241,.2); }
-.process-list li { position: relative; min-height: 178px; padding: 26px 16px 0 0; }
-.process-list li::before { position: absolute; top: -5px; left: 0; width: 9px; height: 9px; border: 1px solid var(--cyan); border-radius: 50%; background: #09101a; content: ""; box-shadow: 0 0 15px rgba(32,215,239,.45); }
-.process-list li > span { color: #2ac7e6; font-family: var(--font-display); font-size: 10px; font-weight: 800; letter-spacing: .13em; }
-.process-list h3 { margin: 15px 0 6px; color: #f1f5f9; font-family: var(--font-display); font-size: 14px; font-weight: 800; }
-.process-list p { max-width: 155px; margin: 0; color: #9aa8b7; font-size: 10px; line-height: 1.65; }
 
 .about-section { position: relative; overflow: hidden; padding-block: 105px; isolation: isolate; background: #07111e; }
 .about-photo { position: absolute; z-index: -1; inset: 0 0 0 48%; opacity: .37; background: linear-gradient(90deg, #07111e 0%, rgba(7,17,30,.25) 65%), url("assets/structure.webp") center / cover no-repeat; mask-image: linear-gradient(90deg, transparent, #000 25%); }
@@ -453,8 +443,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .benefit-row div:first-child { padding-left: 0; }
   .benefit-row { grid-template-columns: repeat(3, 1fr); border-left: 0; }
   .client-logo { flex-basis: 160px; }
-  .process-list { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px 0; }
-  .process-list li:nth-child(4) { border-top: 1px solid rgba(189,215,241,.2); }
   .about-layout { grid-template-columns: 1fr; gap: 27px; }
   .about-photo { left: 20%; opacity: .23; }
   .quote-layout { grid-template-columns: 1fr; gap: 36px; }
@@ -534,11 +522,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .client-logo img { height: 48px; }
   .client-logo-bv img { height: 60px; }
   .client-logo-monster img { height: 66px; }
-  .process-list { grid-template-columns: 1fr 1fr; gap: 0 15px; margin-top: 39px; }
-  .process-list li { min-height: 150px; padding-top: 22px; border-top: 1px solid rgba(189,215,241,.2); }
-  .process-list li:nth-child(4) { border-top: 1px solid rgba(189,215,241,.2); }
-  .process-list h3 { margin-top: 12px; font-size: 12px; }
-  .process-list p { font-size: 9px; }
   .about-section { padding-block: 73px; }
   .about-detail > p:first-child { font-size: 12px; }
   .quote-section { padding-block: 74px; }
@@ -605,10 +588,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .product-list { gap: 8px; }
   .product-card { min-height: 66px; }
   .client-section { padding-block: 46px; }
-  .process-list { margin-top: 27px; }
-  .process-list li { min-height: 132px; }
-  .process-list h3 { font-size: 13px; }
-  .process-list p { font-size: 11px; line-height: 1.55; }
   .about-section, .quote-section { padding-block: 58px; }
   .contact-strip { padding-block: 54px; }
   .contact-details a > small { font-size: 10px; }
@@ -658,10 +637,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .service-card p, .service-card > a { font-size: 13px; }
 .interactive-offers span { font-size: 12px; }
 .benefit-row strong { font-size: 13px; }
-.benefit-row span, .kit-card > p, .kit-card li, .kit-footnote, .process-list p, .about-detail > p:first-child { font-size: 13px; }
+.benefit-row span, .kit-card > p, .kit-card li, .kit-footnote, .about-detail > p:first-child { font-size: 13px; }
 .kit-card .button { font-size: 12px; }
 .equipment-feature small, .equipment-feature em, .catalog-subtitle, .catalog-note, .product-text small, .future-catalog p { font-size: 11px; }
-.product-text strong, .category-tab, .process-list h3 { font-size: 12px; }
+.product-text strong, .category-tab { font-size: 12px; }
 .quote-form label, .solution-fieldset legend { font-size: 11px; }
 .quote-form input:not([type="checkbox"]), .quote-form select, .quote-form textarea, .catalog-search input { font-size: 13px; }
 .form-heading > span, .footer-nav > span, .footer-social > span { font-size: 9px; }
@@ -691,8 +670,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .section-intro, .interactive-copy > p:not(.eyebrow), .quote-copy > p:not(.eyebrow), .about-detail > p:first-child { font-size: 14px; }
   .service-card p, .service-card > a, .interactive-offers span, .benefit-row strong, .benefit-row span, .kit-card > p, .kit-card li { font-size: 13px; }
   .equipment-feature small, .equipment-feature em, .catalog-subtitle, .catalog-note, .product-text small, .future-catalog p { font-size: 12px; }
-  .product-text strong, .category-tab, .process-list h3 { font-size: 13px; }
-  .process-list p, .quote-form label, .solution-fieldset legend { font-size: 12px; }
+  .product-text strong, .category-tab { font-size: 13px; }
+  .quote-form label, .solution-fieldset legend { font-size: 12px; }
   .quote-form input:not([type="checkbox"]), .quote-form select, .quote-form textarea, .catalog-search input { font-size: 14px; }
   .led-calc-fields label, .led-result-grid article span, .calc-hint { font-size: 12px; }
   .led-calc-fields input, .led-calc-fields select { font-size: 14px; }

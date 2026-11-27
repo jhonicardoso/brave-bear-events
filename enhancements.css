@@ -217,15 +217,8 @@ body:has(dialog[open]) { overflow: hidden; }
 .experience-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-top: 32px; }
 @media (max-width: 700px) { .digital-pillars { grid-template-columns: 1fr; } .digital-pillars li, .digital-pillars li + li { padding: 18px 0; border-left: 0; border-bottom: 1px solid rgba(174, 205, 239, .12); } }
 
-/* Projetos. */
-.projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.project { position: relative; margin: 0; overflow: hidden; border-radius: 4px; aspect-ratio: 4 / 3; background: #0b121c; }
-.project img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
-.project:hover img { transform: scale(1.05); }
-.project figcaption { position: absolute; inset: auto 0 0; padding: 36px 16px 14px; color: #fff; background: linear-gradient(transparent, rgba(3, 8, 14, .85)); font: 700 14px var(--font-display); }
-@media (max-width: 860px) { .projects-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 520px) { .projects-grid { grid-template-columns: 1fr; } }
-@media (prefers-reduced-motion: reduce) { .project img, .odo-strip { transition: none; } }
+/* Projetos: ver galeria.css. */
+@media (prefers-reduced-motion: reduce) { .odo-strip { transition: none; } }
 
 /* Depoimentos (ficam ocultos até haver conteúdo real). */
 .testimonial-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
@@ -328,61 +321,38 @@ body:has(dialog[open]) { overflow: hidden; }
 }
 
 
-/* Registros reais no portfólio: legendas com contexto e mês do trabalho. */
-.projects-intro {
-  max-width: 760px;
-  margin: -8px 0 24px;
-  color: #aab9c9;
-  font-size: 13px;
-  line-height: 1.75;
-}
-.project figcaption small {
-  display: block;
-  margin-top: 7px;
-  color: #bfd3e6;
-  font: 600 10px/1.4 var(--font-body);
-  letter-spacing: .04em;
-}
 
-/* Capacidade operacional informada pela empresa. */
-.team-capacity {
-  display: grid;
-  grid-template-columns: 92px minmax(0,1fr);
-  align-items: center;
-  gap: 22px;
-  margin-top: 22px;
-  padding: clamp(22px, 3.5vw, 34px);
-  border: 1px solid rgba(82, 194, 235, .24);
-  background: linear-gradient(115deg, rgba(11, 35, 58, .9), rgba(8, 17, 29, .88));
-}
-.team-capacity-number {
-  color: #58cdfa;
-  font: 800 54px/1 var(--font-display);
-  letter-spacing: -.06em;
-}
-.team-capacity-kicker {
-  margin: 0 0 7px;
-  color: #58cdfa;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: .18em;
-}
-.team-capacity h3 {
-  margin: 0 0 8px;
-  color: #f4f7fb;
-  font: 800 clamp(18px, 2.3vw, 24px)/1.25 var(--font-display);
-}
-.team-capacity p:last-child {
-  max-width: 760px;
-  margin: 0;
-  color: #c1cedb;
-  font-size: 13px;
-  line-height: 1.7;
-}
+/* Estrutura da equipe (comercial, operação, logística e software). */
+.team-structure { margin-top: 68px; }
+.team-structure-head { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: end; padding-bottom: 30px; border-bottom: 1px solid rgba(189, 215, 241, .18); }
+.team-structure-head h3 { margin: 0; color: #f4f7fb; font: 800 clamp(26px, 3.4vw, 38px)/1.12 var(--font-display); letter-spacing: -.045em; }
+.team-structure-head h3 span { color: #38c7f4; }
+.team-structure-head > p { max-width: 46ch; margin: 0; color: #aebdcb; font-size: 14px; line-height: 1.7; }
+.team-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 30px; }
+.team-card { position: relative; overflow: hidden; isolation: isolate; padding: 24px 22px 26px; border: 1px solid rgba(189, 215, 241, .16); border-radius: 18px; background: linear-gradient(115deg, rgba(14, 34, 52, .92), rgba(8, 19, 32, .9)); transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s, box-shadow .35s; }
+.team-card::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), rgba(56, 199, 244, .18), transparent 60%); transition: opacity .35s; }
+.team-card::after { content: ""; position: absolute; left: 22px; bottom: 0; width: 0; height: 2px; border-radius: 2px; background: #38c7f4; transition: width .45s cubic-bezier(.2,.7,.2,1); }
+.team-card:hover { transform: translateY(-6px); border-color: rgba(56, 199, 244, .6); box-shadow: 0 18px 40px -18px rgba(56, 199, 244, .35); }
+.team-card:hover::before { opacity: 1; }
+.team-card:hover::after { width: calc(100% - 44px); }
+.team-card-index { color: #38c7f4; font: 700 10px/1 var(--font-display); letter-spacing: .2em; }
+.team-card-figure { margin: 18px 0 6px; color: #fff; font: 800 34px/1 var(--font-display); letter-spacing: -.035em; transform-origin: left center; transition: color .3s, transform .35s cubic-bezier(.2,.7,.2,1); }
+.team-card-figure small { display: block; margin-top: 9px; color: #9ba8b9; font: 600 10px/1.3 var(--font-display); letter-spacing: .14em; text-transform: uppercase; }
+.team-card:hover .team-card-figure { color: #38c7f4; transform: scale(1.04); }
+.team-card h4 { margin: 18px 0 8px; color: #f4f7fb; font: 800 17px/1.2 var(--font-display); }
+.team-card p { margin: 0; color: #aebdcb; font-size: 13px; line-height: 1.65; }
+.team-scope { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; margin-top: 26px; }
+.team-scope span { margin-right: 6px; color: #9ba8b9; font: 700 10px/1 var(--font-display); letter-spacing: .2em; text-transform: uppercase; }
+.team-scope b { padding: 8px 14px; border: 1px solid rgba(189, 215, 241, .2); border-radius: 999px; background: rgba(56, 199, 244, .06); color: #f4f7fb; font: 600 12px/1 var(--font-display); transition: background .25s, border-color .25s, transform .25s; }
+.team-scope b:hover { transform: translateY(-2px); border-color: #38c7f4; background: rgba(56, 199, 244, .16); }
+/* Fundadores com cantos arredondados. */
+.founder-card { overflow: hidden; border-radius: 18px; transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s, box-shadow .35s, background .35s; }
+.founder-card:hover { box-shadow: 0 18px 40px -20px rgba(56, 199, 244, .4); }
+.founder-card > img { border-radius: 12px; }
+@media (max-width: 1000px) { .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .team-structure { margin-top: 50px; } .team-structure-head { grid-template-columns: 1fr; gap: 16px; } }
+@media (max-width: 560px) { .team-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .team-card, .team-card-figure, .founder-card { transition: none; } }
 .quote-email-link { color: #7fdcff; text-decoration: underline; text-underline-offset: 3px; }
 .quote-email-link:hover { color: #fff; }
 
-@media (max-width: 600px) {
-  .team-capacity { grid-template-columns: 1fr; gap: 12px; }
-  .team-capacity-number { font-size: 44px; }
-}

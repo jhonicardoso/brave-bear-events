@@ -5,7 +5,13 @@ test.beforeEach(async ({ page }) => {
   await page.route(/^https:\/\//, (route) => route.abort());
 });
 
-for (const path of ["/", "/equipamentos.html", "/calculadora-led.html"]) {
+for (const path of [
+  "/",
+  "/equipamentos.html",
+  "/calculadora-led.html",
+  "/projetos.html",
+  "/caso.html?c=experiencia-imersiva-mar-2026",
+]) {
   test(`${path}: runtime, landmarks and responsive layout`, async ({
     page,
   }) => {
@@ -303,4 +309,45 @@ test("calculadora tem passos simples, atalhos de tamanho e orçamento pronto", a
   await expect(page.locator(".calc-advanced")).not.toHaveAttribute("open", "");
   const href = await page.locator("#led-calc-quote").getAttribute("href");
   expect(new URL(href).searchParams.get("text")).toContain("84 placas");
+});
+
+test("home: seções removidas, estrutura da equipe antes dos fundadores e galeria de destaques", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator("#eventos")).toHaveCount(0);
+  await expect(page.locator("#como-funciona")).toHaveCount(0);
+  await expect(page.locator(".team-card")).toHaveCount(4);
+  await expect(
+    page.getByText("Comercial, operação, logística e software conectados."),
+  ).toBeAttached();
+  const teamBeforeFounders = await page.evaluate(() => {
+    const team = document.querySelector(".team-structure");
+    const founders = document.querySelector(".founders-wrap");
+    return Boolean(
+      team.compareDocumentPosition(founders) & Node.DOCUMENT_POSITION_FOLLOWING,
+    );
+  });
+  expect(teamBeforeFounders).toBe(true);
+  await expect(page.locator("#projetos .gcard")).toHaveCount(6);
+  await expect(
+    page.getByRole("link", { name: /Ver todos os projetos/ }),
+  ).toHaveAttribute("href", "projetos.html");
+});
+
+test("galeria: filtro por tipo, página de projeto e navegação entre projetos", async ({
+  page,
+}) => {
+  await page.goto("/projetos.html");
+  await expect(page.locator(".gcard")).toHaveCount(28);
+  await page.getByRole("button", { name: "LED" }).click();
+  await expect(page.locator(".gcard:not(.is-hide)")).toHaveCount(2);
+  await page.locator(".gcard:not(.is-hide)").first().click();
+  await expect(page).toHaveURL(/caso\.html\?c=/);
+  await expect(page.locator("h1")).toBeVisible();
+  await expect(page.locator(".gmedia img").first()).toBeAttached();
+  const before = page.url();
+  await page.getByRole("link", { name: /Próximo projeto/ }).click();
+  await expect(page).toHaveURL(/caso\.html\?c=/);
+  expect(page.url()).not.toBe(before);
 });

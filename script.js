@@ -194,7 +194,7 @@ if (clientCarousel && clientTrack && clientList && clientCarouselToggle) {
 }
 
 const revealTargets = document.querySelectorAll(
-  ".service-card, .kit-card, .equipment-feature, .process-list li, .client-carousel, .quote-form",
+  ".service-card, .kit-card, .equipment-feature, .team-structure-head, .team-card, .founder-card, .projects-section .gcard, .client-carousel, .quote-form",
 );
 if (
   "IntersectionObserver" in window &&
@@ -396,4 +396,13 @@ if (
     },
     { threshold: 0.35 },
   ).observe(statsGrid);
+}
+
+// Brilho que acompanha o mouse nos cartões da equipe.
+for (const card of document.querySelectorAll(".team-card")) {
+  card.addEventListener("pointermove", (event) => {
+    const box = card.getBoundingClientRect();
+    card.style.setProperty("--mx", `${event.clientX - box.left}px`);
+    card.style.setProperty("--my", `${event.clientY - box.top}px`);
+  });
 }
