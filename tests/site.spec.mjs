@@ -108,7 +108,20 @@ test("venda e locação apresentam navegação e contato para compra", async ({
     "href",
     "equipamentos.html?categoria=venda",
   );
-  await expect(page.locator(".commercial-path")).toHaveCount(2);
+  await expect(page.locator(".commercial-path")).toHaveCount(0);
+  const order = await page.evaluate(() => {
+    const top = (selector) =>
+      document.querySelector(selector).getBoundingClientRect().top;
+    return {
+      hero: top(".hero"),
+      stats: top(".stats-section"),
+      strip: top(".capability-bar"),
+      equipment: top(".equipment-section"),
+    };
+  });
+  expect(order.hero).toBeLessThan(order.stats);
+  expect(order.stats).toBeLessThan(order.strip);
+  expect(order.strip).toBeLessThan(order.equipment);
   await page.goto("/equipamentos.html?categoria=venda");
   await expect(page.locator("#equipment-page-title")).toHaveText(
     "Venda de Painéis de LED",
@@ -169,7 +182,7 @@ test("mobile hero mantém mensagem e botões visíveis e sem espaço sobrando", 
       .querySelector(".hero-actions")
       .getBoundingClientRect();
     const next = document
-      .querySelector(".commercial-paths")
+      .querySelector(".stats-section")
       .getBoundingClientRect();
     return {
       heroBottom: hero.bottom,
