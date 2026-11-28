@@ -1,9 +1,6 @@
 const { categories = [] } = window.BRAVE_CATALOG || {};
 
 const categoryGrid = document.querySelector("#equipment-categories");
-const selectedItemInput = document.querySelector("#selected-item");
-const selectedKitItemsInput = document.querySelector("#selected-kit-items");
-const selectedKitSummary = document.querySelector("#selected-kit-summary");
 const catalogTransition = document.querySelector("#catalog-transition");
 const catalogTransitionTitle = document.querySelector(
   "#catalog-transition-title",
@@ -55,14 +52,6 @@ categoryGrid?.addEventListener("click", (event) => {
   }, 560);
 });
 
-function setRequestedItem(item) {
-  if (!selectedItemInput) return;
-  selectedItemInput.value = item;
-  document
-    .querySelector("#orcamento")
-    ?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
 document.addEventListener("click", (event) => {
   const kitCard = event.target.closest(".kit-card");
   if (kitCard) {
@@ -70,25 +59,6 @@ document.addEventListener("click", (event) => {
     void kitCard.offsetWidth;
     kitCard.classList.add("is-clicked");
     window.setTimeout(() => kitCard.classList.remove("is-clicked"), 520);
-  }
-
-  const productButton = event.target.closest("[data-select-item]");
-  if (productButton) {
-    setRequestedItem(productButton.dataset.selectItem);
-    return;
-  }
-  const kitLink = event.target.closest("[data-kit]");
-  if (kitLink) {
-    selectedItemInput.value = kitLink.dataset.kit;
-    const kitItems = kitLink.dataset.kitItems || "";
-    if (selectedKitItemsInput) selectedKitItemsInput.value = kitItems;
-    if (selectedKitSummary) {
-      selectedKitSummary.textContent = `${kitLink.dataset.kit} selecionado. Itens: ${kitItems}. Essa seleção será incluída na mensagem do seu orçamento.`;
-      selectedKitSummary.hidden = false;
-    }
-    document
-      .querySelector("#orcamento")
-      .scrollIntoView({ behavior: "smooth", block: "start" });
   }
 });
 
@@ -113,52 +83,6 @@ mainNav?.querySelectorAll("a").forEach((link) => {
 });
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeMenu();
-});
-
-document.querySelector("#quote-form")?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const form = event.currentTarget;
-  const values = new FormData(form);
-  const lines = [
-    "Olá, Brave Bear! Gostaria de solicitar um orçamento.",
-    "",
-    `Nome: ${values.get("name")}`,
-    `WhatsApp: ${values.get("phone")}`,
-    values.get("selectedItem")
-      ? `Interesse específico: ${values.get("selectedItem")}`
-      : "",
-    values.get("selectedKitItems")
-      ? `Itens do kit selecionado: ${values.get("selectedKitItems")}`
-      : "",
-    values.get("description") ? `Mensagem: ${values.get("description")}` : "",
-  ].filter(Boolean);
-  const feedback = document.querySelector("#form-feedback");
-  const message = lines.join("\n");
-  const destination = `https://wa.me/5511911728323?text=${encodeURIComponent(message)}`;
-  const link = document.createElement("a");
-  link.href = destination;
-  link.target = "_blank";
-  link.rel = "noopener noreferrer";
-  link.textContent = "WhatsApp";
-  feedback.replaceChildren(
-    "Sua mensagem está pronta. Revise e envie pelo ",
-    link,
-    ".",
-  );
-  window.open(destination, "_blank", "noopener,noreferrer");
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: "quote_request_prepared",
-    source: "website",
-    method: "whatsapp",
-  });
-  if (typeof window.gtag === "function") {
-    window.gtag("event", "quote_form_submit", {
-      form_name: "quote_form",
-      destination: "whatsapp",
-    });
-  }
-  if (typeof window.fbq === "function") window.fbq("track", "Lead");
 });
 
 const currentYear = document.querySelector("#current-year");
@@ -194,7 +118,7 @@ if (clientCarousel && clientTrack && clientList && clientCarouselToggle) {
 }
 
 const revealTargets = document.querySelectorAll(
-  ".service-card, .kit-card, .equipment-feature, .team-structure-head, .team-card, .digital-head, .digital-card, .digital-steps, .founder-card, .projects-section .gcard, .client-carousel, .quote-form",
+  ".service-card, .kit-card, .equipment-feature, .team-structure-head, .team-card, .digital-head, .digital-card, .digital-steps, .founder-card, .projects-section .gcard, .client-carousel",
 );
 if (
   "IntersectionObserver" in window &&
