@@ -439,6 +439,32 @@ test("voltar ao topo sobe até o início e o TikTok está no rodapé", async ({
   expect(await page.evaluate(() => window.scrollY)).toBe(0);
 });
 
+test("serviços e catálogo formam uma só seção, seguida dos kits", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator("#solucoes-title, #solutions-title")).toHaveCount(
+    0,
+  );
+  const section = page.locator("#equipamentos");
+  await expect(
+    section.getByRole("heading", { level: 2, name: "Tudo para o seu evento." }),
+  ).toBeVisible();
+  await expect(section.locator(".service-chip")).toHaveCount(6);
+  await expect(
+    section.getByRole("link", { name: /Baixar catálogo em PDF/ }),
+  ).toBeVisible();
+  await expect(
+    page.locator("#main-nav").getByRole("link", { name: "Catálogo" }),
+  ).toHaveCount(0);
+  const order = await page.evaluate(() =>
+    [...document.querySelectorAll("main > section[id]")].map((el) => el.id),
+  );
+  expect(order.indexOf("equipamentos")).toBeLessThan(order.indexOf("kits"));
+  expect(order.indexOf("kits")).toBeLessThan(order.indexOf("interatividade"));
+  await expect(page.locator("#kits .kit-card")).toHaveCount(4);
+});
+
 test("catálogo: nove categorias com imagens distintas", async ({ page }) => {
   await page.goto("/");
   const cards = page.locator("#equipment-categories .equipment-feature");
