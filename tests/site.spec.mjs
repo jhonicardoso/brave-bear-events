@@ -278,10 +278,70 @@ test("home: seções removidas, estrutura da equipe antes dos fundadores e galer
     );
   });
   expect(teamBeforeFounders).toBe(true);
-  await expect(page.locator("#projetos .gcard")).toHaveCount(6);
+  await expect(
+    page.locator("#projetos .g-strip-list:not(.is-clone) .gcard"),
+  ).toHaveCount(6);
   await expect(
     page.getByRole("link", { name: /Ver todos os projetos/ }),
   ).toHaveAttribute("href", "projetos.html");
+});
+
+test("home: faixa de projetos rola sozinha, pausa e abre o projeto", async ({
+  page,
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name !== "desktop",
+    "a rolagem automática não roda com movimento reduzido",
+  );
+  await page.goto("/");
+  const strip = page.locator("#projetos .g-strip");
+  const rail = strip.locator(".g-strip-rail");
+  const toggle = strip.locator(".g-strip-toggle");
+  await strip.scrollIntoViewIfNeeded();
+  await expect(strip).toHaveClass(/is-marquee/);
+  await expect(strip.locator(".g-strip-list.is-clone")).toBeVisible();
+  await expect(
+    strip.getByRole("button", { name: "Próximos projetos" }),
+  ).toBeHidden();
+
+  const offset = () =>
+    rail.evaluate(
+      (el) => new DOMMatrixReadOnly(getComputedStyle(el).transform).m41,
+    );
+  const first = await offset();
+  await expect.poll(offset).toBeLessThan(first - 20);
+
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+  await expect(rail).toHaveClass(/is-paused/);
+  const paused = await offset();
+  await page.waitForTimeout(600);
+  expect(await offset()).toBe(paused);
+  await toggle.click();
+  await expect(rail).not.toHaveClass(/is-paused/);
+
+  await strip
+    .locator(".g-strip-list:not(.is-clone) .gcard")
+    .first()
+    .click({ force: true });
+  await expect(page).toHaveURL(/caso\.html\?c=calibracao-de-painel-led/);
+});
+
+test("home: faixa de projetos com movimento reduzido usa setas", async ({
+  page,
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name === "desktop",
+    "cobre só o modo de movimento reduzido",
+  );
+  await page.goto("/");
+  const strip = page.locator("#projetos .g-strip");
+  await expect(strip).not.toHaveClass(/is-marquee/);
+  await expect(strip.locator(".g-strip-list.is-clone")).toBeHidden();
+  await expect(strip.locator(".g-strip-toggle")).toBeHidden();
+  await expect(
+    strip.getByRole("button", { name: "Próximos projetos" }),
+  ).toBeEnabled();
 });
 
 test("galeria: filtro por tipo, página de projeto e navegação entre projetos", async ({

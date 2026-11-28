@@ -24,6 +24,7 @@ const files = [
   "equipamentos.js",
   "enhancements.js",
   "galeria.js",
+  "galeria-faixa.js",
   "contato.js",
   "galeria-data.js",
   "assets",
