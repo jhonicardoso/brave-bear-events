@@ -118,7 +118,7 @@ if (clientCarousel && clientTrack && clientList && clientCarouselToggle) {
 }
 
 const revealTargets = document.querySelectorAll(
-  ".service-card, .kit-card, .equipment-feature, .team-structure-head, .team-card, .digital-head, .digital-card, .digital-steps, .founder-card, .projects-section .gcard, .client-carousel",
+  ".service-chip, .kit-card, .equipment-feature, .team-structure-head, .team-card, .digital-head, .digital-card, .digital-steps, .founder-card, .projects-section .g-strip, .client-carousel",
 );
 if (
   "IntersectionObserver" in window &&

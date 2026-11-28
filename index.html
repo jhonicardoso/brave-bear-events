@@ -37,7 +37,7 @@
       "@type": "PostalAddress",
       "streetAddress": "Avenida Raimundo Pereira de Magalhães, 1720"
     },
-    "sameAs": ["https://www.instagram.com/bravebearbrasil/", "https://www.linkedin.com/company/brave-bear-events", "https://www.tiktok.com/@bravebearbrasil"]
+    "sameAs": ["https://www.instagram.com/bravebearbrasil/", "https://www.linkedin.com/company/brave-bear-events", "https://www.tiktok.com/@bravebearbrasil", "https://www.pinterest.com/bravebearbrasil/"]
   }
   </script>
   <script type="application/ld+json">
@@ -105,8 +105,8 @@
   }
   </script>
   <link rel="stylesheet" href="enhancements.css?v=20261128-hero-slides-v1">
-  <link rel="stylesheet" href="galeria.css?v=20261127-galeria">
-  <link rel="stylesheet" href="depoimentos-galeria.css">
+  <link rel="stylesheet" href="galeria.css?v=20261128-faixa">
+  <link rel="stylesheet" href="depoimentos-galeria.css?v=20261128-marquee">
   <script src="analytics.js" defer></script>
   <script src="enhancements.js" defer></script>
 </head>
@@ -121,8 +121,7 @@
         <span></span><span></span>
       </button>
       <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
-        <a href="#solucoes">Serviços</a>
-        <a href="#equipamentos">Catálogo</a>
+        <a href="#equipamentos">Serviços</a>
         <a href="#kits">Kits</a>
         <a href="#interatividade">Digital</a>
         <a href="#projetos">Projetos</a>
@@ -196,27 +195,47 @@
       </div>
     </section>
 
-    <section class="section section-light" id="solucoes" aria-labelledby="solutions-title">
+    <section class="equipment-section" id="equipamentos" aria-labelledby="equipment-title">
+      <span id="solucoes" aria-hidden="true"></span>
       <div class="wrap">
-        <div class="section-heading heading-split">
-          <div>
-            <p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> SERVIÇOS</p>
-            <h2 id="solutions-title">Tudo para o seu <span>evento.</span></h2>
+        <div class="section-heading heading-split equipment-heading">
+          <div><p class="eyebrow"><span class="eyebrow-line"></span> SERVIÇOS E EQUIPAMENTOS</p><h2 id="equipment-title">Tudo para o seu <span>evento.</span></h2></div>
+          <p class="section-intro">Equipamentos para locação e venda, com equipe técnica, montagem e operação. Você escolhe o que precisa e a Brave Bear entrega pronto.</p>
+        </div>
+        <h3 class="equipment-subhead">Equipamentos</h3>
+        <div class="equipment-feature-grid" id="equipment-categories" aria-label="Categorias de equipamentos"></div>
+        <h3 class="equipment-subhead">Equipe e serviços</h3>
+        <ul class="service-chips" aria-label="Serviços da Brave Bear">
+          <li class="service-chip"><a href="#kits"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2.2"/><path d="M7.8 7.8a6 6 0 0 0 0 8.4M16.2 7.8a6 6 0 0 1 0 8.4M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2"/></svg><span class="service-chip-name">Transmissão ao vivo</span><i aria-hidden="true">↗</i></a></li>
+          <li class="service-chip"><a href="#orcamento"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6.5" width="13" height="11" rx="2"/><path d="M16 10.5l5-3v9l-5-3"/></svg><span class="service-chip-name">Captação de vídeo</span><i aria-hidden="true">↗</i></a></li>
+          <li class="service-chip"><a href="#sobre"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span class="service-chip-name">Operação técnica</span><i aria-hidden="true">↗</i></a></li>
+          <li class="service-chip"><a href="#sobre"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 18h18M3 18l4.5-12M7.5 6L12 18M12 18l4.5-12M16.5 6L21 18"/></svg><span class="service-chip-name">Montagem e desmontagem</span><i aria-hidden="true">↗</i></a></li>
+          <li class="service-chip"><a href="#orcamento"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg><span class="service-chip-name">Cenografia audiovisual</span><i aria-hidden="true">↗</i></a></li>
+          <li class="service-chip"><a href="#orcamento"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="M10 9l5 3-5 3z"/></svg><span class="service-chip-name">Vídeo e conteúdo</span><i aria-hidden="true">↗</i></a></li>
+        </ul>
+        <div class="catalog-download">
+          <div><strong>Quer ver todos os equipamentos?</strong><span>Catálogo completo em PDF, cerca de 53 MB.</span></div>
+          <div class="catalog-actions">
+            <a class="button" href="catalogo-audiovisual.pdf?v=20261027-2" download>Baixar catálogo em PDF <span aria-hidden="true">↓</span></a>
+            <a class="button button-ghost" href="calculadora-led.html">Calculadora de painel de LED <span aria-hidden="true">↗</span></a>
           </div>
         </div>
-        <div class="service-grid">
-          <article class="service-card"><span class="service-number">01</span><div class="service-icon icon-audio" aria-hidden="true">◖))</div><h3>Sonorização</h3><a href="equipamentos.html?categoria=audio">Ver equipamentos <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">02</span><div class="service-icon icon-light" aria-hidden="true">✳</div><h3>Iluminação</h3><a href="equipamentos.html?categoria=lighting">Ver equipamentos <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">03</span><div class="service-icon icon-led" aria-hidden="true">▦</div><h3>Painel de LED</h3><a href="equipamentos.html?categoria=led">Ver equipamentos <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">04</span><div class="service-icon icon-projection" aria-hidden="true">▱</div><h3>Projeção</h3><a href="equipamentos.html?categoria=projection">Ver equipamentos <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">05</span><div class="service-icon icon-live" aria-hidden="true">◉</div><h3>Transmissão ao vivo</h3><a href="#kits">Conhecer kit <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">06</span><div class="service-icon icon-camera" aria-hidden="true">▣</div><h3>Captação de vídeo</h3><a href="#orcamento">Planejar captação <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">07</span><div class="service-icon icon-crew" aria-hidden="true">⌘</div><h3>Operação técnica</h3><a href="#sobre">Conhecer a equipe <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">08</span><div class="service-icon icon-build" aria-hidden="true">⌗</div><h3>Montagem e desmontagem</h3><a href="#sobre">Conhecer a equipe <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">09</span><div class="service-icon icon-stage" aria-hidden="true">◇</div><h3>Cenografia audiovisual</h3><a href="#orcamento">Montar meu projeto <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">10</span><div class="service-icon icon-touch" aria-hidden="true">⌁</div><h3>Interatividade</h3><a href="#interatividade">Explorar interatividade <span>↗</span></a></article>
-          <article class="service-card"><span class="service-number">11</span><div class="service-icon icon-content" aria-hidden="true">▷</div><h3>Vídeo e conteúdo</h3><a href="#orcamento">Falar com especialista <span>↗</span></a></article>
+      </div>
+    </section>
+
+    <section class="section section-light kits-section" id="kits" aria-labelledby="kits-title">
+      <div class="wrap">
+        <div class="section-heading heading-split">
+          <div><p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> KITS PRONTOS</p><h2 id="kits-title">Escolha um <span>kit.</span></h2></div>
+          <p class="section-intro">Combinações prontas dos nossos equipamentos. Escolha a mais próxima do seu evento e nós ajustamos.</p>
         </div>
+        <div class="kits-grid">
+          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 01</span></div><h3>Palestra</h3><p>Para palestras, workshops e treinamentos.</p><ul><li>Painel LED</li><li>Notebook</li><li>2 microfones</li><li>Sistema de áudio e retorno</li><li>Iluminação</li><li>Operador</li></ul><a class="button" href="#orcamento" data-quick-quote="Kit Palestra" data-kit="Kit Palestra" data-kit-items="Painel LED, Notebook, 2 microfones, sistema de áudio e retorno, iluminação e operador">Quero este kit <span aria-hidden="true">↗</span></a></article>
+          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 02</span></div><h3>Evento corporativo</h3><p>Para convenções, lançamentos e reuniões.</p><ul><li>Painel LED</li><li>TVs de apoio</li><li>Sistema de áudio e microfones</li><li>Iluminação</li><li>Estrutura</li><li>Operação técnica</li></ul><a class="button" href="#orcamento" data-quick-quote="Kit Evento Corporativo" data-kit="Kit Evento Corporativo" data-kit-items="Painel LED, TVs de apoio, sistema de áudio e microfones, iluminação, estrutura e operação técnica">Quero este kit <span aria-hidden="true">↗</span></a></article>
+          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 03</span></div><h3>Transmissão</h3><p>Para eventos híbridos e transmissões ao vivo.</p><ul><li>Câmeras e tripés</li><li>Mesa de corte</li><li>Encoder</li><li>Computador</li><li>Internet</li><li>Operador</li></ul><a class="button" href="#orcamento" data-quick-quote="Kit Transmissão" data-kit="Kit Transmissão" data-kit-items="Câmeras e tripés, mesa de corte, encoder, computador, internet e operador">Quero este kit <span aria-hidden="true">↗</span></a></article>
+          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 04</span></div><h3>Administrativo</h3><p>Para apoiar o escritório e a produção do evento.</p><ul><li>Notebook e monitor</li><li>Teclado e mouse</li><li>Impressora</li><li>Celulares e tablet</li><li>Cabos e acessórios</li></ul><a class="button" href="#orcamento" data-quick-quote="Kit Administrativo" data-kit="Kit Administrativo" data-kit-items="Notebook e monitor, teclado e mouse, impressora, celulares e tablet, cabos e acessórios">Quero este kit <span aria-hidden="true">↗</span></a></article>
+        </div>
+        <p class="kit-footnote">Todos os kits podem ser ajustados ao tamanho e ao formato do seu evento.</p>
       </div>
     </section>
 
@@ -264,49 +283,30 @@
       </div>
     </section>
 
-    <section class="section section-light kits-section" id="kits" aria-labelledby="kits-title">
-      <div class="wrap">
-        <div class="section-heading heading-split">
-          <div><p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> KITS PRONTOS</p><h2 id="kits-title">Escolha um <span>kit.</span></h2></div>
-        </div>
-        <div class="kits-grid">
-          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 01</span><span class="kit-mark" aria-hidden="true">01</span></div><h3>Palestra</h3><ul><li>Painel LED</li><li>Notebook</li><li>2 microfones</li><li>Sistema de áudio e retorno</li><li>Iluminação</li><li>Operador</li></ul><a class="button" href="#orcamento" data-quick-quote="Kit Palestra" data-kit="Kit Palestra" data-kit-items="Painel LED, Notebook, 2 microfones, sistema de áudio e retorno, iluminação e operador">Quero este kit <span>↗</span></a></article>
-          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 02</span><span class="kit-mark" aria-hidden="true">02</span></div><h3>Evento corporativo</h3><ul><li>Painel LED</li><li>TVs de apoio</li><li>Sistema de áudio e microfones</li><li>Iluminação</li><li>Estrutura</li><li>Operação técnica</li></ul><a class="button" href="#orcamento" data-quick-quote="Kit Evento Corporativo" data-kit="Kit Evento Corporativo" data-kit-items="Painel LED, TVs de apoio, sistema de áudio e microfones, iluminação, estrutura e operação técnica">Quero este kit <span>↗</span></a></article>
-          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 03</span><span class="kit-mark" aria-hidden="true">03</span></div><h3>Transmissão</h3><ul><li>Câmeras e tripés</li><li>Mesa de corte</li><li>Encoder</li><li>Computador</li><li>Internet</li><li>Operador</li></ul><a class="button" href="#orcamento" data-quick-quote="Kit Transmissão" data-kit="Kit Transmissão" data-kit-items="Câmeras e tripés, mesa de corte, encoder, computador, internet e operador">Quero este kit <span>↗</span></a></article>
-          <article class="kit-card kit-featured"><div class="kit-top"><span class="kit-index">KIT 04</span><span class="kit-mark" aria-hidden="true">04</span></div><h3>Administrativo</h3><ul><li>Notebook e monitor</li><li>Teclado e mouse</li><li>Impressora</li><li>Celulares e tablet</li><li>Cabos e acessórios</li></ul><a class="button" href="#orcamento" data-quick-quote="Kit Administrativo" data-kit="Kit Administrativo" data-kit-items="Notebook e monitor, teclado e mouse, impressora, celulares e tablet, cabos e acessórios">Quero este kit <span>↗</span></a></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="equipment-section" id="equipamentos" aria-labelledby="equipment-title">
-      <div class="wrap">
-        <div class="section-heading heading-split equipment-heading">
-          <div><p class="eyebrow"><span class="eyebrow-line"></span> CATÁLOGO BRAVE BEAR</p><h2 id="equipment-title">Tecnologia pronta <span>para entrar em cena.</span></h2></div>
-        </div>
-        <div class="equipment-feature-grid" id="equipment-categories" aria-label="Categorias de equipamentos"></div>
-        <div class="catalog-download">
-          <div><strong>Quer ver todos os equipamentos?</strong><span>Catálogo completo em PDF, cerca de 53 MB.</span></div>
-          <div class="catalog-actions">
-            <a class="button" href="catalogo-audiovisual.pdf?v=20261027-2" download>Baixar catálogo em PDF <span aria-hidden="true">↓</span></a>
-            <a class="button button-ghost" href="calculadora-led.html">Calculadora de painel de LED <span aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
 <section class="projects-section section g-scope" id="projetos" aria-labelledby="projects-title">
       <div class="wrap">
         <div class="g-head">
           <div><p class="g-eyebrow">PROJETOS</p><h2 class="g-title" id="projects-title">Eventos que <em>já realizamos.</em></h2><p class="g-lead">Uma seleção de registros reais de campo, com entregas em LED, plenária, interatividade e experiência audiovisual. As imagens mostram trabalhos realizados entre setembro de 2025 e junho de 2026; cada projeto é dimensionado conforme o evento.</p></div>
           <a class="g-link" href="projetos.html">Ver todos os projetos <i aria-hidden="true">→</i></a>
         </div>
-        <div class="g-grid">
+      </div>
+      <div class="g-strip">
+        <div class="g-strip-viewport">
+          <div class="g-strip-rail">
+            <div class="g-strip-list">
           <a class="gcard" href="caso.html?c=calibracao-de-painel-led-set-2025"><div class="gcard-media" style="--bg:url('assets/galeria/projetos/img-20250921-130416884-hdr.jpg')"><img src="assets/galeria/projetos/img-20250921-130416884-hdr.jpg" alt="Calibração de painel LED" loading="lazy" decoding="async"></div><span class="gcard-cat">LED</span><h3>Calibração de painel LED</h3><p>Registro da calibração de painéis de LED em campo, com padrões de teste de cor na tela.</p><span class="gcard-cta">Ver projeto →</span></a>
           <a class="gcard" href="caso.html?c=plenaria-corporativa-out-2025"><div class="gcard-media" style="--bg:url('assets/galeria/projetos/img-20251001-144510843-hdr.jpg')"><img src="assets/galeria/projetos/img-20251001-144510843-hdr.jpg" alt="Plenária corporativa" loading="lazy" decoding="async"></div><span class="gcard-cat">Palco e plenária</span><h3>Plenária corporativa</h3><p>Plenária com palco, telões de LED e iluminação para uma grande plateia.</p><span class="gcard-cta">Ver projeto →</span></a>
           <a class="gcard" href="caso.html?c=manutencao-de-modulos-led-nov-2025"><div class="gcard-media" style="--bg:url('assets/galeria/projetos/img-20251112-133753884.jpg')"><img src="assets/galeria/projetos/img-20251112-133753884.jpg" alt="Manutenção de módulos LED" loading="lazy" decoding="async"></div><span class="gcard-cat">LED</span><h3>Manutenção de módulos LED</h3><p>Manutenção técnica de módulos de painel de LED em campo.</p><span class="gcard-cta">Ver projeto →</span></a>
           <a class="gcard" href="caso.html?c=experiencia-imersiva-mar-2026"><div class="gcard-media" style="--bg:url('assets/galeria/projetos/img-20260309-093714379.jpg')"><img src="assets/galeria/projetos/img-20260309-093714379.jpg" alt="Experiência imersiva" loading="lazy" decoding="async"></div><span class="gcard-cat">Interatividade</span><h3>Experiência imersiva</h3><p>Apresentação para plateia sentada, com projeção em tela e iluminação de destaque em estande.</p><span class="gcard-cta">Ver projeto →</span></a>
           <a class="gcard" href="caso.html?c=totens-digitais-abr-2026"><div class="gcard-media" style="--bg:url('assets/galeria/projetos/img-20260415-144229713-mp.jpg')"><img src="assets/galeria/projetos/img-20260415-144229713-mp.jpg" alt="Totens digitais" loading="lazy" decoding="async"></div><span class="gcard-cat">Interatividade</span><h3>Totens digitais</h3><p>Totens digitais instalados para um evento.</p><span class="gcard-cta">Ver projeto →</span></a>
           <a class="gcard" href="caso.html?c=palco-led-e-audio-jun-2026"><div class="gcard-media" style="--bg:url('assets/galeria/projetos/img-20260617-170214335-hdr.jpg')"><img src="assets/galeria/projetos/img-20260617-170214335-hdr.jpg" alt="Palco, LED e áudio" loading="lazy" decoding="async"></div><span class="gcard-cat">Palco e plenária</span><h3>Palco, LED e áudio</h3><p>Palco com telão de LED e áudio para apresentação corporativa.</p><span class="gcard-cta">Ver projeto →</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="g-strip-controls" hidden>
+          <button class="g-strip-toggle" type="button" aria-pressed="false" aria-label="Pausar a rolagem automática dos projetos" hidden><span class="g-strip-icon" aria-hidden="true"></span></button>
+          <button type="button" data-strip-step="-1" aria-label="Projetos anteriores" hidden>←</button>
+          <button type="button" data-strip-step="1" aria-label="Próximos projetos" hidden>→</button>
         </div>
       </div>
     </section>
@@ -364,6 +364,8 @@
         </div>
         <div class="social-grid" id="social-grid"></div>
         <div class="reviews">
+<div class="reviews-viewport">
+<div class="reviews-rail">
 <ul class="reviews-track" aria-label="Depoimentos de clientes">
 <li><a href="assets/depoimentos/avaliacao-1.jpg" aria-label="Ampliar depoimento 1 de 6"><img src="assets/depoimentos/avaliacao-1.jpg" alt="Cartão de avaliação de cliente 1" width="960" height="1200" loading="lazy" decoding="async"></a></li>
 <li><a href="assets/depoimentos/avaliacao-2.jpg" aria-label="Ampliar depoimento 2 de 6"><img src="assets/depoimentos/avaliacao-2.jpg" alt="Cartão de avaliação de cliente 2" width="960" height="1200" loading="lazy" decoding="async"></a></li>
@@ -372,7 +374,10 @@
 <li><a href="assets/depoimentos/avaliacao-5.jpg" aria-label="Ampliar depoimento 5 de 6"><img src="assets/depoimentos/avaliacao-5.jpg" alt="Cartão de avaliação de cliente 5" width="960" height="1200" loading="lazy" decoding="async"></a></li>
 <li><a href="assets/depoimentos/avaliacao-6.jpg" aria-label="Ampliar depoimento 6 de 6"><img src="assets/depoimentos/avaliacao-6.jpg" alt="Cartão de avaliação de cliente 6" width="960" height="1200" loading="lazy" decoding="async"></a></li>
 </ul>
+</div>
+</div>
 <div class="reviews-controls" hidden>
+<button class="reviews-toggle" type="button" aria-pressed="false" aria-label="Pausar a rolagem automática dos depoimentos" hidden>Pausar</button>
 <button type="button" data-review-step="-1" aria-label="Depoimentos anteriores">←</button>
 <button type="button" data-review-step="1" aria-label="Próximos depoimentos">→</button>
 </div>
@@ -471,6 +476,7 @@
           <a href="https://www.instagram.com/bravebearbrasil/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Brave Bear"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
           <a href="https://www.linkedin.com/company/brave-bear-events" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Brave Bear"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M4 9h3v11H4zM5.5 4a1.75 1.75 0 110 3.5 1.75 1.75 0 010-3.5zM10 9h2.9v1.6c.5-.9 1.7-1.9 3.5-1.9 3.3 0 3.6 2.2 3.6 4.7V20h-3v-5.6c0-1.3 0-2.9-1.8-2.9s-2.2 1.4-2.2 2.8V20H10z"/></svg></a>
           <a href="https://www.tiktok.com/@bravebearbrasil" target="_blank" rel="noopener noreferrer" aria-label="TikTok da Brave Bear"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.3 2.3 1.6 3.7 3.9 3.9v3.1c-1.4.1-2.7-.3-3.9-1.1v5.8c0 3.7-3 5.8-5.9 5.3-2.4-.4-4.2-2.6-4-5.1.2-2.9 2.8-5 5.7-4.5v3.2c-1.4-.4-2.6.3-2.8 1.5-.2 1.3.8 2.3 2 2.2 1.1-.1 1.7-.9 1.7-2.1V3h3.3z"/></svg></a>
+          <a href="https://www.pinterest.com/bravebearbrasil/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest da Brave Bear"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg></a>
           <a href="https://wa.me/5511911728323" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da Brave Bear"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 00-7.8 13.5L3 21l4.6-1.2A9 9 0 1012 3zm0 1.8a7.2 7.2 0 11-3.7 13.4l-.3-.2-2.7.7.7-2.6-.2-.3A7.2 7.2 0 0112 4.8zM9 8.2c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.2.8 2.6.6 3.1.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.3-.7-.7-1.2-1.5-1.4-1.8-.1-.2 0-.4.1-.5l.4-.5.3-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4z"/></svg></a>
         </div>
       </div>
@@ -508,7 +514,8 @@
     <div class="catalog-transition-content"><span class="catalog-transition-kicker">BRAVE BEAR · CATÁLOGO</span><strong id="catalog-transition-title">Entrando em cena</strong><span class="catalog-transition-line"></span></div>
   </div>
   <script src="depoimentos-data.js?v=20261127-social" defer></script>
-  <script src="depoimentos-galeria.js" defer></script>
+  <script src="depoimentos-galeria.js?v=20261128-marquee" defer></script>
+  <script src="galeria-faixa.js?v=20261128-faixa" defer></script>
   <script src="catalog-data.js?v=20261116-premium-hd" defer></script>
   <script src="script.js?v=20261128-hero-slides-v1" defer></script>
   <script src="https://atendimento.bravebear.com.br/widget.js" data-bottom="92" data-bottom-mobile="135" defer></script>

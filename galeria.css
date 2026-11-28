@@ -53,6 +53,32 @@
 .gcard-cta { padding-bottom: 4px; border-bottom: 1px solid var(--g-line); font: 700 12px/1 var(--font-display); transition: color .25s, border-color .25s; }
 .gcard:hover .gcard-cta, .gcard:focus-visible .gcard-cta { color: var(--g-accent); border-color: var(--g-accent); }
 
+/* faixa de destaques da home: cartões soltos, em largura total, passando sozinhos */
+.projects-section { overflow-x: clip; }
+.g-strip-viewport { overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory; scrollbar-color: rgba(160, 190, 216, .35) transparent; padding: 4px 0 10px; }
+.g-strip-rail { display: flex; width: max-content; }
+.g-strip-list { display: flex; flex: 0 0 auto; gap: 28px; padding-right: 28px; }
+.g-strip-list .gcard { flex: 0 0 clamp(16rem, 78vw, 22rem); scroll-snap-align: start; }
+.g-strip-list.is-clone { display: none; }
+.g-strip.is-marquee .g-strip-list.is-clone { display: flex; }
+.g-strip.is-marquee .g-strip-viewport { overflow: hidden; scroll-snap-type: none; mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }
+.g-strip.is-marquee .g-strip-rail { animation: g-strip-marquee var(--g-strip-duration, 50s) linear infinite; }
+.g-strip.is-marquee .g-strip-rail.is-paused, .g-strip.is-marquee .g-strip-viewport:focus-within .g-strip-rail { animation-play-state: paused; }
+@media (hover: hover) { .g-strip.is-marquee .g-strip-viewport:hover .g-strip-rail { animation-play-state: paused; } }
+@keyframes g-strip-marquee { to { transform: translateX(-50%); } }
+.g-strip-controls:not([hidden]) { display: flex; justify-content: flex-end; align-items: center; gap: 8px; width: min(1200px, calc(100% - 48px)); margin: 6px auto 0; }
+.g-strip-controls button { position: relative; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; color: #cfe0ef; background: transparent; font-size: 18px; cursor: pointer; transition: color .16s; }
+.g-strip-controls button[hidden] { display: none; }
+.g-strip-controls button::before { content: ""; position: absolute; inset: 8px; border: 1px solid rgba(174, 205, 239, .3); border-radius: 50%; transition: border-color .16s; }
+.g-strip-controls button:hover { color: var(--g-accent); }
+.g-strip-controls button:hover::before { border-color: var(--g-accent); }
+.g-strip-controls button:focus-visible { outline: 2px solid var(--g-accent); outline-offset: -2px; }
+.g-strip-controls button:disabled { opacity: .35; cursor: default; }
+/* ícone de pausar (duas barras) e de retomar (triângulo), desenhados em CSS */
+.g-strip-icon { width: 10px; height: 12px; border-inline: 3px solid currentcolor; }
+.g-strip-toggle[aria-pressed="true"] .g-strip-icon { width: 0; height: 0; margin-left: 2px; border-block: 6px solid transparent; border-inline: 10px solid currentcolor; border-right-width: 0; }
+@media (max-width: 850px) { .g-strip-controls:not([hidden]) { width: min(100% - 36px, 680px); } }
+
 /* página de um projeto */
 .g-case { padding-top: 56px; padding-bottom: 24px; }
 .g-back { display: inline-block; margin-bottom: 40px; color: var(--g-muted); font: 600 12px/1 var(--font-display); transition: color .2s; }
@@ -93,6 +119,7 @@
   .g-case-nav a strong { font-size: 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .g-strip-viewport { scroll-behavior: auto; }
   .g-page .gcard { animation: none; opacity: 1; transform: none; }
   .gmedia { opacity: 1; transform: none; transition: none; }
   .gcard-media img { transition: none; }

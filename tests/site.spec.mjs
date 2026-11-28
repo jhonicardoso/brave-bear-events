@@ -281,10 +281,70 @@ test("home: seções removidas, estrutura da equipe antes dos fundadores e galer
     );
   });
   expect(teamBeforeFounders).toBe(true);
-  await expect(page.locator("#projetos .gcard")).toHaveCount(6);
+  await expect(
+    page.locator("#projetos .g-strip-list:not(.is-clone) .gcard"),
+  ).toHaveCount(6);
   await expect(
     page.getByRole("link", { name: /Ver todos os projetos/ }),
   ).toHaveAttribute("href", "projetos.html");
+});
+
+test("home: faixa de projetos rola sozinha, pausa e abre o projeto", async ({
+  page,
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name !== "desktop",
+    "a rolagem automática não roda com movimento reduzido",
+  );
+  await page.goto("/");
+  const strip = page.locator("#projetos .g-strip");
+  const rail = strip.locator(".g-strip-rail");
+  const toggle = strip.locator(".g-strip-toggle");
+  await strip.scrollIntoViewIfNeeded();
+  await expect(strip).toHaveClass(/is-marquee/);
+  await expect(strip.locator(".g-strip-list.is-clone")).toBeVisible();
+  await expect(
+    strip.getByRole("button", { name: "Próximos projetos" }),
+  ).toBeHidden();
+
+  const offset = () =>
+    rail.evaluate(
+      (el) => new DOMMatrixReadOnly(getComputedStyle(el).transform).m41,
+    );
+  const first = await offset();
+  await expect.poll(offset).toBeLessThan(first - 20);
+
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+  await expect(rail).toHaveClass(/is-paused/);
+  const paused = await offset();
+  await page.waitForTimeout(600);
+  expect(await offset()).toBe(paused);
+  await toggle.click();
+  await expect(rail).not.toHaveClass(/is-paused/);
+
+  await strip
+    .locator(".g-strip-list:not(.is-clone) .gcard")
+    .first()
+    .click({ force: true });
+  await expect(page).toHaveURL(/caso\.html\?c=calibracao-de-painel-led/);
+});
+
+test("home: faixa de projetos com movimento reduzido usa setas", async ({
+  page,
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name === "desktop",
+    "cobre só o modo de movimento reduzido",
+  );
+  await page.goto("/");
+  const strip = page.locator("#projetos .g-strip");
+  await expect(strip).not.toHaveClass(/is-marquee/);
+  await expect(strip.locator(".g-strip-list.is-clone")).toBeHidden();
+  await expect(strip.locator(".g-strip-toggle")).toBeHidden();
+  await expect(
+    strip.getByRole("button", { name: "Próximos projetos" }),
+  ).toBeEnabled();
 });
 
 test("galeria: filtro por tipo, página de projeto e navegação entre projetos", async ({
@@ -317,7 +377,7 @@ test("home: sem introdução 'Mais do que equipamentos', sem contato duplicado e
   const footer = page.locator(".site-footer-clean");
   await expect(footer.getByText("Onde estamos")).toBeAttached();
   await expect(footer.getByText("Fale conosco")).toBeAttached();
-  await expect(footer.locator(".footer-clean-social a")).toHaveCount(4);
+  await expect(footer.locator(".footer-clean-social a")).toHaveCount(5);
 });
 
 test("contato: dados da empresa e formulário que prepara a mensagem no WhatsApp", async ({
@@ -344,6 +404,27 @@ test("contato: dados da empresa e formulário que prepara a mensagem no WhatsApp
   expect(text).toContain("Mensagem: Convenção para 300 pessoas");
 });
 
+test("Pinterest está no rodapé de todas as páginas e na página de contato", async ({
+  page,
+}) => {
+  for (const url of [
+    "/",
+    "/projetos.html",
+    "/caso.html?c=x",
+    "/contato.html",
+  ]) {
+    await page.goto(url);
+    await expect(
+      page.locator(
+        '.footer-clean-social a[href*="pinterest.com/bravebearbrasil"]',
+      ),
+    ).toBeAttached();
+  }
+  await expect(
+    page.locator('.contact-social a[href*="pinterest.com/bravebearbrasil"]'),
+  ).toBeAttached();
+});
+
 test("voltar ao topo sobe até o início e o TikTok está no rodapé", async ({
   page,
 }) => {
@@ -361,6 +442,32 @@ test("voltar ao topo sobe até o início e o TikTok está no rodapé", async ({
   expect(await page.evaluate(() => window.scrollY)).toBe(0);
 });
 
+test("serviços e catálogo formam uma só seção, seguida dos kits", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator("#solucoes-title, #solutions-title")).toHaveCount(
+    0,
+  );
+  const section = page.locator("#equipamentos");
+  await expect(
+    section.getByRole("heading", { level: 2, name: "Tudo para o seu evento." }),
+  ).toBeVisible();
+  await expect(section.locator(".service-chip")).toHaveCount(6);
+  await expect(
+    section.getByRole("link", { name: /Baixar catálogo em PDF/ }),
+  ).toBeVisible();
+  await expect(
+    page.locator("#main-nav").getByRole("link", { name: "Catálogo" }),
+  ).toHaveCount(0);
+  const order = await page.evaluate(() =>
+    [...document.querySelectorAll("main > section[id]")].map((el) => el.id),
+  );
+  expect(order.indexOf("equipamentos")).toBeLessThan(order.indexOf("kits"));
+  expect(order.indexOf("kits")).toBeLessThan(order.indexOf("interatividade"));
+  await expect(page.locator("#kits .kit-card")).toHaveCount(4);
+});
+
 test("catálogo: nove categorias com imagens distintas", async ({ page }) => {
   await page.goto("/");
   const cards = page.locator("#equipment-categories .equipment-feature");
@@ -373,10 +480,9 @@ test("prova social exibe os seis cartões e permite ampliá-los", async ({
   await page.goto("/");
   const section = page.locator("#depoimentos");
   await expect(section).toBeVisible();
-  await expect(section.locator(".reviews-track img")).toHaveCount(6);
   await expect(
-    section.getByRole("button", { name: "Próximos depoimentos" }),
-  ).toBeEnabled();
+    section.locator(".reviews-track:not(.is-clone) img"),
+  ).toHaveCount(6);
   await section
     .getByRole("link", { name: "Ampliar depoimento 1 de 6" })
     .click();
@@ -385,6 +491,73 @@ test("prova social exibe os seis cartões e permite ampliá-los", async ({
   await expect(dialog.getByRole("img")).toHaveJSProperty("naturalWidth", 960);
   await page.keyboard.press("Escape");
   await expect(dialog).toBeHidden();
+});
+
+test("prova social rola sozinha, pausa e permite ampliar um cartão em movimento", async ({
+  page,
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name !== "desktop",
+    "a rolagem automática não roda com movimento reduzido",
+  );
+  await page.goto("/");
+  const section = page.locator("#depoimentos");
+  const reviews = section.locator(".reviews");
+  const rail = section.locator(".reviews-rail");
+  const toggle = section.locator(".reviews-toggle");
+  await section.scrollIntoViewIfNeeded();
+  await expect(reviews).toHaveClass(/is-marquee/);
+  await expect(toggle).toHaveAccessibleName(
+    "Pausar a rolagem automática dos depoimentos",
+  );
+  await expect(section.locator(".reviews-track.is-clone")).toBeVisible();
+  await expect(
+    section.getByRole("button", { name: "Próximos depoimentos" }),
+  ).toBeHidden();
+
+  const offset = () =>
+    rail.evaluate(
+      (el) => new DOMMatrixReadOnly(getComputedStyle(el).transform).m41,
+    );
+  const first = await offset();
+  await expect.poll(offset).toBeLessThan(first - 20);
+
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+  await expect(rail).toHaveClass(/is-paused/);
+  const paused = await offset();
+  await page.waitForTimeout(600);
+  expect(await offset()).toBe(paused);
+
+  await toggle.click();
+  await expect(rail).not.toHaveClass(/is-paused/);
+
+  // Os cartões da segunda lista também abrem o zoom.
+  await section
+    .locator(".reviews-track.is-clone a")
+    .first()
+    .click({ force: true });
+  await expect(page.getByRole("dialog", { name: /Depoimento/ })).toBeVisible();
+  await expect(rail).toHaveClass(/is-paused/);
+  await page.keyboard.press("Escape");
+  await expect(rail).not.toHaveClass(/is-paused/);
+});
+
+test("prova social com movimento reduzido usa rolagem manual com setas", async ({
+  page,
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name === "desktop",
+    "cobre só o modo de movimento reduzido",
+  );
+  await page.goto("/");
+  const section = page.locator("#depoimentos");
+  await expect(section.locator(".reviews")).not.toHaveClass(/is-marquee/);
+  await expect(section.locator(".reviews-track.is-clone")).toBeHidden();
+  await expect(section.getByRole("button", { name: "Pausar" })).toBeHidden();
+  await expect(
+    section.getByRole("button", { name: "Próximos depoimentos" }),
+  ).toBeEnabled();
 });
 
 test("prova social aparece quando há depoimentos cadastrados", async ({
