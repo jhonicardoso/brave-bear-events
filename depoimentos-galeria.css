@@ -82,13 +82,6 @@
   width: 100%;
   height: auto;
 }
-.reviews-controls:not([hidden]) {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 0.55rem;
-  margin-top: 0.65rem;
-}
 .reviews button {
   width: 44px;
   height: 44px;
@@ -97,11 +90,6 @@
   background: #101720;
   color: #fff;
   cursor: pointer;
-}
-.reviews .reviews-toggle {
-  width: auto;
-  padding-inline: 0.9rem;
-  border-radius: 999px;
 }
 .reviews button:hover {
   border-color: #007caa;
@@ -171,3 +159,8 @@
     transform: none;
   }
 }
+/* fundo claro: ícones de controle em tom escuro */
+.reviews .gallery-controls .gallery-btn { color: #31465b; }
+.reviews .gallery-controls .gallery-btn::before { border-color: rgba(49, 70, 91, .35); }
+.reviews .gallery-controls .gallery-btn:hover { color: #007caa; }
+.reviews .gallery-controls .gallery-btn:hover::before { border-color: #007caa; }

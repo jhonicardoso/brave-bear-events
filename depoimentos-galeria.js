@@ -113,7 +113,6 @@ function initReviews(doc) {
         ? "Retomar a rolagem automática dos depoimentos"
         : "Pausar a rolagem automática dos depoimentos",
     );
-    toggle.textContent = userPaused ? "Retomar" : "Pausar";
     syncPause();
   });
 

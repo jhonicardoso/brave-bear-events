@@ -603,3 +603,36 @@ test("prova social aparece quando há depoimentos cadastrados", async ({
   );
   await expect(page.locator("#social-grid b")).toHaveCount(0);
 });
+
+test("controles das galerias usam só símbolo e ficam abaixo de cada galeria", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.waitForTimeout(600);
+  const result = await page.evaluate(() => {
+    const pairs = [
+      [".g-strip-toggle", ".g-strip-viewport"],
+      [".client-carousel-toggle", ".client-carousel-viewport"],
+      [".reviews-toggle", ".reviews-viewport"],
+    ];
+    return pairs.map(([toggleSelector, gallerySelector]) => {
+      const toggle = document.querySelector(toggleSelector);
+      const gallery = document.querySelector(gallerySelector);
+      return {
+        toggleSelector,
+        text: toggle.textContent.trim(),
+        hasIcon: Boolean(toggle.querySelector(".gallery-icon")),
+        below:
+          toggle.compareDocumentPosition(gallery) &
+          Node.DOCUMENT_POSITION_PRECEDING
+            ? true
+            : false,
+      };
+    });
+  });
+  for (const item of result) {
+    expect(item.text, item.toggleSelector).toBe("");
+    expect(item.hasIcon, item.toggleSelector).toBe(true);
+    expect(item.below, item.toggleSelector).toBe(true);
+  }
+});

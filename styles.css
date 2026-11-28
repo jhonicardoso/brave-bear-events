@@ -269,11 +269,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .client-heading { max-width: 700px; margin-bottom: 30px; }
 .client-section h2 { max-width: 650px; margin: 0; font-family: var(--font-display); font-size: clamp(29px, 3.5vw, 40px); font-weight: 800; letter-spacing: -.05em; line-height: 1.12; }
 .client-section h2 span { color: #3cccf2; }
-.client-carousel-controls { display: flex; min-height: 34px; justify-content: flex-end; margin-bottom: 8px; }
-.client-carousel-toggle { display: none; align-items: center; justify-content: center; padding: 7px 12px; border: 1px solid rgba(193,221,244,.22); border-radius: 2px; color: #bdcbd9; background: transparent; font: inherit; font-size: 9px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
-.client-carousel.has-controls .client-carousel-toggle { display: inline-flex; }
-.client-carousel-toggle:hover { color: #fff; border-color: #3cccf2; }
-.client-carousel-toggle:focus-visible, .client-carousel-viewport:focus-visible { outline: 2px solid #3cccf2; outline-offset: 3px; }
+.client-carousel-viewport:focus-visible { outline: 2px solid #3cccf2; outline-offset: 3px; }
 .client-carousel-viewport { overflow-x: auto; overflow-y: hidden; padding-block: 4px 12px; scrollbar-color: rgba(160,190,216,.35) transparent; scrollbar-width: thin; }
 .client-carousel.has-controls .client-carousel-viewport { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 2.5%, #000 97.5%, transparent); scrollbar-width: none; }
 .client-track { display: flex; width: max-content; }
