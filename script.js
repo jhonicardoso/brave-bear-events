@@ -113,7 +113,6 @@ if (clientCarousel && clientTrack && clientList && clientCarouselToggle) {
         ? "Retomar a rolagem automática das logos"
         : "Pausar a rolagem automática das logos",
     );
-    clientCarouselToggle.textContent = isPaused ? "Retomar" : "Pausar";
   });
 }
 

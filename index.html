@@ -23,8 +23,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261128-hero-faixas">
-  <link rel="stylesheet" href="interactivity.css?v=20261116-premium-totem">
+  <link rel="stylesheet" href="styles.css?v=20261128-controles">
+  <link rel="stylesheet" href="interactivity.css?v=20261128-linha2">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -105,8 +105,8 @@
   }
   </script>
   <link rel="stylesheet" href="enhancements.css?v=20261128-numeros-hero">
-  <link rel="stylesheet" href="galeria.css?v=20261128-faixa">
-  <link rel="stylesheet" href="depoimentos-galeria.css?v=20261128-marquee">
+  <link rel="stylesheet" href="galeria.css?v=20261128-controles">
+  <link rel="stylesheet" href="depoimentos-galeria.css?v=20261128-controles">
   <script src="analytics.js" defer></script>
   <script src="enhancements.js" defer></script>
 </head>
@@ -283,10 +283,10 @@
             </div>
           </div>
         </div>
-        <div class="g-strip-controls" hidden>
-          <button class="g-strip-toggle" type="button" aria-pressed="false" aria-label="Pausar a rolagem automática dos projetos" hidden><span class="g-strip-icon" aria-hidden="true"></span></button>
-          <button type="button" data-strip-step="-1" aria-label="Projetos anteriores" hidden>←</button>
-          <button type="button" data-strip-step="1" aria-label="Próximos projetos" hidden>→</button>
+        <div class="g-strip-controls gallery-controls" hidden>
+          <button class="g-strip-toggle gallery-btn" type="button" aria-pressed="false" aria-label="Pausar a rolagem automática dos projetos" hidden><span class="gallery-icon" aria-hidden="true"></span></button>
+          <button class="gallery-btn" type="button" data-strip-step="-1" aria-label="Projetos anteriores" hidden>←</button>
+          <button class="gallery-btn" type="button" data-strip-step="1" aria-label="Próximos projetos" hidden>→</button>
         </div>
       </div>
     </section>
@@ -295,7 +295,6 @@
       <div class="wrap client-layout">
         <div class="client-heading"><p class="eyebrow"><span class="eyebrow-line"></span> CLIENTES</p><h2 id="clients-title">Marcas que fazem parte dos projetos da <span>Brave Bear.</span></h2><p class="client-note">Mais de 300 marcas já foram atendidas. Estas são algumas delas.</p></div>
         <div class="client-carousel" role="region" aria-roledescription="carrossel" aria-label="Logos dos clientes atendidos pela Brave Bear">
-          <div class="client-carousel-controls"><button class="client-carousel-toggle" type="button" aria-label="Pausar a rolagem automática das logos" aria-pressed="false">Pausar</button></div>
           <div class="client-carousel-viewport" tabindex="0" aria-label="Faixa horizontal de logos de clientes">
             <div class="client-track"><ul class="client-list">
           <li class="client-logo"><img src="assets/client-logos/advanced.webp" alt="Advanced" loading="lazy" decoding="async"></li>
@@ -331,6 +330,7 @@
           <li class="client-logo"><img src="assets/client-logos/yamalog.webp" alt="Yamalog" loading="lazy" decoding="async"></li>
             </ul></div>
           </div>
+          <div class="client-carousel-controls gallery-controls"><button class="client-carousel-toggle gallery-btn" type="button" aria-label="Pausar a rolagem automática das logos" aria-pressed="false"><span class="gallery-icon" aria-hidden="true"></span></button></div>
         </div>
       </div>
     </section>
@@ -356,10 +356,10 @@
 </ul>
 </div>
 </div>
-<div class="reviews-controls" hidden>
-<button class="reviews-toggle" type="button" aria-pressed="false" aria-label="Pausar a rolagem automática dos depoimentos" hidden>Pausar</button>
-<button type="button" data-review-step="-1" aria-label="Depoimentos anteriores">←</button>
-<button type="button" data-review-step="1" aria-label="Próximos depoimentos">→</button>
+<div class="reviews-controls gallery-controls" hidden>
+<button class="reviews-toggle gallery-btn" type="button" aria-pressed="false" aria-label="Pausar a rolagem automática dos depoimentos" hidden><span class="gallery-icon" aria-hidden="true"></span></button>
+<button class="gallery-btn" type="button" data-review-step="-1" aria-label="Depoimentos anteriores">←</button>
+<button class="gallery-btn" type="button" data-review-step="1" aria-label="Próximos depoimentos">→</button>
 </div>
 <dialog class="reviews-dialog" aria-labelledby="review-title">
 <div class="reviews-dialog-header">

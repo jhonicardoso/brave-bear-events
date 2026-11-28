@@ -66,18 +66,19 @@
 .g-strip.is-marquee .g-strip-rail.is-paused, .g-strip.is-marquee .g-strip-viewport:focus-within .g-strip-rail { animation-play-state: paused; }
 @media (hover: hover) { .g-strip.is-marquee .g-strip-viewport:hover .g-strip-rail { animation-play-state: paused; } }
 @keyframes g-strip-marquee { to { transform: translateX(-50%); } }
-.g-strip-controls:not([hidden]) { display: flex; justify-content: flex-end; align-items: center; gap: 8px; width: min(1200px, calc(100% - 48px)); margin: 6px auto 0; }
-.g-strip-controls button { position: relative; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; color: #cfe0ef; background: transparent; font-size: 18px; cursor: pointer; transition: color .16s; }
-.g-strip-controls button[hidden] { display: none; }
-.g-strip-controls button::before { content: ""; position: absolute; inset: 8px; border: 1px solid rgba(174, 205, 239, .3); border-radius: 50%; transition: border-color .16s; }
-.g-strip-controls button:hover { color: var(--g-accent); }
-.g-strip-controls button:hover::before { border-color: var(--g-accent); }
-.g-strip-controls button:focus-visible { outline: 2px solid var(--g-accent); outline-offset: -2px; }
-.g-strip-controls button:disabled { opacity: .35; cursor: default; }
+/* Controles das galerias animadas (projetos, clientes e depoimentos): sempre abaixo, centralizados, só com símbolo. */
+.gallery-controls:not([hidden]) { display: flex; justify-content: center; align-items: center; gap: 8px; width: min(1200px, calc(100% - 48px)); margin: 10px auto 0; }
+.gallery-controls .gallery-btn { position: relative; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; color: #cfe0ef; background: transparent; font-size: 18px; line-height: 1; cursor: pointer; transition: color .16s; }
+.gallery-controls .gallery-btn[hidden] { display: none; }
+.gallery-controls .gallery-btn::before { content: ""; position: absolute; inset: 4px; border: 1px solid rgba(174, 205, 239, .3); border-radius: 50%; transition: border-color .16s; }
+.gallery-controls .gallery-btn:hover { color: var(--g-accent, #3cccf2); }
+.gallery-controls .gallery-btn:hover::before { border-color: var(--g-accent, #3cccf2); }
+.gallery-controls .gallery-btn:focus-visible { outline: 2px solid var(--g-accent, #3cccf2); outline-offset: 0; }
+.gallery-controls .gallery-btn:disabled { opacity: .35; cursor: default; }
 /* ícone de pausar (duas barras) e de retomar (triângulo), desenhados em CSS */
-.g-strip-icon { width: 10px; height: 12px; border-inline: 3px solid currentcolor; }
-.g-strip-toggle[aria-pressed="true"] .g-strip-icon { width: 0; height: 0; margin-left: 2px; border-block: 6px solid transparent; border-inline: 10px solid currentcolor; border-right-width: 0; }
-@media (max-width: 850px) { .g-strip-controls:not([hidden]) { width: min(100% - 36px, 680px); } }
+.gallery-icon { width: 10px; height: 12px; border-inline: 3px solid currentcolor; }
+.gallery-btn[aria-pressed="true"] .gallery-icon { width: 0; height: 0; margin-left: 2px; border-block: 6px solid transparent; border-inline: 10px solid currentcolor; border-right-width: 0; }
+@media (max-width: 850px) { .gallery-controls:not([hidden]) { width: min(100% - 36px, 680px); } }
 
 /* página de um projeto */
 .g-case { padding-top: 56px; padding-bottom: 24px; }
@@ -124,3 +125,6 @@
   .gmedia { opacity: 1; transform: none; transition: none; }
   .gcard-media img { transition: none; }
 }
+.client-carousel:not(.has-controls) .client-carousel-controls { display: none; }
+.g-head .g-title { margin-bottom: 18px; }
+@media (max-width: 600px) { .g-head { margin-bottom: 28px; } }
