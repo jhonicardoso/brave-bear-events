@@ -391,10 +391,9 @@ test("prova social exibe os seis cartões e permite ampliá-los", async ({
   await page.goto("/");
   const section = page.locator("#depoimentos");
   await expect(section).toBeVisible();
-  await expect(section.locator(".reviews-track img")).toHaveCount(6);
   await expect(
-    section.getByRole("button", { name: "Próximos depoimentos" }),
-  ).toBeEnabled();
+    section.locator(".reviews-track:not(.is-clone) img"),
+  ).toHaveCount(6);
   await section
     .getByRole("link", { name: "Ampliar depoimento 1 de 6" })
     .click();
@@ -403,6 +402,73 @@ test("prova social exibe os seis cartões e permite ampliá-los", async ({
   await expect(dialog.getByRole("img")).toHaveJSProperty("naturalWidth", 960);
   await page.keyboard.press("Escape");
   await expect(dialog).toBeHidden();
+});
+
+test("prova social rola sozinha, pausa e permite ampliar um cartão em movimento", async ({
+  page,
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name !== "desktop",
+    "a rolagem automática não roda com movimento reduzido",
+  );
+  await page.goto("/");
+  const section = page.locator("#depoimentos");
+  const reviews = section.locator(".reviews");
+  const rail = section.locator(".reviews-rail");
+  const toggle = section.locator(".reviews-toggle");
+  await section.scrollIntoViewIfNeeded();
+  await expect(reviews).toHaveClass(/is-marquee/);
+  await expect(toggle).toHaveAccessibleName(
+    "Pausar a rolagem automática dos depoimentos",
+  );
+  await expect(section.locator(".reviews-track.is-clone")).toBeVisible();
+  await expect(
+    section.getByRole("button", { name: "Próximos depoimentos" }),
+  ).toBeHidden();
+
+  const offset = () =>
+    rail.evaluate(
+      (el) => new DOMMatrixReadOnly(getComputedStyle(el).transform).m41,
+    );
+  const first = await offset();
+  await expect.poll(offset).toBeLessThan(first - 20);
+
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+  await expect(rail).toHaveClass(/is-paused/);
+  const paused = await offset();
+  await page.waitForTimeout(600);
+  expect(await offset()).toBe(paused);
+
+  await toggle.click();
+  await expect(rail).not.toHaveClass(/is-paused/);
+
+  // Os cartões da segunda lista também abrem o zoom.
+  await section
+    .locator(".reviews-track.is-clone a")
+    .first()
+    .click({ force: true });
+  await expect(page.getByRole("dialog", { name: /Depoimento/ })).toBeVisible();
+  await expect(rail).toHaveClass(/is-paused/);
+  await page.keyboard.press("Escape");
+  await expect(rail).not.toHaveClass(/is-paused/);
+});
+
+test("prova social com movimento reduzido usa rolagem manual com setas", async ({
+  page,
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name === "desktop",
+    "cobre só o modo de movimento reduzido",
+  );
+  await page.goto("/");
+  const section = page.locator("#depoimentos");
+  await expect(section.locator(".reviews")).not.toHaveClass(/is-marquee/);
+  await expect(section.locator(".reviews-track.is-clone")).toBeHidden();
+  await expect(section.getByRole("button", { name: "Pausar" })).toBeHidden();
+  await expect(
+    section.getByRole("button", { name: "Próximos depoimentos" }),
+  ).toBeEnabled();
 });
 
 test("prova social aparece quando há depoimentos cadastrados", async ({

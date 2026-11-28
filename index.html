@@ -106,7 +106,7 @@
   </script>
   <link rel="stylesheet" href="enhancements.css?v=20261120-analytics">
   <link rel="stylesheet" href="galeria.css?v=20261127-galeria">
-  <link rel="stylesheet" href="depoimentos-galeria.css?v=20261128-rotacao">
+  <link rel="stylesheet" href="depoimentos-galeria.css?v=20261128-marquee">
   <script src="analytics.js" defer></script>
   <script src="enhancements.js" defer></script>
 </head>
@@ -360,6 +360,8 @@
         </div>
         <div class="social-grid" id="social-grid"></div>
         <div class="reviews">
+<div class="reviews-viewport">
+<div class="reviews-rail">
 <ul class="reviews-track" aria-label="Depoimentos de clientes">
 <li><a href="assets/depoimentos/avaliacao-1.jpg" aria-label="Ampliar depoimento 1 de 6"><img src="assets/depoimentos/avaliacao-1.jpg" alt="Cartão de avaliação de cliente 1" width="960" height="1200" loading="lazy" decoding="async"></a></li>
 <li><a href="assets/depoimentos/avaliacao-2.jpg" aria-label="Ampliar depoimento 2 de 6"><img src="assets/depoimentos/avaliacao-2.jpg" alt="Cartão de avaliação de cliente 2" width="960" height="1200" loading="lazy" decoding="async"></a></li>
@@ -368,8 +370,10 @@
 <li><a href="assets/depoimentos/avaliacao-5.jpg" aria-label="Ampliar depoimento 5 de 6"><img src="assets/depoimentos/avaliacao-5.jpg" alt="Cartão de avaliação de cliente 5" width="960" height="1200" loading="lazy" decoding="async"></a></li>
 <li><a href="assets/depoimentos/avaliacao-6.jpg" aria-label="Ampliar depoimento 6 de 6"><img src="assets/depoimentos/avaliacao-6.jpg" alt="Cartão de avaliação de cliente 6" width="960" height="1200" loading="lazy" decoding="async"></a></li>
 </ul>
+</div>
+</div>
 <div class="reviews-controls" hidden>
-<button class="reviews-toggle" type="button" hidden>Pausar rotação</button>
+<button class="reviews-toggle" type="button" aria-pressed="false" aria-label="Pausar a rolagem automática dos depoimentos" hidden>Pausar</button>
 <button type="button" data-review-step="-1" aria-label="Depoimentos anteriores">←</button>
 <button type="button" data-review-step="1" aria-label="Próximos depoimentos">→</button>
 </div>
@@ -506,7 +510,7 @@
     <div class="catalog-transition-content"><span class="catalog-transition-kicker">BRAVE BEAR · CATÁLOGO</span><strong id="catalog-transition-title">Entrando em cena</strong><span class="catalog-transition-line"></span></div>
   </div>
   <script src="depoimentos-data.js?v=20261127-social" defer></script>
-  <script src="depoimentos-galeria.js?v=20261128-rotacao" defer></script>
+  <script src="depoimentos-galeria.js?v=20261128-marquee" defer></script>
   <script src="catalog-data.js?v=20261116-premium-hd" defer></script>
   <script src="script.js?v=20261120-analytics" defer></script>
   <script src="https://atendimento.bravebear.com.br/widget.js" data-bottom="92" data-bottom-mobile="135" defer></script>
