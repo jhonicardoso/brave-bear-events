@@ -374,7 +374,9 @@ test("prova social exibe os seis cartões e permite ampliá-los", async ({
   await expect(
     section.getByRole("button", { name: "Próximos depoimentos" }),
   ).toBeEnabled();
-  await section.getByRole("link", { name: "Ampliar depoimento 1 de 6" }).click();
+  await section
+    .getByRole("link", { name: "Ampliar depoimento 1 de 6" })
+    .click();
   const dialog = page.getByRole("dialog", { name: "Depoimento 1 de 6" });
   await expect(dialog).toBeVisible();
   await expect(dialog.getByRole("img")).toHaveJSProperty("naturalWidth", 960);
