@@ -364,9 +364,24 @@ test("catálogo: nove categorias com imagens distintas", async ({ page }) => {
   await expect(cards).toHaveCount(9);
 });
 
-test("prova social fica oculta sem depoimentos reais", async ({ page }) => {
+test("prova social exibe os seis cartões e permite ampliá-los", async ({
+  page,
+}) => {
   await page.goto("/");
-  await expect(page.locator("#depoimentos")).toBeHidden();
+  const section = page.locator("#depoimentos");
+  await expect(section).toBeVisible();
+  await expect(section.locator(".reviews-track img")).toHaveCount(6);
+  await expect(
+    section.getByRole("button", { name: "Próximos depoimentos" }),
+  ).toBeEnabled();
+  await section
+    .getByRole("link", { name: "Ampliar depoimento 1 de 6" })
+    .click();
+  const dialog = page.getByRole("dialog", { name: "Depoimento 1 de 6" });
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole("img")).toHaveJSProperty("naturalWidth", 960);
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
 });
 
 test("prova social aparece quando há depoimentos cadastrados", async ({
