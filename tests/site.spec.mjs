@@ -99,12 +99,15 @@ test("venda e locação apresentam navegação e contato para compra", async ({
   page,
 }) => {
   await page.goto("/");
-  await expect(
-    page.getByRole("link", { name: /Comprar equipamentos/ }),
-  ).toHaveAttribute("href", "equipamentos.html?categoria=venda");
-  await expect(
-    page.getByRole("link", { name: /Locar para meu evento/ }),
-  ).toHaveAttribute("href", "#equipamentos");
+  const heroLinks = page.locator(".hero-actions a");
+  await expect(heroLinks).toHaveCount(2);
+  await expect(heroLinks.nth(0)).toContainText("Locação");
+  await expect(heroLinks.nth(0)).toHaveAttribute("href", "#equipamentos");
+  await expect(heroLinks.nth(1)).toContainText("Venda");
+  await expect(heroLinks.nth(1)).toHaveAttribute(
+    "href",
+    "equipamentos.html?categoria=venda",
+  );
   await expect(page.locator(".commercial-path")).toHaveCount(2);
   await page.goto("/equipamentos.html?categoria=venda");
   await expect(page.locator("#equipment-page-title")).toHaveText(
@@ -162,19 +165,19 @@ test("mobile hero follows content without excessive empty space", async ({
   await page.goto("/");
   const positions = await page.evaluate(() => {
     const hero = document.querySelector(".hero").getBoundingClientRect();
-    const note = document.querySelector(".hero-note").getBoundingClientRect();
-    const foot = document.querySelector(".hero-foot").getBoundingClientRect();
+    const note = document
+      .querySelector(".hero-actions")
+      .getBoundingClientRect();
     const next = document
       .querySelector(".commercial-paths")
       .getBoundingClientRect();
     return {
       heroBottom: hero.bottom,
       noteBottom: note.bottom,
-      footTop: foot.top,
       nextTop: next.top,
     };
   });
-  expect(positions.footTop - positions.noteBottom).toBeLessThan(150);
+  expect(positions.heroBottom - positions.noteBottom).toBeLessThan(150);
   expect(Math.abs(positions.nextTop - positions.heroBottom)).toBeLessThan(2);
 });
 

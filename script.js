@@ -140,27 +140,6 @@ if (
   });
 }
 
-const heroPhoto = document.querySelector(".hero-photo");
-if (
-  heroPhoto &&
-  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-) {
-  let ticking = false;
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(() => {
-        const shift = -Math.min(window.scrollY * 0.07, 54);
-        heroPhoto.style.setProperty("--hero-parallax", `${shift}px`);
-        ticking = false;
-      });
-    },
-    { passive: true },
-  );
-}
-
 /* Utilidades das novas interações da página inicial. */
 function whatsappUrl(message) {
   return `https://wa.me/5511911728323?text=${encodeURIComponent(message)}`;
