@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261128-hero-video">
+  <link rel="stylesheet" href="styles.css?v=20261128-hero-slides-v1">
   <link rel="stylesheet" href="interactivity.css?v=20261116-premium-totem">
   <script type="application/ld+json">
   {
@@ -104,7 +104,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="enhancements.css?v=20261128-hero-video">
+  <link rel="stylesheet" href="enhancements.css?v=20261128-hero-slides-v1">
   <link rel="stylesheet" href="galeria.css?v=20261127-galeria">
   <link rel="stylesheet" href="depoimentos-galeria.css">
   <script src="analytics.js" defer></script>
@@ -134,22 +134,28 @@
 
   <main id="conteudo">
     <section class="hero" id="inicio" aria-labelledby="hero-title">
-      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero/hero-poster.jpg" aria-hidden="true" tabindex="-1" disablepictureinpicture>
-        <source src="assets/hero/hero-loop.mp4" type="video/mp4">
-      </video>
-      <div class="hero-shade" aria-hidden="true"></div>
-      <div class="hero-content wrap">
-        <h1 id="hero-title">Tecnologia que transforma projetos em experiências.</h1>
-        <p class="hero-copy">Locação e venda de equipamentos audiovisuais, com equipe técnica e desenvolvimento de software.</p>
-        <div class="hero-actions">
-          <a class="button" href="#orcamento" data-quick-quote>Orçamento em 1 minuto <span aria-hidden="true">↗</span></a>
-          <a class="button button-ghost" href="#equipamentos">Locar para meu evento <span aria-hidden="true">↓</span></a>
-          <a class="hero-buy" href="equipamentos.html?categoria=venda">Comprar equipamentos <span aria-hidden="true">↗</span></a>
-        </div>
+      <div class="hero-slides" aria-hidden="true">
+        <img class="hero-slide" src="assets/hero/hero-1.jpg" alt="" width="1920" height="1279" fetchpriority="high" decoding="async">
+        <img class="hero-slide" src="assets/hero/hero-2.jpg" alt="" width="1920" height="1279" loading="lazy" decoding="async">
+        <img class="hero-slide" src="assets/hero/hero-3.jpg" alt="" width="1920" height="1280" loading="lazy" decoding="async">
+        <img class="hero-slide" src="assets/hero/hero-4.jpg" alt="" width="1920" height="1280" loading="lazy" decoding="async">
+        <img class="hero-slide" src="assets/hero/hero-5.jpg" alt="" width="1920" height="1280" loading="lazy" decoding="async">
+        <img class="hero-slide" src="assets/hero/hero-6.jpg" alt="" width="1920" height="1280" loading="lazy" decoding="async">
       </div>
-      <div class="hero-foot wrap">
-        <p>Uma entrega integrada do planejamento à operação.</p>
-        <a href="#solucoes" aria-label="Rolar para soluções">ROLAR <span>↓</span></a>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-bands">
+        <div class="hero-band hero-band-main" aria-hidden="true">
+          <div class="mq-track"><div class="mq-group"><span class="mq-word mq-solid">Locação</span><img class="mq-logo" src="assets/hero/brave-bear-logo.png" alt="" width="1100" height="260"><span class="mq-word mq-outline">Venda</span><img class="mq-logo" src="assets/hero/brave-bear-logo.png" alt="" width="1100" height="260"><span class="mq-word mq-solid mq-extra">Locação</span><img class="mq-logo mq-extra" src="assets/hero/brave-bear-logo.png" alt="" width="1100" height="260"><span class="mq-word mq-outline mq-extra">Venda</span><img class="mq-logo mq-extra" src="assets/hero/brave-bear-logo.png" alt="" width="1100" height="260"></div><div class="mq-group" aria-hidden="true"><span class="mq-word mq-solid">Locação</span><img class="mq-logo" src="assets/hero/brave-bear-logo.png" alt="" width="1100" height="260"><span class="mq-word mq-outline">Venda</span><img class="mq-logo" src="assets/hero/brave-bear-logo.png" alt="" width="1100" height="260"><span class="mq-word mq-solid mq-extra">Locação</span><img class="mq-logo mq-extra" src="assets/hero/brave-bear-logo.png" alt="" width="1100" height="260"><span class="mq-word mq-outline mq-extra">Venda</span><img class="mq-logo mq-extra" src="assets/hero/brave-bear-logo.png" alt="" width="1100" height="260"></div></div>
+        </div>
+        <div class="hero-band hero-band-info">
+          <div class="wrap hero-info">
+            <h1 id="hero-title">Faça seu evento ser lembrado.</h1>
+            <div class="hero-actions">
+              <a class="button" href="#equipamentos">Locação <span aria-hidden="true">↓</span></a>
+              <a class="button button-ghost" href="equipamentos.html?categoria=venda">Venda <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -504,7 +510,7 @@
   <script src="depoimentos-data.js?v=20261127-social" defer></script>
   <script src="depoimentos-galeria.js" defer></script>
   <script src="catalog-data.js?v=20261116-premium-hd" defer></script>
-  <script src="script.js?v=20261128-hero-video" defer></script>
+  <script src="script.js?v=20261128-hero-slides-v1" defer></script>
   <script src="https://atendimento.bravebear.com.br/widget.js" data-bottom="92" data-bottom-mobile="135" defer></script>
 
 </body>

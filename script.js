@@ -140,21 +140,6 @@ if (
   });
 }
 
-const heroVideo = document.querySelector(".hero-video");
-if (heroVideo) {
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const sync = (visible) => {
-    if (reduce.matches || !visible) heroVideo.pause();
-    else heroVideo.play().catch(() => {});
-  };
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(([entry]) => sync(entry.isIntersecting), {
-      threshold: 0.05,
-    }).observe(heroVideo);
-  }
-  reduce.addEventListener("change", () => sync(true));
-}
-
 /* Utilidades das novas interações da página inicial. */
 function whatsappUrl(message) {
   return `https://wa.me/5511911728323?text=${encodeURIComponent(message)}`;
