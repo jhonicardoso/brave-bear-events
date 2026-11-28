@@ -62,19 +62,16 @@ test("calculator validates limits and clears stale results", async ({
   await expect(page.locator('[data-result="tiles"]')).toHaveText("60 placas");
 });
 
-test("quote text remains data and outbound link isolates opener", async ({
+test("home não tem formulário de contato e leva à página de contato", async ({
   page,
 }) => {
   await page.goto("/");
-  await page.locator('[name="name"]').fill("<img src=x onerror=alert(1)>");
-  await page.locator('[name="phone"]').fill("11999999999");
-  await page.locator('#quote-form button[type="submit"]').click();
-  const link = page.locator("#form-feedback a");
-  await expect(link).toHaveAttribute("rel", "noopener noreferrer");
-  await expect(page.locator("#form-feedback img")).toHaveCount(0);
-  expect(
-    new URL(await link.getAttribute("href")).searchParams.get("text"),
-  ).toContain("<img");
+  const section = page.locator("#orcamento");
+  await expect(section.locator("form")).toHaveCount(0);
+  await expect(section.locator("input, textarea")).toHaveCount(0);
+  await expect(
+    section.getByRole("link", { name: /página de contato/ }),
+  ).toHaveAttribute("href", "contato.html");
 });
 
 test("Brave Bear Digital apresenta software, apps e experiências digitais", async ({

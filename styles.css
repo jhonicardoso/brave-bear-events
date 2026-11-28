@@ -738,3 +738,37 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .founder-card { grid-template-columns: 84px minmax(0,1fr); gap: 12px; }
   .founder-card > img { width: 84px; height: 112px; }
 }
+
+/* Contato na home: sem formulário, só o convite para a página de contato. */
+.quote-layout-simple { grid-template-columns: 1fr; }
+.quote-layout-simple .quote-copy { position: static; max-width: 640px; padding-top: 0; }
+.quote-layout-simple .quote-copy > p:not(.eyebrow) { max-width: 560px; }
+.quote-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+@media (max-width: 600px) {
+  .quote-actions { flex-direction: column; }
+  .quote-actions .button { width: 100%; }
+}
+
+/* Rodapé no celular: blocos compactos, alvos de toque confortáveis e links alinhados à esquerda, longe dos botões flutuantes. */
+@media (max-width: 600px) {
+  .site-footer-clean { padding-top: 40px; padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+  .footer-clean { grid-template-columns: 1fr 1fr; gap: 26px 16px; padding-bottom: 28px; }
+  .footer-clean-brand, .footer-clean-col { grid-column: 1 / -1; }
+  .footer-clean-brand { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 16px; }
+  .footer-clean-brand .brand img { width: 128px; }
+  .footer-clean-brand #ra-verified-seal { margin-top: 0; }
+  .footer-clean-col { gap: 4px; }
+  .footer-clean-title { margin-bottom: 8px; font-size: 11px; }
+  .footer-clean-title-spaced { margin-top: 20px; }
+  .footer-clean-address { font-size: 14px; }
+  .footer-clean-strong { font-size: 15px; }
+  .footer-clean-phone { font-size: 15px; }
+  .footer-clean-col > a:not(.footer-clean-address) { display: inline-flex; min-height: 36px; align-items: center; }
+  .footer-clean-links { grid-template-columns: 1fr 1fr; gap: 0 16px; width: 100%; }
+  .footer-clean-links a { display: flex; min-height: 40px; align-items: center; font-size: 14px; }
+  .footer-clean-social { gap: 12px; }
+  .footer-clean-social a { width: 44px; height: 44px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 4px; min-height: 0; padding-block: 18px 0; font-size: 12px; }
+  .footer-bottom-links { gap: 0 20px; }
+  .footer-bottom a { display: inline-flex; min-height: 36px; align-items: center; font-size: 13px; }
+}
