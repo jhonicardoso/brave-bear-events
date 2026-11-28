@@ -140,25 +140,19 @@ if (
   });
 }
 
-const heroPhoto = document.querySelector(".hero-photo");
-if (
-  heroPhoto &&
-  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-) {
-  let ticking = false;
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(() => {
-        const shift = -Math.min(window.scrollY * 0.07, 54);
-        heroPhoto.style.setProperty("--hero-parallax", `${shift}px`);
-        ticking = false;
-      });
-    },
-    { passive: true },
-  );
+const heroVideo = document.querySelector(".hero-video");
+if (heroVideo) {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const sync = (visible) => {
+    if (reduce.matches || !visible) heroVideo.pause();
+    else heroVideo.play().catch(() => {});
+  };
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => sync(entry.isIntersecting), {
+      threshold: 0.05,
+    }).observe(heroVideo);
+  }
+  reduce.addEventListener("change", () => sync(true));
 }
 
 /* Utilidades das novas interações da página inicial. */

@@ -162,7 +162,9 @@ test("mobile hero follows content without excessive empty space", async ({
   await page.goto("/");
   const positions = await page.evaluate(() => {
     const hero = document.querySelector(".hero").getBoundingClientRect();
-    const note = document.querySelector(".hero-note").getBoundingClientRect();
+    const note = document
+      .querySelector(".hero-actions")
+      .getBoundingClientRect();
     const foot = document.querySelector(".hero-foot").getBoundingClientRect();
     const next = document
       .querySelector(".commercial-paths")
