@@ -158,14 +158,14 @@ test("card de interatividade mantém identidade visual escura e fotografia no ca
   expect(styling.surface).toBe("rgb(7, 22, 38)");
 });
 
-test("mobile hero follows content without excessive empty space", async ({
+test("mobile hero mantém mensagem e botões visíveis e sem espaço sobrando", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
   const positions = await page.evaluate(() => {
     const hero = document.querySelector(".hero").getBoundingClientRect();
-    const note = document
+    const actions = document
       .querySelector(".hero-actions")
       .getBoundingClientRect();
     const next = document
@@ -173,11 +173,12 @@ test("mobile hero follows content without excessive empty space", async ({
       .getBoundingClientRect();
     return {
       heroBottom: hero.bottom,
-      noteBottom: note.bottom,
+      actionsBottom: actions.bottom,
       nextTop: next.top,
+      viewport: innerHeight,
     };
   });
-  expect(positions.heroBottom - positions.noteBottom).toBeLessThan(150);
+  expect(positions.actionsBottom).toBeLessThan(positions.viewport - 120);
   expect(Math.abs(positions.nextTop - positions.heroBottom)).toBeLessThan(2);
 });
 
