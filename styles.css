@@ -373,7 +373,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .site-footer { padding-top: 61px; background: #050a10; }
 /* Rodapé limpo: logo, endereço e contato, serviços e redes. */
 .site-footer-clean { padding-top: 72px; }
-.footer-clean { display: grid; grid-template-columns: 1.1fr 1.5fr 1fr .8fr; gap: 40px 48px; padding-bottom: 52px; }
+.footer-clean { display: grid; grid-template-columns: 1.1fr 1.3fr .9fr 1.1fr; gap: 40px 48px; padding-bottom: 52px; }
 .footer-clean-brand .brand img { width: 160px; height: auto; }
 .footer-clean-brand #ra-verified-seal { max-width: 100%; margin-top: 22px; }
 .footer-clean-col { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-width: 0; }
