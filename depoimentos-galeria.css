@@ -1,5 +1,6 @@
 .reviews {
-  margin-top: 1.5rem;
+  max-width: 58rem;
+  margin: 1.5rem auto 0;
   padding: clamp(1rem, 4vw, 2.5rem);
   border: 1px solid #17325022;
   border-radius: 24px;
@@ -8,7 +9,7 @@
 .reviews-track {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: calc((100% - 2rem) / 3);
+  grid-auto-columns: clamp(8.5rem, 43%, 11.25rem);
   gap: 1rem;
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -28,11 +29,12 @@
   background: #fff;
   box-shadow: 0 4px 14px #122b4312;
   border-radius: 14px;
-  transition: transform 220ms ease, border-color 220ms ease;
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 .reviews-track a:hover {
   transform: translateY(-3px);
   border-color: #007caa;
+  box-shadow: 0 8px 18px #122b4326;
 }
 .reviews-track a:focus-visible {
   outline: 3px solid #007caa;
@@ -96,14 +98,22 @@
   margin-inline: auto;
   object-fit: contain;
 }
-@media (max-width: 860px) {
-  .reviews-track {
-    grid-auto-columns: calc((100% - 1rem) / 2);
+@keyframes reviews-appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
 }
-@media (max-width: 570px) {
-  .reviews-track {
-    grid-auto-columns: 89%;
+@media (prefers-reduced-motion: no-preference) {
+  .reviews-dialog[open] {
+    animation: reviews-appear 220ms ease-out;
+  }
+  @supports (animation-timeline: view()) {
+    .reviews {
+      animation: reviews-appear linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 32%;
+    }
   }
 }
 @media (prefers-reduced-motion: reduce) {
